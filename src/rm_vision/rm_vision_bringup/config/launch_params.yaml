@@ -1,0 +1,12 @@
+camera: hik
+
+odom2camera:
+  xyz: "\"0.10 0.0  0.05\""
+  rpy: "\"0.0  0.0  0.0\""
+
+armor_detector_log_level: INFO
+armor_tracker_log_level: INFO
+buff_detector_log_level: DEBUG
+buff_tracker_log_level: DEBUG
+serial_log_level: INFO
+auto_record_log_level: INFO

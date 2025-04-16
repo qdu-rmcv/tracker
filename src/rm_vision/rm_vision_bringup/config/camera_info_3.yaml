@@ -1,0 +1,24 @@
+# 3号,用于舵
+image_width: 1440
+image_height: 1080
+camera_name: narrow_stereo
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [2376.6142794429747, 0.0, 734.2226047138666, 0.0, 2373.5620760860907, 570.2483531208609, 0.0, 0.0, 1.0]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.08335317053640809, 0.25134705577837885, 0.0003836239703704347, 0.0005942497999252609, 0.0]
+
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1., 0., 0.,
+        0., 1., 0.,
+        0., 0., 1.]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [2361.64013671875, 0.0, 734.2061942746077, 0.0, 0.0, 2362.538330078125, 570.0440664355046, 0.0, 0.0, 0.0, 1.0, 0.0]

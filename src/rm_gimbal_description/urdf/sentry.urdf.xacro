@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="sentry_with_gimbal"
+  xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:arg name="xyz" default="0.10 0 0.05" />
+  <xacro:arg name="rpy" default="0 0 0" />
+  
+  <!-- 底盘部分 -->
+  <link name="livox_frame" />
+  <link name="base_link" />
+
+  <!-- 激光雷达与底盘的固定关节 -->
+  <joint name="base_joint" type="fixed">
+    <origin xyz="-0.22 -0.11 0.12" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="livox_frame" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!-- 云台部分 -->
+  <link name="gimbal_odom" />
+  <joint name="gimbal_joint" type="fixed">
+    <origin xyz="0 0 0.1" rpy="0 0 0" />
+    <parent link="base_link" />
+    <child link="gimbal_odom" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <link name="yaw_link" />
+  <joint name="yaw_joint" type="continuous">
+    <parent link="gimbal_odom" />
+    <child link="yaw_link" />
+    <axis xyz="0 0 1" />
+  </joint>
+
+  <link name="pitch_link" />
+  <joint name="pitch_joint" type="continuous">
+    <parent link="yaw_link" />
+    <child link="pitch_link" />
+    <axis xyz="0 1 0" />
+  </joint>
+
+  <link name="camera_link" />
+  <joint name="camera_joint" type="fixed">
+    <origin xyz="0.10 0 0.05" rpy="0 0 0" />
+    <parent link="pitch_link" />
+    <child link="camera_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
+  <!-- 相机坐标系 -->
+  <link name="camera_optical_frame" />
+  <joint name="camera_optical_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}" />
+    <parent link="camera_link" />
+    <child link="camera_optical_frame" />
+  </joint>
+
+</robot>

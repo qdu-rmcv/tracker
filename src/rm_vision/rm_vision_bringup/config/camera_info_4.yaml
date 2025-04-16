@@ -1,0 +1,24 @@
+# 4号 用于全向
+image_width: 1440
+image_height: 1080
+camera_name: narrow_stereo
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [2355.5527708226764, 0.0, 717.4440112179697, 0.0, 2353.9334168302694, 563.660269227012, 0.0, 0.0, 1.0]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-0.08253980589206118, 0.1958933028511357, 0.0020785838798450004, 0.0016742171399696873, 0.0]
+
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1., 0., 0.,
+        0., 1., 0.,
+        0., 0., 1.]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [2339.90869140625, 0.0, 718.0602244420297, 0.0, 0.0, 2342.416015625, 564.0758904051036, 0.0, 0.0, 0.0, 1.0, 0.0]
