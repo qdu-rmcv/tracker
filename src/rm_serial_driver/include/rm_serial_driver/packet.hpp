@@ -19,7 +19,7 @@ struct ReceivePacket
   bool reset_tracker : 1;
   // uint8_t is_play : 1;  //留着
   // bool change_target : 1; //留着
-  uint8_t reserved : 6; //改 2
+  uint8_t reserved : 1; //改 2
   float current_v; // m/s
   float yaw;
   float pitch;

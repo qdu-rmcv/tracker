@@ -26,6 +26,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Send.msg"
   "msg/Velocity.msg"
 
+  "msg/Receive.msg"
+
   DEPENDENCIES
     std_msgs
     geometry_msgs

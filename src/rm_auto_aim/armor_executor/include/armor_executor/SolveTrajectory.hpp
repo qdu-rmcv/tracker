@@ -1,15 +1,17 @@
 #ifndef __SOLVETRAJECTORY_H__
 #define __SOLVETRAJECTORY_H__
+#include <auto_aim_interfaces/msg/detail/receive__struct.hpp>
 #include <functional>
 #ifndef PI
 #define PI 3.1415926535f
 #endif
 #define GRAVITY 9.78
-#define fly_time 0.1f
+// #define fly_time 0.11f
 typedef unsigned char uint8_t;
 
 #include "auto_aim_interfaces/msg/target.hpp"
 #include "auto_aim_interfaces/msg/velocity.hpp"
+#include "auto_aim_interfaces/msg/receive.hpp"
 
 #include <iostream>
 
@@ -60,6 +62,10 @@ public:
     //enum BULLET_TYPE bullet_type;  //自身机器人类型 0-步兵 1-英雄
     float current_v;      //当前弹速
 
+    float receive_pitch;   //接收的pitch
+    float receive_yaw;     //接收的yaw
+    float receive_roll;    //接收的roll
+
     //目标参数
     int bias_time;        //偏置时间
     float s_bias;         //枪口前推的距离
@@ -68,6 +74,8 @@ public:
     // float use_v_yaw;
 
     float tar_yaw;        //目标yaw
+
+    float ftime;    //飞行时间
 
     // std::vector<tar_pos> tar_position;
 
@@ -79,7 +87,10 @@ public:
     float max_yaw_in_cycle;
 
     void init(const auto_aim_interfaces::msg::Velocity::SharedPtr velocity_msg);
+    void initReceive(const auto_aim_interfaces::msg::Receive::SharedPtr receive_msg);
+    void solveTimeInit(float s_bias, float z_bias, float current_v, const auto_aim_interfaces::msg::Target::SharedPtr& msg);
 
+    float calculateFlyTime(float s, float v, float angle);
     //单方向空气阻力模型
     float monoDirectionalAirResistanceModel(float s, float v, float angle);
 

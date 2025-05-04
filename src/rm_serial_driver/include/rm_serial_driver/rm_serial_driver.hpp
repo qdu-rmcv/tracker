@@ -35,6 +35,7 @@
 #include "auto_aim_interfaces/msg/velocity.hpp"
 #include "buff_interfaces/msg/buff_send.hpp"
 #include "buff_interfaces/msg/velocity.hpp"
+#include "auto_aim_interfaces/msg/receive.hpp" 
 
 namespace rm_serial_driver
 {
@@ -140,6 +141,7 @@ private:
   rclcpp::Publisher<buff_interfaces::msg::TimeInfo>::SharedPtr buff_time_info_pub_;
 
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr record_controller_pub_;
+  rclcpp::Publisher<auto_aim_interfaces::msg::Receive>::SharedPtr receive_pub_;
 };
 }  // namespace rm_serial_driver
 

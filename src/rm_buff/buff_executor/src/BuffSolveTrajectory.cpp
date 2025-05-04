@@ -69,7 +69,7 @@ float BuffSolveTrajectory::pitchTrajectoryCompensation(float s, float z, float v
             break;
         }
     }
-    // std::cout << "pitch解算数:" << num << std::endl;
+    std::cout << "pitch解算数:" << num << std::endl;
 
     return angle_pitch;
 }
@@ -98,6 +98,7 @@ std::pair<float, float> BuffSolveTrajectory::calculatePitchAndYaw(float timeDela
 
     //* 真正的 pitch轴 解算
     float send_pitch = pitchTrajectoryCompensation(distance_xy - s_bias,target_z + z_bias, current_v);
+    std::cout << "send_pitch:" << send_pitch << std::endl;
     
     // yaw轴解算
     float send_yaw = (float)(std::atan2(yaw_y, yaw_x));

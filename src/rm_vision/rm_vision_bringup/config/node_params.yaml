@@ -1,6 +1,6 @@
 /camera_node:
   ros__parameters:
-    camera_info_url: package://rm_vision_bringup/config/camera_info.yaml
+    camera_info_url: package://rm_vision_bringup/config/camera_info_4.yaml
     exposure_time: 3000
     gain: 12.0
 
@@ -12,18 +12,18 @@
     flow_control: none
     parity: none
     stop_bits: "1"
-    armor_or_buff: 0  #1:armor 0:buff
+    armor_or_buff: 1  #1:armor 0:buff
 
 /armor_detector:
   ros__parameters:
     debug: true
 
-    detect_color: 0
+    detect_color: 0 #0-RED, 1-BLUE
     binary_thres: 78
 
     light.min_ratio: 0.1
     light.min_fill_ratio: 0.6
-    armor.min_light_ratio: 0.8
+    armor.min_light_ratio: 0.6
 
     classifier_threshold: 0.6
     ignore_classes: ["negative"]
@@ -34,10 +34,10 @@
     max_armor_distance: 15.0
 
     ekf:
-      sigma2_q_xyz_max: 3.0
-      sigma2_q_xyz_min: 1.0
+      sigma2_q_xyz_max: 0.1
+      sigma2_q_xyz_min: 0.04
       sigma2_q_yaw_max: 6.0
-      sigma2_q_yaw_min: 3.0
+      sigma2_q_yaw_min: 4.0
       sigma2_q_r: 40.0
 
       r_xyz_factor: 6e-4
@@ -47,29 +47,24 @@
       max_match_distance: 0.5
       max_match_yaw_diff: 0.8
 
-      tracking_thres: 5
+      tracking_thres: 3
       lost_time_thres: 1.0
 
       # 注意: 弹道解算的参数也在这里
       k: 0.038
       bias_time: 100
       s_bias: 0.18375
-      z_bias: 0.04
-
-      use_v_yaw: 15
-
-      tracking_thres: 5
-      lost_time_thres: 1.0
+      z_bias: 0.0
 
 
 /buff_detector:
   ros__parameters:
     detector:
       model: "buff_quantized.xml"
-      nms_threshold: 0.7
+      nms_threshold: 0.5
       conf_threshold: 0.5
       image_size: 640
-      bin_threshold: 95.0 # 65.0
+      bin_threshold: 65.0 # 65.0
       fault_tolerance_ratio: 0.3
 
 /buff_tracker:
@@ -122,11 +117,6 @@
       bias_time: 100
       s_bias: 0.18375
       z_bias: 0.04
-
-      use_v_yaw: 15
-
-      tracking_thres: 5
-      lost_time_thres: 1.0
 
 /rm_auto_record:
   ros__parameters:

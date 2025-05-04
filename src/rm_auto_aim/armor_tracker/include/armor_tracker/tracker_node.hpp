@@ -12,6 +12,7 @@
 #include <tf2_ros/message_filter.h>
 #include <tf2_ros/transform_listener.h>
 
+#include <auto_aim_interfaces/msg/detail/receive__struct.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <std_srvs/srv/trigger.hpp>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
@@ -28,6 +29,7 @@
 #include "auto_aim_interfaces/msg/send.hpp"
 #include "auto_aim_interfaces/msg/velocity.hpp"
 #include "auto_aim_interfaces/msg/tracker_info.hpp"
+#include "auto_aim_interfaces/msg/receive.hpp"
 #include "armor_executor/SolveTrajectory.hpp"
 
 namespace rm_auto_aim
@@ -41,6 +43,7 @@ public:
 
 private:
   void velocityCallback(const auto_aim_interfaces::msg::Velocity::SharedPtr velocity_msg);
+  void receiveCallback(const auto_aim_interfaces::msg::Receive::SharedPtr receive_msg);
 
   void armorsCallback(const auto_aim_interfaces::msg::Armors::SharedPtr armors_ptr);
 
@@ -74,6 +77,7 @@ private:
   std::shared_ptr<tf2_filter> tf2_filter_;
 
   rclcpp::Subscription<auto_aim_interfaces::msg::Velocity>::SharedPtr velocity_sub_;
+  rclcpp::Subscription<auto_aim_interfaces::msg::Receive>::SharedPtr receive_sub_;
   std::shared_ptr<velocity_tf2_filter> velocity_filter_;
 
   // Tracker info publisher

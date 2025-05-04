@@ -151,7 +151,7 @@ ArmorTrackerNode::ArmorTrackerNode(const rclcpp::NodeOptions & options)
     "/tracker/reset", [this](
                         const std_srvs::srv::Trigger::Request::SharedPtr,
                         std_srvs::srv::Trigger::Response::SharedPtr response) {
-      tracker_->tracker_state = Tracker::LOST;
+      tracker_->tracker_state = Tracker::LOST; 
       response->success = true;
       RCLCPP_INFO(this->get_logger(), "Tracker reset!");
       return;
@@ -179,6 +179,16 @@ ArmorTrackerNode::ArmorTrackerNode(const rclcpp::NodeOptions & options)
   tf2_listener_ = std::make_shared<tf2_ros::TransformListener>(*tf2_buffer_);
   
   //! Tracker 第四部分 订阅与发布端
+  // 速度相关订阅
+  velocity_sub_ = this->create_subscription<auto_aim_interfaces::msg::Velocity>(
+    "/current_velocity", rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data)),
+    std::bind(&ArmorTrackerNode::velocityCallback, this, std::placeholders::_1));
+
+  // receive 订阅
+  receive_sub_ = this->create_subscription<auto_aim_interfaces::msg::Receive>(
+    "/tracker/receive", rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data)),
+    std::bind(&ArmorTrackerNode::receiveCallback, this, std::placeholders::_1));
+
   // subscriber and filter
   armors_sub_.subscribe(this, "/detector/armors", rmw_qos_profile_sensor_data);
   target_frame_ = this->declare_parameter("target_frame", "odom");
@@ -188,10 +198,7 @@ ArmorTrackerNode::ArmorTrackerNode(const rclcpp::NodeOptions & options)
   // Register a callback with tf2_ros::MessageFilter to be called when transforms are available
   tf2_filter_->registerCallback(&ArmorTrackerNode::armorsCallback, this);
 
-  // 速度相关订阅
-  velocity_sub_ = this->create_subscription<auto_aim_interfaces::msg::Velocity>(
-  "/current_velocity", rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data)),
-  std::bind(&ArmorTrackerNode::velocityCallback, this, std::placeholders::_1));
+
 
   // Measurement publisher (for debug usage)
   info_pub_ = this->create_publisher<auto_aim_interfaces::msg::TrackerInfo>("/tracker/info", 10);
@@ -242,6 +249,11 @@ void ArmorTrackerNode::velocityCallback(const auto_aim_interfaces::msg::Velocity
 
 }
 
+void ArmorTrackerNode::receiveCallback(const auto_aim_interfaces::msg::Receive::SharedPtr receive_msg)
+{
+  gaf_solver->initReceive(receive_msg);
+}
+
 void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::SharedPtr armors_msg)
 {
   // Tranform armor position from image frame to world coordinate
@@ -263,8 +275,8 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
       armors_msg->armors.begin(), armors_msg->armors.end(),
       [this](const auto_aim_interfaces::msg::Armor & armor) {
         return abs(armor.pose.position.z) > 1.2 ||
-               Eigen::Vector2d(armor.pose.position.x, armor.pose.position.y).norm() >
-                 max_armor_distance_;
+              Eigen::Vector2d(armor.pose.position.x, armor.pose.position.y).norm() >
+                max_armor_distance_;
       }),
     armors_msg->armors.end());
 
@@ -300,7 +312,7 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
     } else if (
       tracker_->tracker_state == Tracker::TRACKING ||
       tracker_->tracker_state == Tracker::TEMP_LOST) {
-      target_msg.tracking = true;
+      target_msg.tracking = 2;
       // Fill target message
       const auto & state = tracker_->target_state;
       target_msg.id = tracker_->tracked_id;
@@ -321,6 +333,7 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
       // 算出来的 pitch与yaw就是 云台要去的yaw
       float send_pitch=0, send_yaw=0, aim_x=0, aim_y=0, aim_z=0;  // 之所以要重置为0 是因为在弹道解算中会迭代计算
       auto msg = std::make_shared<auto_aim_interfaces::msg::Target>(target_msg);
+      std::cout << "开始解算: "<< std::endl;
       gaf_solver->autoSolveTrajectory(send_pitch, send_yaw, aim_x, aim_y, aim_z, msg);
 
 
@@ -360,6 +373,29 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
 
   publishMarkers(target_msg);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void ArmorTrackerNode::publishMarkers(const auto_aim_interfaces::msg::Target & target_msg)
 {

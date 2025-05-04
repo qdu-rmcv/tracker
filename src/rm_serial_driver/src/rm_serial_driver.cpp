@@ -54,6 +54,9 @@ RMSerialDriver::RMSerialDriver(const rclcpp::NodeOptions & options)
 
   record_controller_pub_ = this->create_publisher<std_msgs::msg::String>("/record_controller", 10);
 
+  receive_pub_ = this->create_publisher<auto_aim_interfaces::msg::Receive>("/tracker/receive", 10);
+
+
   // Detect parameter client
   detector_param_client_ = std::make_shared<rclcpp::AsyncParametersClient>(this, "armor_detector");
 
@@ -101,9 +104,9 @@ RMSerialDriver::RMSerialDriver(const rclcpp::NodeOptions & options)
 
     // RCLCPP_ERROR(get_logger(), "模式为:%d",ArmorOrBuff);
 
-  // 订阅目标数据与时间信息
-  // aim_sub_.subscribe(this, "/tracker/target", rclcpp::SensorDataQoS().get_rmw_qos_profile());
-  // aim_time_info_sub_.subscribe(this, "/time_info/aim");
+  // // 订阅目标数据与时间信息
+  aim_sub_.subscribe(this, "/tracker/target", rclcpp::SensorDataQoS().get_rmw_qos_profile());
+  aim_time_info_sub_.subscribe(this, "/time_info/aim");
 
   // aim_sync_ = std::make_unique<AimSync>(aim_syncpolicy(500), aim_sub_, aim_time_info_sub_);
   // aim_sync_->registerCallback(
@@ -156,10 +159,11 @@ void RMSerialDriver::receiveData()
           // crc16::Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&packet), sizeof(packet));
           crc16::CRC16_Verify(reinterpret_cast<const uint8_t *>(&packet), sizeof(packet)); 
         if (crc_ok) {
-          if (!initial_set_param_ || packet.detect_color != previous_receive_color_) {
-            setParam(rclcpp::Parameter("detect_color", packet.detect_color));
-            previous_receive_color_ = packet.detect_color;
-          }
+          // if (!initial_set_param_ || packet.detect_color != previous_receive_color_) {
+          //   setParam(rclcpp::Parameter("detect_color", packet.detect_color));
+          //   previous_receive_color_ = packet.detect_color;
+          // }
+          
           // RCLCPP_WARN(get_logger(), "[Receive] 1 ");
 
           if (packet.reset_tracker) {
@@ -177,10 +181,12 @@ void RMSerialDriver::receiveData()
 
           // 将 电控来的 [0~2PI] -> [-PI ~ PI]
           packet.pitch = RMSerialDriver::angle_re_trans(packet.pitch); 
-          packet.yaw = RMSerialDriver::angle_re_trans(packet.yaw);
-          packet.roll = RMSerialDriver::angle_re_trans(packet.roll);
+          packet.yaw = RMSerialDriver::angle_re_trans(packet.yaw); 
+          packet.roll = RMSerialDriver::angle_re_trans(packet.roll); 
+
           // RCLCPP_WARN(get_logger(), "[Receive] 3 ");
 
+          // RCLCPP_WARN(get_logger(), "[Receive] yaw %f", packet.yaw);
           std_msgs::msg::String task;
           std::string theory_task;
 
@@ -214,7 +220,11 @@ void RMSerialDriver::receiveData()
           //   task.data = "aim";
           // }
 
-          task.data = "aim";
+          if (armor_or_buff_ == 1){
+            task.data = "aim";
+          } else if(armor_or_buff_ == 0 ){
+            task.data = "large_buff";
+          }
           task_pub_->publish(task);
 
           // RCLCPP_WARN(get_logger(), "[Receive] 5 ");
@@ -226,12 +236,21 @@ void RMSerialDriver::receiveData()
 
           std_msgs::msg::String record_controller;
 
+          
+
           // record_controller.data = packet.is_play ? "start" : "stop";
           record_controller.data = "stop";
 
-          record_controller_pub_->publish(record_controller);
-          // RCLCPP_WARN(get_logger(), "[Receive] 6 ");
+          auto_aim_interfaces::msg::Receive receive_now;
 
+          receive_now.header.stamp = this->now();
+          receive_now.pitch = packet.pitch;
+          receive_now.yaw = packet.yaw;
+          receive_now.roll = packet.roll;
+
+          receive_pub_ -> publish(receive_now);
+
+          record_controller_pub_->publish(record_controller);
 //
           geometry_msgs::msg::TransformStamped t;
           timestamp_offset_ = this->get_parameter("timestamp_offset").as_double();
@@ -246,6 +265,10 @@ void RMSerialDriver::receiveData()
           // RCLCPP_WARN(get_logger(), "[Receive] 7 ");
 
           // // publish time
+
+          rclcpp::Time time_info = this->get_clock()->now();  // 在 Node 类中
+
+
           // auto_aim_interfaces::msg::TimeInfo aim_time_info;
           // buff_interfaces::msg::TimeInfo buff_time_info;
           // aim_time_info.header = t.header;
@@ -264,9 +287,10 @@ void RMSerialDriver::receiveData()
 
           current_velocity.header.stamp =
             this->now() + rclcpp::Duration::from_seconds(timestamp_offset_);
-
-
           current_velocity.velocity = packet.current_v;
+
+          buff_current_velocity.header.stamp = current_velocity.header.stamp;
+          buff_current_velocity.velocity = current_velocity.velocity;
           
           velocity_pub_->publish(current_velocity);
           buff_velocity_pub_->publish(buff_current_velocity);
@@ -312,6 +336,8 @@ void RMSerialDriver::sendArmorData(const auto_aim_interfaces::msg::Send::SharedP
 
     pitch = armor_msg->pitch;
     yaw = armor_msg->yaw;
+
+    // RCLCPP_ERROR(get_logger(), "sendarmor.yaw:%f", yaw);
 
 
     // 关于 pitch 硬补;
@@ -374,13 +400,13 @@ void RMSerialDriver::sendBuffData(const buff_interfaces::msg::BuffSend::SharedPt
 
     pitch = buff_msg->pitch;
     yaw = buff_msg->yaw;
-
+    // RCLCPP_ERROR(get_logger(), "buff.yaw:%f", yaw);
 
     // 关于 pitch 硬补;
     packet.pitch = RMSerialDriver::angle_trans(pitch);
     packet.yaw = RMSerialDriver::angle_trans(yaw);
 
-    RCLCPP_ERROR(get_logger(), "packet.yaw:%f", packet.yaw);
+    // RCLCPP_ERROR(get_logger(), "packet.yaw:%f", packet.yaw);
 
 
     // SendPacket packet;
@@ -440,7 +466,7 @@ void RMSerialDriver::sendBuffData(const buff_interfaces::msg::BuffSend::SharedPt
 //     packet.dz = 0.0;
 //     packet.cap_timestamp = time_info->time;
 
-    
+
 //     if (rune->w == 0) {
 //       packet.t_offset = 0;
 //     } else {

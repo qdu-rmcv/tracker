@@ -231,7 +231,13 @@ std::vector<Armor> ArmorDetectorNode::detectArmors(
   const sensor_msgs::msg::Image::ConstSharedPtr & img_msg)
 {
   // Convert ROS img to cv::Mat
-  auto img = cv_bridge::toCvShare(img_msg, "rgb8")->image;
+  auto img_ori = cv_bridge::toCvShare(img_msg, "rgb8")->image;
+
+  // 放射变换 实现顺旋转90度
+  cv::Mat img;
+  // warpAffine(img_ori, img, -90);
+  // cv::rotate(img_ori, img, cv::ROTATE_90_CLOCKWISE);
+  img = img_ori.clone();
 
   // Update params
   detector_->binary_thres = get_parameter("binary_thres").as_int();
@@ -279,6 +285,33 @@ std::vector<Armor> ArmorDetectorNode::detectArmors(
   }
 
   return armors;
+}
+
+
+void ArmorDetectorNode::warpAffine(
+  const cv::Mat & src, cv::Mat & dst, const float rate)
+{
+    // 旋转中心，取原图中心
+    cv::Point2f center(src.cols / 2.0f, src.rows / 2.0f);
+
+    // 生成旋转矩阵（顺时针旋转90度）
+    double angle = rate;
+    double scale = 1.0;
+    cv::Mat rot_mat = cv::getRotationMatrix2D(center, angle, scale);
+
+    // 目标尺寸
+    int dst_rows = src.cols; // 目标行数 = 原图列数
+    int dst_cols = src.rows; // 目标列数 = 原图行数
+
+    // 由于旋转后画布大小变化，需要补偿仿射矩阵
+    rot_mat.at<double>(0, 2) += (dst_cols - src.cols) / 2.0;
+    rot_mat.at<double>(1, 2) += (dst_rows - src.rows) / 2.0;
+
+    // 仿射变换
+    cv::warpAffine(src, dst, rot_mat, cv::Size(dst_rows, dst_cols), 
+                    cv::INTER_LINEAR, 
+                    cv::BORDER_CONSTANT, 
+                   cv::Scalar(0, 0, 0));  // 用黑色填充边界
 }
 
 void ArmorDetectorNode::createDebugPublishers()

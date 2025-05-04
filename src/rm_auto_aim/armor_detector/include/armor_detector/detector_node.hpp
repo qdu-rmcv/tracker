@@ -51,6 +51,10 @@ private:
   bool is_aim_task_;
   void taskCallback(const std_msgs::msg::String::SharedPtr task_msg);
 
+  // 图像旋转
+  void warpAffine(
+    const cv::Mat & src, cv::Mat & dst, const float rate);
+
   // Armor Detector
   std::unique_ptr<Detector> detector_;
 

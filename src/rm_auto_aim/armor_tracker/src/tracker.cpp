@@ -91,6 +91,7 @@ void Tracker::update(const Armors::SharedPtr & armors_msg)
     double yaw_diff = DBL_MAX;
     int diff_count = 0;
     Armor diff_tracked_armor;
+
     for (const auto & armor : armors_msg->armors) {
       // Only consider armors with the same id
       if (armor.number == tracked_id) {
@@ -110,6 +111,7 @@ void Tracker::update(const Armors::SharedPtr & armors_msg)
         // Count diff_armor
         diff_count += 1;
         // Calculate the difference between the predicted position and the current armor position
+        // 找到与上一次预测,非同名但最近的装甲板
         auto p = armor.pose.position;
         Eigen::Vector3d position_vec(p.x, p.y, p.z);
         double position_diff = (predicted_position - position_vec).norm();
@@ -117,7 +119,7 @@ void Tracker::update(const Armors::SharedPtr & armors_msg)
           // Find the closest armor
           diff_min_position_diff = position_diff;
           diff_tracked_armor = armor;
-        }
+        }  
       }
     }
     if (diff_count != 0) {

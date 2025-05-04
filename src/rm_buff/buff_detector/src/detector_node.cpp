@@ -65,7 +65,7 @@ void BuffDetectorNode::taskCallback(const std_msgs::msg::String::SharedPtr task_
 
 void BuffDetectorNode::imageCallback(const sensor_msgs::msg::Image::ConstSharedPtr msg)
 {
-  is_buff_task_ = true;
+  // is_buff_task_ = true; 强制进入buff的
   if (pnp_solver_ != nullptr && is_buff_task_) 
   {
     auto blades = DetectBlades(msg);

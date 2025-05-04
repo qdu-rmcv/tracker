@@ -10,6 +10,8 @@
 
 + 增加了buff_interfaces 里面的 BuffSend.msg 以及 速度.msg  
 
++ 增加了单方向无空气阻力弹道模型,将fly_time 替换为 ftime 
+
 ## 新功能   
 
 - [] interfaces 合并  
