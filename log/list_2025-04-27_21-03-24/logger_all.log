@@ -1,0 +1,312 @@
+[0.075s] colcon DEBUG Command line arguments: ['/usr/bin/colcon', 'list', '-p', '--base-paths', '/home/hdm/tracker_plus_ttttt/tracker_plus_ori']
+[0.075s] colcon DEBUG Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='list', build_base='build', ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['/home/hdm/tracker_plus_ttttt/tracker_plus_ori'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], topological_order=False, names_only=False, paths_only=True, topological_graph=False, topological_graph_dot=False, topological_graph_density=False, topological_graph_legend=False, topological_graph_dot_cluster=False, topological_graph_dot_include_skipped=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x76252a1395d0>, verb_extension=<colcon_package_information.verb.list.ListVerb object at 0x76252a138790>, main=<bound method ListVerb.main of <colcon_package_information.verb.list.ListVerb object at 0x76252a138790>>, mixin_verb=('list',))
+[0.196s] colcon.colcon_core.package_discovery Level 1 discover_packages(colcon_meta) check parameters
+[0.196s] colcon.colcon_core.package_discovery Level 1 discover_packages(recursive) check parameters
+[0.196s] colcon.colcon_core.package_discovery Level 1 discover_packages(ignore) check parameters
+[0.196s] colcon.colcon_core.package_discovery Level 1 discover_packages(path) check parameters
+[0.196s] colcon.colcon_core.package_discovery Level 1 discover_packages(recursive) discover
+[0.196s] colcon.colcon_core.package_discovery INFO Crawling recursively for packages in '/home/hdm/tracker_plus_ttttt/tracker_plus_ori'
+[0.196s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extensions ['ignore', 'ignore_ament_install']
+[0.196s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extension 'ignore'
+[0.196s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extension 'ignore_ament_install'
+[0.196s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extensions ['colcon_pkg']
+[0.196s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extension 'colcon_pkg'
+[0.196s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extensions ['colcon_meta']
+[0.196s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extension 'colcon_meta'
+[0.197s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extensions ['ros']
+[0.197s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extension 'ros'
+[0.205s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extensions ['cmake', 'python']
+[0.205s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extension 'cmake'
+[0.205s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extension 'python'
+[0.205s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extensions ['python_setup_py']
+[0.205s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori) by extension 'python_setup_py'
+[0.205s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/log) by extensions ['ignore', 'ignore_ament_install']
+[0.205s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/log) by extension 'ignore'
+[0.205s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/log) ignored
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extensions ['ignore', 'ignore_ament_install']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extension 'ignore'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extension 'ignore_ament_install'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extensions ['colcon_pkg']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extension 'colcon_pkg'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extensions ['colcon_meta']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extension 'colcon_meta'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extensions ['ros']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extension 'ros'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extensions ['cmake', 'python']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extension 'cmake'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extension 'python'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extensions ['python_setup_py']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src) by extension 'python_setup_py'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extensions ['ignore', 'ignore_ament_install']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extension 'ignore'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extension 'ignore_ament_install'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extensions ['colcon_pkg']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extension 'colcon_pkg'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extensions ['colcon_meta']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extension 'colcon_meta'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extensions ['ros']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extension 'ros'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extensions ['cmake', 'python']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extension 'cmake'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extension 'python'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extensions ['python_setup_py']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim) by extension 'python_setup_py'
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_detector) by extensions ['ignore', 'ignore_ament_install']
+[0.206s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_detector) by extension 'ignore'
+[0.207s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_detector) by extension 'ignore_ament_install'
+[0.207s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_detector) by extensions ['colcon_pkg']
+[0.207s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_detector) by extension 'colcon_pkg'
+[0.207s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_detector) by extensions ['colcon_meta']
+[0.207s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_detector) by extension 'colcon_meta'
+[0.207s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_detector) by extensions ['ros']
+[0.207s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_detector) by extension 'ros'
+[0.210s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_detector' with type 'ros.ament_cmake' and name 'armor_detector'
+[0.211s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_executor) by extensions ['ignore', 'ignore_ament_install']
+[0.211s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_executor) by extension 'ignore'
+[0.211s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_executor) by extension 'ignore_ament_install'
+[0.211s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_executor) by extensions ['colcon_pkg']
+[0.211s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_executor) by extension 'colcon_pkg'
+[0.211s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_executor) by extensions ['colcon_meta']
+[0.211s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_executor) by extension 'colcon_meta'
+[0.211s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_executor) by extensions ['ros']
+[0.211s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_executor) by extension 'ros'
+[0.218s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_executor' with type 'ros.ament_cmake' and name 'armor_executor'
+[0.218s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_tracker) by extensions ['ignore', 'ignore_ament_install']
+[0.218s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_tracker) by extension 'ignore'
+[0.218s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_tracker) by extension 'ignore_ament_install'
+[0.218s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_tracker) by extensions ['colcon_pkg']
+[0.219s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_tracker) by extension 'colcon_pkg'
+[0.219s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_tracker) by extensions ['colcon_meta']
+[0.219s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_tracker) by extension 'colcon_meta'
+[0.219s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_tracker) by extensions ['ros']
+[0.219s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_tracker) by extension 'ros'
+[0.219s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/armor_tracker' with type 'ros.ament_cmake' and name 'armor_tracker'
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/auto_aim_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/auto_aim_interfaces) by extension 'ignore'
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/auto_aim_interfaces) by extension 'ignore_ament_install'
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/auto_aim_interfaces) by extensions ['colcon_pkg']
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/auto_aim_interfaces) by extension 'colcon_pkg'
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/auto_aim_interfaces) by extensions ['colcon_meta']
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/auto_aim_interfaces) by extension 'colcon_meta'
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/auto_aim_interfaces) by extensions ['ros']
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/auto_aim_interfaces) by extension 'ros'
+[0.220s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/auto_aim_interfaces' with type 'ros.ament_cmake' and name 'auto_aim_interfaces'
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extensions ['ignore', 'ignore_ament_install']
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extension 'ignore'
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extension 'ignore_ament_install'
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extensions ['colcon_pkg']
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extension 'colcon_pkg'
+[0.220s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extensions ['colcon_meta']
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extension 'colcon_meta'
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extensions ['ros']
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extension 'ros'
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extensions ['cmake', 'python']
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extension 'cmake'
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extension 'python'
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extensions ['python_setup_py']
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/docs) by extension 'python_setup_py'
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/rm_auto_aim) by extensions ['ignore', 'ignore_ament_install']
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/rm_auto_aim) by extension 'ignore'
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/rm_auto_aim) by extension 'ignore_ament_install'
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/rm_auto_aim) by extensions ['colcon_pkg']
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/rm_auto_aim) by extension 'colcon_pkg'
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/rm_auto_aim) by extensions ['colcon_meta']
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/rm_auto_aim) by extension 'colcon_meta'
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/rm_auto_aim) by extensions ['ros']
+[0.221s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/rm_auto_aim) by extension 'ros'
+[0.222s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_aim/rm_auto_aim' with type 'ros.ament_cmake' and name 'rm_auto_aim'
+[0.222s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_record) by extensions ['ignore', 'ignore_ament_install']
+[0.222s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_record) by extension 'ignore'
+[0.222s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_record) by extension 'ignore_ament_install'
+[0.222s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_record) by extensions ['colcon_pkg']
+[0.222s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_record) by extension 'colcon_pkg'
+[0.222s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_record) by extensions ['colcon_meta']
+[0.222s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_record) by extension 'colcon_meta'
+[0.222s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_record) by extensions ['ros']
+[0.222s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_record) by extension 'ros'
+[0.223s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_auto_record' with type 'ros.ament_cmake' and name 'rm_auto_record'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extensions ['ignore', 'ignore_ament_install']
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extension 'ignore'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extension 'ignore_ament_install'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extensions ['colcon_pkg']
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extension 'colcon_pkg'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extensions ['colcon_meta']
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extension 'colcon_meta'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extensions ['ros']
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extension 'ros'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extensions ['cmake', 'python']
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extension 'cmake'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extension 'python'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extensions ['python_setup_py']
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff) by extension 'python_setup_py'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_detector) by extensions ['ignore', 'ignore_ament_install']
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_detector) by extension 'ignore'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_detector) by extension 'ignore_ament_install'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_detector) by extensions ['colcon_pkg']
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_detector) by extension 'colcon_pkg'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_detector) by extensions ['colcon_meta']
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_detector) by extension 'colcon_meta'
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_detector) by extensions ['ros']
+[0.223s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_detector) by extension 'ros'
+[0.224s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_detector' with type 'ros.ament_cmake' and name 'buff_detector'
+[0.224s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_executor) by extensions ['ignore', 'ignore_ament_install']
+[0.224s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_executor) by extension 'ignore'
+[0.224s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_executor) by extension 'ignore_ament_install'
+[0.224s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_executor) by extensions ['colcon_pkg']
+[0.224s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_executor) by extension 'colcon_pkg'
+[0.224s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_executor) by extensions ['colcon_meta']
+[0.224s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_executor) by extension 'colcon_meta'
+[0.224s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_executor) by extensions ['ros']
+[0.224s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_executor) by extension 'ros'
+[0.225s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_executor' with type 'ros.ament_cmake' and name 'buff_executor'
+[0.225s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[0.225s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_interfaces) by extension 'ignore'
+[0.225s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_interfaces) by extension 'ignore_ament_install'
+[0.225s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_interfaces) by extensions ['colcon_pkg']
+[0.225s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_interfaces) by extension 'colcon_pkg'
+[0.225s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_interfaces) by extensions ['colcon_meta']
+[0.225s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_interfaces) by extension 'colcon_meta'
+[0.225s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_interfaces) by extensions ['ros']
+[0.225s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_interfaces) by extension 'ros'
+[0.226s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_interfaces' with type 'ros.ament_cmake' and name 'buff_interfaces'
+[0.226s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_tracker) by extensions ['ignore', 'ignore_ament_install']
+[0.226s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_tracker) by extension 'ignore'
+[0.226s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_tracker) by extension 'ignore_ament_install'
+[0.226s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_tracker) by extensions ['colcon_pkg']
+[0.226s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_tracker) by extension 'colcon_pkg'
+[0.226s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_tracker) by extensions ['colcon_meta']
+[0.226s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_tracker) by extension 'colcon_meta'
+[0.226s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_tracker) by extensions ['ros']
+[0.226s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_tracker) by extension 'ros'
+[0.227s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/buff_tracker' with type 'ros.ament_cmake' and name 'buff_tracker'
+[0.227s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extensions ['ignore', 'ignore_ament_install']
+[0.227s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extension 'ignore'
+[0.227s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extension 'ignore_ament_install'
+[0.227s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extensions ['colcon_pkg']
+[0.227s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extension 'colcon_pkg'
+[0.227s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extensions ['colcon_meta']
+[0.227s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extension 'colcon_meta'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extensions ['ros']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extension 'ros'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extensions ['cmake', 'python']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extension 'cmake'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extension 'python'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extensions ['python_setup_py']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs) by extension 'python_setup_py'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extensions ['ignore', 'ignore_ament_install']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extension 'ignore'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extension 'ignore_ament_install'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extensions ['colcon_pkg']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extension 'colcon_pkg'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extensions ['colcon_meta']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extension 'colcon_meta'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extensions ['ros']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extension 'ros'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extensions ['cmake', 'python']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extension 'cmake'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extension 'python'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extensions ['python_setup_py']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/docs/picture) by extension 'python_setup_py'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extensions ['ignore', 'ignore_ament_install']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extension 'ignore'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extension 'ignore_ament_install'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extensions ['colcon_pkg']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extension 'colcon_pkg'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extensions ['colcon_meta']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extension 'colcon_meta'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extensions ['ros']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extension 'ros'
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extensions ['cmake', 'python']
+[0.228s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extension 'cmake'
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extension 'python'
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extensions ['python_setup_py']
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/example) by extension 'python_setup_py'
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff) by extensions ['ignore', 'ignore_ament_install']
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff) by extension 'ignore'
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff) by extension 'ignore_ament_install'
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff) by extensions ['colcon_pkg']
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff) by extension 'colcon_pkg'
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff) by extensions ['colcon_meta']
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff) by extension 'colcon_meta'
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff) by extensions ['ros']
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff) by extension 'ros'
+[0.229s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff' with type 'ros.ament_cmake' and name 'rm_buff'
+[0.229s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff_bringup) by extensions ['ignore', 'ignore_ament_install']
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff_bringup) by extension 'ignore'
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff_bringup) by extension 'ignore_ament_install'
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff_bringup) by extensions ['colcon_pkg']
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff_bringup) by extension 'colcon_pkg'
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff_bringup) by extensions ['colcon_meta']
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff_bringup) by extension 'colcon_meta'
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff_bringup) by extensions ['ros']
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff_bringup) by extension 'ros'
+[0.230s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_buff/rm_buff_bringup' with type 'ros.ament_cmake' and name 'rm_buff_bringup'
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_gimbal_description) by extensions ['ignore', 'ignore_ament_install']
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_gimbal_description) by extension 'ignore'
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_gimbal_description) by extension 'ignore_ament_install'
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_gimbal_description) by extensions ['colcon_pkg']
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_gimbal_description) by extension 'colcon_pkg'
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_gimbal_description) by extensions ['colcon_meta']
+[0.230s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_gimbal_description) by extension 'colcon_meta'
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_gimbal_description) by extensions ['ros']
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_gimbal_description) by extension 'ros'
+[0.231s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_gimbal_description' with type 'ros.ament_cmake' and name 'rm_gimbal_description'
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_serial_driver) by extensions ['ignore', 'ignore_ament_install']
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_serial_driver) by extension 'ignore'
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_serial_driver) by extension 'ignore_ament_install'
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_serial_driver) by extensions ['colcon_pkg']
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_serial_driver) by extension 'colcon_pkg'
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_serial_driver) by extensions ['colcon_meta']
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_serial_driver) by extension 'colcon_meta'
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_serial_driver) by extensions ['ros']
+[0.231s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_serial_driver) by extension 'ros'
+[0.232s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_serial_driver' with type 'ros.ament_cmake' and name 'rm_serial_driver'
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extension 'ignore'
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extension 'ignore_ament_install'
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extensions ['colcon_pkg']
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extension 'colcon_pkg'
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extensions ['colcon_meta']
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extension 'colcon_meta'
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extensions ['ros']
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extension 'ros'
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extensions ['cmake', 'python']
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extension 'cmake'
+[0.232s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extension 'python'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extensions ['python_setup_py']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision) by extension 'python_setup_py'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extensions ['ignore', 'ignore_ament_install']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extension 'ignore'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extension 'ignore_ament_install'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extensions ['colcon_pkg']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extension 'colcon_pkg'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extensions ['colcon_meta']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extension 'colcon_meta'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extensions ['ros']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extension 'ros'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extensions ['cmake', 'python']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extension 'cmake'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extension 'python'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extensions ['python_setup_py']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/docs) by extension 'python_setup_py'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/rm_vision_bringup) by extensions ['ignore', 'ignore_ament_install']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/rm_vision_bringup) by extension 'ignore'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/rm_vision_bringup) by extension 'ignore_ament_install'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/rm_vision_bringup) by extensions ['colcon_pkg']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/rm_vision_bringup) by extension 'colcon_pkg'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/rm_vision_bringup) by extensions ['colcon_meta']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/rm_vision_bringup) by extension 'colcon_meta'
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/rm_vision_bringup) by extensions ['ros']
+[0.233s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/rm_vision_bringup) by extension 'ros'
+[0.234s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/rm_vision/rm_vision_bringup' with type 'ros.ament_cmake' and name 'rm_vision_bringup'
+[0.234s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/ros2_hik_camera) by extensions ['ignore', 'ignore_ament_install']
+[0.234s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/ros2_hik_camera) by extension 'ignore'
+[0.234s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/ros2_hik_camera) by extension 'ignore_ament_install'
+[0.234s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/ros2_hik_camera) by extensions ['colcon_pkg']
+[0.234s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/ros2_hik_camera) by extension 'colcon_pkg'
+[0.234s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/ros2_hik_camera) by extensions ['colcon_meta']
+[0.234s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/ros2_hik_camera) by extension 'colcon_meta'
+[0.234s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/ros2_hik_camera) by extensions ['ros']
+[0.234s] colcon.colcon_core.package_identification Level 1 _identify(/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/ros2_hik_camera) by extension 'ros'
+[0.235s] colcon.colcon_core.package_identification DEBUG Package '/home/hdm/tracker_plus_ttttt/tracker_plus_ori/src/ros2_hik_camera' with type 'ros.ament_cmake' and name 'hik_camera'
+[0.235s] colcon.colcon_core.package_discovery Level 1 discover_packages(recursive) using defaults
