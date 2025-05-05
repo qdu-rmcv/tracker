@@ -9,6 +9,7 @@
 #include <message_filters/sync_policies/approximate_time.h>
 #include <tf2_ros/transform_broadcaster.h>
 
+#include <auto_aim_interfaces/msg/detail/all_latency__struct.hpp>
 #include <geometry_msgs/msg/transform_stamped.hpp>
 #include <rclcpp/publisher.hpp>
 #include <rclcpp/rclcpp.hpp>
@@ -36,6 +37,7 @@
 #include "buff_interfaces/msg/buff_send.hpp"
 #include "buff_interfaces/msg/velocity.hpp"
 #include "auto_aim_interfaces/msg/receive.hpp" 
+#include "auto_aim_interfaces/msg/all_latency.hpp"
 
 namespace rm_serial_driver
 {
@@ -142,6 +144,9 @@ private:
 
   rclcpp::Publisher<std_msgs::msg::String>::SharedPtr record_controller_pub_;
   rclcpp::Publisher<auto_aim_interfaces::msg::Receive>::SharedPtr receive_pub_;
+  
+  rclcpp::Publisher<auto_aim_interfaces::msg::AllLatency>::SharedPtr all_latency_pub_;
+
 };
 }  // namespace rm_serial_driver
 

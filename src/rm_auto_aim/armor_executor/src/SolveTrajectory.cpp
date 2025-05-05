@@ -376,12 +376,13 @@ void SolveTrajectory::fireLogicIsTop(float& send_pitch, float& send_yaw, float& 
     
     std::pair<float, float> pitch_and_yaw;
 
-    //* 解算 pitch 和 yaw
-    if (std::fabs(msg->v_yaw) > 5.5f) {
-        pitch_and_yaw = calculatePitchAndYaw(idx, msg, timeDelay, s_bias, z_bias, current_v, true, aim_x, aim_y, aim_z);
-    } else {
-        pitch_and_yaw = calculatePitchAndYaw(idx, msg, timeDelay, s_bias, z_bias, current_v, false, aim_x, aim_y, aim_z);
-    }
+    // //* 解算 pitch 和 yaw
+    // if (std::fabs(msg->v_yaw) > 5.5f) {
+    //     pitch_and_yaw = calculatePitchAndYaw(idx, msg, timeDelay, s_bias, z_bias, current_v, true, aim_x, aim_y, aim_z);
+    // } else {
+    //     pitch_and_yaw = calculatePitchAndYaw(idx, msg, timeDelay, s_bias, z_bias, current_v, false, aim_x, aim_y, aim_z);
+    // }
+    pitch_and_yaw = calculatePitchAndYaw(idx, msg, timeDelay, s_bias, z_bias, current_v, false, aim_x, aim_y, aim_z);
     
     // 使用 pitch_and_yaw 的值
     send_pitch = pitch_and_yaw.first;

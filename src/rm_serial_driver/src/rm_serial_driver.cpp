@@ -56,6 +56,7 @@ RMSerialDriver::RMSerialDriver(const rclcpp::NodeOptions & options)
 
   receive_pub_ = this->create_publisher<auto_aim_interfaces::msg::Receive>("/tracker/receive", 10);
 
+  all_latency_pub_ = this->create_publisher<auto_aim_interfaces::msg::AllLatency>("/allLatency", 10);
 
   // Detect parameter client
   detector_param_client_ = std::make_shared<rclcpp::AsyncParametersClient>(this, "armor_detector");
@@ -319,9 +320,9 @@ void RMSerialDriver::receiveData()
 // 发送装甲板数据
 void RMSerialDriver::sendArmorData(const auto_aim_interfaces::msg::Send::SharedPtr armor_msg)
 {
-  const static std::map<std::string, uint8_t> id_unit8_map{
-    {"", 0},  {"outpost", 0}, {"1", 1}, {"1", 1},     {"2", 2},
-    {"3", 3}, {"4", 4},       {"5", 5}, {"guard", 6}, {"base", 7}};
+  // const static std::map<std::string, uint8_t> id_unit8_map{
+  //   {"", 0},  {"outpost", 0}, {"1", 1}, {"1", 1},     {"2", 2},
+  //   {"3", 3}, {"4", 4},       {"5", 5}, {"guard", 6}, {"base", 7}};
 
   try {
     SendPacket packet;
@@ -338,7 +339,6 @@ void RMSerialDriver::sendArmorData(const auto_aim_interfaces::msg::Send::SharedP
     yaw = armor_msg->yaw;
 
     // RCLCPP_ERROR(get_logger(), "sendarmor.yaw:%f", yaw);
-
 
     // 关于 pitch 硬补;
     packet.pitch = RMSerialDriver::angle_trans(pitch);
@@ -363,7 +363,7 @@ void RMSerialDriver::sendArmorData(const auto_aim_interfaces::msg::Send::SharedP
 
     // 20240329 ZY: Eliminate communication latency
     // packet.cap_timestamp = time_info->time;
-    packet.checksum=crc16::CRC16_Calc(reinterpret_cast<uint8_t *>(&packet), sizeof(packet), UINT16_MAX);
+    packet.checksum=crc16::CRC16_Calc(reinterpret_cast<uint8_t *>(&packet), sizeof(packet) - 2, UINT16_MAX);
     std::vector<uint8_t> data = toVector(packet);
 
     if (armor_or_buff_ == 1) {
@@ -427,7 +427,7 @@ void RMSerialDriver::sendBuffData(const buff_interfaces::msg::BuffSend::SharedPt
 
     // 20240329 ZY: Eliminate communication latency
     // packet.cap_timestamp = time_info->time;
-    packet.checksum=crc16::CRC16_Calc(reinterpret_cast<uint8_t *>(&packet), sizeof(packet), UINT16_MAX);
+    packet.checksum=crc16::CRC16_Calc(reinterpret_cast<uint8_t *>(&packet), sizeof(packet) - 2, UINT16_MAX);
     std::vector<uint8_t> data = toVector(packet);
 
     if (armor_or_buff_ == 0) {

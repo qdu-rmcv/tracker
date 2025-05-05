@@ -155,12 +155,12 @@ void Tracker::update(const Armors::SharedPtr & armors_msg)
   }
 
   // Prevent radius from spreading
-  float prevent_r = target_state(10);
+  float prevent_r = target_state(9);
   if (prevent_r < 0.12) {
-    target_state(10) = 0.12;
+    target_state(9) = 0.12;
     ekf.setState(target_state);
   } else if (prevent_r > 0.4) {
-    target_state(10) = 0.4;
+    target_state(9) = 0.4;
     ekf.setState(target_state);
   }
 
@@ -211,12 +211,12 @@ void Tracker::initEKF(const Armor & a)
   double yaw = orientationToYaw(a.pose.orientation);
 
   // Set initial position at 0.2m behind the target
-  target_state = Eigen::VectorXd::Zero(11);
+  target_state = Eigen::VectorXd::Zero(10);
   double r = 0.2;
   double xc = xa + r * cos(yaw);
   double yc = ya + r * sin(yaw);
   dz = 0, another_r = r;
-  target_state << xc, 0, yc, 0, za, 0, yaw, 0, 0, 0, r;
+  target_state << xc, 0, yc, 0, za, 0, yaw, 0, 0, r;
 
   ekf.setState(target_state);
 }
@@ -242,7 +242,7 @@ void Tracker::handleArmorJump(const Armor & current_armor)
   if (tracked_armors_num == ArmorsNum::NORMAL_4) {
     dz = target_state(4) - current_armor.pose.position.z;
     target_state(4) = current_armor.pose.position.z;
-    std::swap(target_state(10), another_r);
+    std::swap(target_state(9), another_r);
   }
 
   // If position difference is larger than max_match_distance_,
@@ -251,7 +251,7 @@ void Tracker::handleArmorJump(const Armor & current_armor)
   Eigen::Vector3d current_p(p.x, p.y, p.z);
   Eigen::Vector3d infer_p = getArmorPositionFromState(target_state);
   if ((current_p - infer_p).norm() > max_match_distance_) {
-    double r = target_state(10);
+    double r = target_state(9);
     target_state(0) = p.x + r * cos(yaw);  // xc
     target_state(1) = 0;                   // vxc
     target_state(2) = p.y + r * sin(yaw);  // yc
@@ -261,7 +261,7 @@ void Tracker::handleArmorJump(const Armor & current_armor)
 
     target_state(7) = 0;                    // V_yaw
     target_state(8) = 0;                    // a_yaw
-    target_state(9) = 0;                    // aa_yaw
+    // target_state(9) = 0;                    // aa_yaw
     RCLCPP_ERROR(rclcpp::get_logger("armor_tracker"), "Reset State!");
   }
 
@@ -285,7 +285,7 @@ Eigen::Vector3d Tracker::getArmorPositionFromState(const Eigen::VectorXd & x)
 {
   // Calculate predicted position of the current armor
   double xc = x(0), yc = x(2), za = x(4);
-  double yaw = x(6), r = x(10);
+  double yaw = x(6), r = x(9);
   double xa = xc - r * cos(yaw);
   double ya = yc - r * sin(yaw);
   return Eigen::Vector3d(xa, ya, za);

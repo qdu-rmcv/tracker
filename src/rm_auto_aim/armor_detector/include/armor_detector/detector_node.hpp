@@ -6,6 +6,7 @@
 #define ARMOR_DETECTOR__DETECTOR_NODE_HPP_
 
 // ROS
+#include <auto_aim_interfaces/msg/detail/all_latency__struct.hpp>
 #include <geometry_msgs/msg/point.hpp>
 #include <image_transport/image_transport.hpp>
 #include <image_transport/publisher.hpp>
@@ -26,6 +27,8 @@
 #include "armor_detector/number_classifier.hpp"
 #include "armor_detector/pnp_solver.hpp"
 #include "auto_aim_interfaces/msg/armors.hpp"
+#include "auto_aim_interfaces/msg/debug_lights.hpp"
+#include "auto_aim_interfaces/msg/all_latency.hpp"
 
 namespace rm_auto_aim
 {
@@ -67,6 +70,10 @@ private:
   visualization_msgs::msg::Marker text_marker_;
   visualization_msgs::msg::MarkerArray marker_array_;
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_pub_;
+
+  // 延迟
+  rclcpp::Publisher<auto_aim_interfaces::msg::AllLatency>::SharedPtr detector_latency_pub_;
+  rclcpp::Time detector_latency_dt;
 
   // Camera info part
   rclcpp::Subscription<sensor_msgs::msg::CameraInfo>::SharedPtr cam_info_sub_;

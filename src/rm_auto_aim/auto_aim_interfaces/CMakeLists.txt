@@ -28,6 +28,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 
   "msg/Receive.msg"
 
+  "msg/AllLatency.msg"
+
   DEPENDENCIES
     std_msgs
     geometry_msgs

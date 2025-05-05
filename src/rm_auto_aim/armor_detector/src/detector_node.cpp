@@ -13,6 +13,7 @@
 #include <opencv2/imgproc.hpp>
 #include <rclcpp/duration.hpp>
 #include <rclcpp/qos.hpp>
+#include <rclcpp/time.hpp>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 
 // STD
@@ -64,6 +65,9 @@ ArmorDetectorNode::ArmorDetectorNode(const rclcpp::NodeOptions & options)
   marker_pub_ =
     this->create_publisher<visualization_msgs::msg::MarkerArray>("/detector/marker", 10);
 
+  detector_latency_pub_ = 
+    this->create_publisher<auto_aim_interfaces::msg::AllLatency>("/detector/Latency", 10);
+
   // Debug Publishers
   debug_ = this->declare_parameter("debug", false);
   if (debug_) {
@@ -109,6 +113,7 @@ void ArmorDetectorNode::taskCallback(const std_msgs::msg::String::SharedPtr task
 
 void ArmorDetectorNode::imageCallback(const sensor_msgs::msg::Image::ConstSharedPtr img_msg)
 {
+  auto detector_latency_start = this->get_clock()->now();
   auto armors = detectArmors(img_msg);
 
   if (pnp_solver_ != nullptr && is_aim_task_) {
@@ -175,12 +180,22 @@ void ArmorDetectorNode::imageCallback(const sensor_msgs::msg::Image::ConstShared
       }
     }
 
+
+
     // Publishing detected armors
     armors_pub_->publish(armors_msg_);
 
     // Publishing marker
     publishMarkers();
   }
+  // detectr 延迟时间处理
+  auto detector_latency_end = this->get_clock()->now();
+  auto detector_latency_dt = detector_latency_end - detector_latency_start;
+  auto_aim_interfaces::msg::AllLatency latency_msg;
+  latency_msg.header.stamp = this->get_clock()->now();
+  latency_msg.detector_latency = detector_latency_dt.seconds();
+  
+  detector_latency_pub_->publish(latency_msg);
 }
 
 std::unique_ptr<Detector> ArmorDetectorNode::initDetector()

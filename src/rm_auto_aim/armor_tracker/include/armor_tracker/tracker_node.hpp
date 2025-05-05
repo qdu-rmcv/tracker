@@ -32,6 +32,8 @@
 #include "auto_aim_interfaces/msg/receive.hpp"
 #include "armor_executor/SolveTrajectory.hpp"
 
+#include "auto_aim_interfaces/msg/all_latency.hpp"
+
 namespace rm_auto_aim
 {
 using tf2_filter = tf2_ros::MessageFilter<auto_aim_interfaces::msg::Armors>;
@@ -63,6 +65,9 @@ private:
   float send_pitch=0, send_yaw=0, aim_x=0, aim_y=0, aim_z=0;
   std::unique_ptr<Tracker> tracker_;
   std::unique_ptr<SolveTrajectory> gaf_solver;
+
+  // 延迟
+  rclcpp::Publisher<auto_aim_interfaces::msg::AllLatency>::SharedPtr tracker_latency_pub_;
 
   // Reset tracker service
   rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr reset_tracker_srv_;

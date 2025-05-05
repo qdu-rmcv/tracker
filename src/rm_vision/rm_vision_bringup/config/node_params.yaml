@@ -36,12 +36,12 @@
     ekf:
       sigma2_q_xyz_max: 0.1
       sigma2_q_xyz_min: 0.04
-      sigma2_q_yaw_max: 400.0
-      sigma2_q_yaw_min: 3.0
+      sigma2_q_yaw_max: 1.2
+      sigma2_q_yaw_min: 0.7
       sigma2_q_r: 40.0
 
       r_xyz_factor: 6e-4
-      r_yaw: 2e-3
+      r_yaw: 8e-4
 
       sigma2_q_xyz: 0.05
       segma2_q_yaw: 5.0
