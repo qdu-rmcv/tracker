@@ -16,7 +16,7 @@ public:
 
   using VecVecFunc = std::function<Eigen::VectorXd(const Eigen::VectorXd &)>;
   using VecMatFunc = std::function<Eigen::MatrixXd(const Eigen::VectorXd &)>;
-  using VoidMatFunc = std::function<Eigen::MatrixXd()>;
+  using VecVecMatFunc = std::function<Eigen::MatrixXd(const Eigen::VectorXd &, const Eigen::VectorXd &)>;
 
   explicit ExtendedKalmanFilter(
     const VecVecFunc & f, const VecVecFunc & h, const VecMatFunc & j_f, const VecMatFunc & j_h,
@@ -43,7 +43,7 @@ private:
   VecMatFunc jacobian_h;
   Eigen::MatrixXd H;
   // Process noise covariance matrix
-  VecMatFunc update_Q;
+  VecMatFunc update_Q;  // 修改为支持创新向量的函数
   Eigen::MatrixXd Q;
   // Measurement noise covariance matrix
   VecMatFunc update_R;

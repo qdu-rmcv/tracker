@@ -18,7 +18,7 @@
   ros__parameters:
     debug: true
 
-    detect_color: 0 #0-RED, 1-BLUE
+    detect_color: 1 #0-RED, 1-BLUE
     binary_thres: 78
 
     light.min_ratio: 0.1
@@ -36,12 +36,15 @@
     ekf:
       sigma2_q_xyz_max: 0.1
       sigma2_q_xyz_min: 0.04
-      sigma2_q_yaw_max: 6.0
-      sigma2_q_yaw_min: 4.0
+      sigma2_q_yaw_max: 400.0
+      sigma2_q_yaw_min: 3.0
       sigma2_q_r: 40.0
 
       r_xyz_factor: 6e-4
-      r_yaw: 8e-3
+      r_yaw: 2e-3
+
+      sigma2_q_xyz: 0.05
+      segma2_q_yaw: 5.0
 
     tracker:
       max_match_distance: 0.5

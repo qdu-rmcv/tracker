@@ -151,7 +151,7 @@ void ArmorDetectorNode::imageCallback(const sensor_msgs::msg::Image::ConstShared
         // Fill keypoints
         armor_msg.kpts.clear();
         for (const auto & pt :
-             {armor.left_light.top, armor.left_light.bottom, armor.right_light.bottom,
+            {armor.left_light.top, armor.left_light.bottom, armor.right_light.bottom,
               armor.right_light.top}) {
           geometry_msgs::msg::Point point;
           point.x = pt.x;

@@ -78,16 +78,16 @@ RMSerialDriver::RMSerialDriver(const rclcpp::NodeOptions & options)
     throw ex;
   }
 
-  aiming_point_.header.frame_id = "odom";
-  aiming_point_.ns = "aiming_point";
-  aiming_point_.type = visualization_msgs::msg::Marker::SPHERE;
-  aiming_point_.action = visualization_msgs::msg::Marker::ADD;
-  aiming_point_.scale.x = aiming_point_.scale.y = aiming_point_.scale.z = 0.12;
-  aiming_point_.color.r = 1.0;
-  aiming_point_.color.g = 1.0;
-  aiming_point_.color.b = 1.0;
-  aiming_point_.color.a = 1.0;
-  aiming_point_.lifetime = rclcpp::Duration::from_seconds(0.1);
+  // aiming_point_.header.frame_id = "odom";
+  // aiming_point_.ns = "aiming_point";
+  // aiming_point_.type = visualization_msgs::msg::Marker::SPHERE;
+  // aiming_point_.action = visualization_msgs::msg::Marker::ADD;
+  // aiming_point_.scale.x = aiming_point_.scale.y = aiming_point_.scale.z = 0.12;
+  // aiming_point_.color.r = 1.0;
+  // aiming_point_.color.g = 1.0;
+  // aiming_point_.color.b = 1.0;
+  // aiming_point_.color.a = 1.0;
+  // aiming_point_.lifetime = rclcpp::Duration::from_seconds(0.1);
 
   // Create Subscription
   // aim_sub_ = this->create_subscription<auto_aim_interfaces::msg::Target>(
@@ -159,11 +159,11 @@ void RMSerialDriver::receiveData()
           // crc16::Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&packet), sizeof(packet));
           crc16::CRC16_Verify(reinterpret_cast<const uint8_t *>(&packet), sizeof(packet)); 
         if (crc_ok) {
-          // if (!initial_set_param_ || packet.detect_color != previous_receive_color_) {
-          //   setParam(rclcpp::Parameter("detect_color", packet.detect_color));
-          //   previous_receive_color_ = packet.detect_color;
-          // }
-          
+          if (!initial_set_param_ || packet.detect_color != previous_receive_color_) {
+            setParam(rclcpp::Parameter("detect_color", packet.detect_color));
+            previous_receive_color_ = packet.detect_color;
+          }
+
           // RCLCPP_WARN(get_logger(), "[Receive] 1 ");
 
           if (packet.reset_tracker) {
@@ -219,7 +219,7 @@ void RMSerialDriver::receiveData()
           // } else {
           //   task.data = "aim";
           // }
-
+          
           if (armor_or_buff_ == 1){
             task.data = "aim";
           } else if(armor_or_buff_ == 0 ){
@@ -295,13 +295,13 @@ void RMSerialDriver::receiveData()
           velocity_pub_->publish(current_velocity);
           buff_velocity_pub_->publish(buff_current_velocity);
 
-          if (abs(packet.aim_x) > 0.01) {
-            aiming_point_.header.stamp = this->now();
-            aiming_point_.pose.position.x = packet.aim_x;
-            aiming_point_.pose.position.y = packet.aim_y;
-            aiming_point_.pose.position.z = packet.aim_z;
-            marker_pub_->publish(aiming_point_);
-          }
+          // if (abs(packet.aim_x) > 0.01) {
+          //   aiming_point_.header.stamp = this->now();
+          //   aiming_point_.pose.position.x = packet.aim_x;
+          //   aiming_point_.pose.position.y = packet.aim_y;
+          //   aiming_point_.pose.position.z = packet.aim_z;
+          //   marker_pub_->publish(aiming_point_);
+          // }
         } else {
           RCLCPP_ERROR(get_logger(), "CRC error!");
         }

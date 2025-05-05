@@ -60,6 +60,7 @@ private:
   double s2qxyz_max_, s2qxyz_min_, s2qyaw_max_, s2qyaw_min_, s2qr_;
   double r_xyz_factor, r_yaw;
   double lost_time_thres_;
+  float send_pitch=0, send_yaw=0, aim_x=0, aim_y=0, aim_z=0;
   std::unique_ptr<Tracker> tracker_;
   std::unique_ptr<SolveTrajectory> gaf_solver;
 
@@ -92,11 +93,16 @@ private:
   visualization_msgs::msg::Marker linear_v_marker_;
   visualization_msgs::msg::Marker angular_v_marker_;
   visualization_msgs::msg::Marker armor_marker_;
+  visualization_msgs::msg::Marker trackered_armor_marker_;
 
   // Aimimg point receiving from serial port for visualization
   visualization_msgs::msg::Marker aiming_point_;
 
   rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_pub_;
+
+  // 测试加加速度恒定用
+  double s2qxyz_;
+  double s2qyaw_;
 };
 
 }  // namespace rm_auto_aim

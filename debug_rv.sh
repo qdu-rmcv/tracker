@@ -33,7 +33,14 @@ function no_hardware(){
 }
 
 function rm_vision_bringup(){
-    ls /dev/tty*
+    devices=$(ls /dev/ttyACM[0-9]* /dev/ttyUSB[0-9]* 2>/dev/null)   # 隐藏报错
+    if [ -z "$devices" ]; then
+        echo "未找到任何串口设备"
+        exit 1
+    fi
+
+    echo "$devices"
+
     sudo chmod 777 /dev/tty*
     sleep 2
     ros2 launch rm_vision_bringup vision_bringup.launch.py

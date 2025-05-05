@@ -178,9 +178,9 @@ float SolveTrajectory::pitchTrajectoryCompensation(float s, float z, float v) {
     }
     // std::cout << "pitch解算数:" << num << std::endl;
 
-    float ff = calculateFlyTime(s, v, angle_pitch);
+    // float ff = calculateFlyTime(s, v, angle_pitch);
     
-    std::cout << "ftime +: " << ff << std::endl;
+    // std::cout << "ftime +: " << ff << std::endl;
     return angle_pitch;
 }
 
