@@ -160,10 +160,12 @@ void RMSerialDriver::receiveData()
           // crc16::Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&packet), sizeof(packet));
           crc16::CRC16_Verify(reinterpret_cast<const uint8_t *>(&packet), sizeof(packet)); 
         if (crc_ok) {
+          packet.detect_color = 0;
           if (!initial_set_param_ || packet.detect_color != previous_receive_color_) {
             setParam(rclcpp::Parameter("detect_color", packet.detect_color));
             previous_receive_color_ = packet.detect_color;
           }
+
 
           // RCLCPP_WARN(get_logger(), "[Receive] 1 ");
 

@@ -363,7 +363,7 @@ ArmorTrackerNode::ArmorTrackerNode(const rclcpp::NodeOptions & options)
   tf2_filter_->registerCallback(&ArmorTrackerNode::armorsCallback, this);
 
 
-
+ 
   // Measurement publisher (for debug usage)
   info_pub_ = this->create_publisher<auto_aim_interfaces::msg::TrackerInfo>("/tracker/info", 10);
 
@@ -376,6 +376,9 @@ ArmorTrackerNode::ArmorTrackerNode(const rclcpp::NodeOptions & options)
 
   tracker_latency_pub_ = this->create_publisher<auto_aim_interfaces::msg::AllLatency>(
     "/tracker/latency", rclcpp::SensorDataQoS());
+
+  test_pub_ = this->create_publisher<auto_aim_interfaces::msg::Test>(
+    "/test", rclcpp::SensorDataQoS());
 
   // Visualization Marker Publisher
   // See http://wiki.ros.org/rviz/DisplayTypes/Marker
@@ -474,7 +477,6 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
   target_msg.header.stamp = time;
   target_msg.header.frame_id = target_frame_;
 
-
   // Update tracker
   if (tracker_->tracker_state == Tracker::LOST) {
     tracker_->init(armors_msg);
@@ -518,11 +520,19 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
       target_msg.radius_2 = tracker_->another_r;
       target_msg.dz = tracker_->dz;
 
+      // v_yaw 单位换算到 rpm
+      target_msg.v_yaw_rpm = (target_msg.v_yaw / (2 * M_PI)) * 60;
+      // v_yaw 单位换算到 degree/s
+      target_msg.v_yaw_degree = target_msg.v_yaw * (180.0 / M_PI);
+
+      // 测试通道
+      target0_yaw = 0;
+      
       //* 弹道解算
       // 算出来的 pitch与yaw就是 云台要去的yaw
       send_pitch=0, send_yaw=0, aim_x=0, aim_y=0, aim_z=0;  // 之所以要重置为0 是因为在弹道解算中会迭代计算
       auto msg = std::make_shared<auto_aim_interfaces::msg::Target>(target_msg);
-      gaf_solver->autoSolveTrajectory(send_pitch, send_yaw, aim_x, aim_y, aim_z, msg);
+      gaf_solver->autoSolveTrajectory(send_pitch, send_yaw, aim_x, aim_y, aim_z, msg, target0_yaw);
 
       // 开火指令
       // 下面的仍然是 拉姆达表达式 [&] 按引用捕获外部作用域中的所有变量。这意味着在 Lambda 内部可以直接访问和修改外部变量
@@ -538,15 +548,23 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
       target_msg.tracking = false;
     }
   }
-
+  // tracker 延迟计算
   last_time_ = time;
 
   auto tracker_latency_end = this->get_clock()->now();
   auto tracker_latency_dt = tracker_latency_end - tracker_latency_start;
 
   auto_aim_interfaces::msg::AllLatency tracker_latency_msg;
-  tracker_latency_msg.header.stamp = tracker_latency_end;
+  tracker_latency_msg.header.stamp = time;
   tracker_latency_msg.tracker_latency = tracker_latency_dt.seconds();
+
+  // 测试通道
+  auto_aim_interfaces::msg::Test target0_yaw_;
+  target0_yaw_.header.stamp = time; 
+  target0_yaw_.yaw = target0_yaw;
+
+  test_pub_->publish(target0_yaw_);
+
 
 
   // 发布 msg

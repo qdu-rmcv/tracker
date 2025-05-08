@@ -14,6 +14,8 @@
 
 #include <auto_aim_interfaces/msg/detail/receive__struct.hpp>
 #include <rclcpp/rclcpp.hpp>
+#include <std_msgs/msg/detail/float32__struct.hpp>
+#include <std_msgs/msg/detail/float64__struct.hpp>
 #include <std_srvs/srv/trigger.hpp>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
 #include <visualization_msgs/msg/marker_array.hpp>
@@ -33,6 +35,9 @@
 #include "armor_executor/SolveTrajectory.hpp"
 
 #include "auto_aim_interfaces/msg/all_latency.hpp"
+
+#include "std_msgs/msg/float64.hpp"
+#include "auto_aim_interfaces/msg/test.hpp"
 
 namespace rm_auto_aim
 {
@@ -58,6 +63,8 @@ private:
   rclcpp::Time last_time_;
   double dt_;
 
+  
+
   // Armor tracker
   double s2qxyz_max_, s2qxyz_min_, s2qyaw_max_, s2qyaw_min_, s2qr_;
   double r_xyz_factor, r_yaw;
@@ -68,6 +75,10 @@ private:
 
   // 延迟
   rclcpp::Publisher<auto_aim_interfaces::msg::AllLatency>::SharedPtr tracker_latency_pub_;
+
+  // 测试
+  rclcpp::Publisher<auto_aim_interfaces::msg::Test>::SharedPtr test_pub_;
+  float target0_yaw;
 
   // Reset tracker service
   rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr reset_tracker_srv_;

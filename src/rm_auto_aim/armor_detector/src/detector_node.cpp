@@ -114,6 +114,7 @@ void ArmorDetectorNode::taskCallback(const std_msgs::msg::String::SharedPtr task
 void ArmorDetectorNode::imageCallback(const sensor_msgs::msg::Image::ConstSharedPtr img_msg)
 {
   auto detector_latency_start = this->get_clock()->now();
+
   auto armors = detectArmors(img_msg);
 
   if (pnp_solver_ != nullptr && is_aim_task_) {
@@ -188,11 +189,13 @@ void ArmorDetectorNode::imageCallback(const sensor_msgs::msg::Image::ConstShared
     // Publishing marker
     publishMarkers();
   }
+
   // detectr 延迟时间处理
   auto detector_latency_end = this->get_clock()->now();
   auto detector_latency_dt = detector_latency_end - detector_latency_start;
   auto_aim_interfaces::msg::AllLatency latency_msg;
-  latency_msg.header.stamp = this->get_clock()->now();
+  rclcpp::Time time = armors_msg_.header.stamp;
+  latency_msg.header.stamp = time;
   latency_msg.detector_latency = detector_latency_dt.seconds();
   
   detector_latency_pub_->publish(latency_msg);

@@ -75,7 +75,7 @@ public:
 
     float tar_yaw;        //目标yaw
 
-    float ftime;    //飞行时间
+    float ftime = 0.11;    //飞行时间
 
     // std::vector<tar_pos> tar_position;
 
@@ -97,7 +97,7 @@ public:
     //pitch弹道补偿
     float pitchTrajectoryCompensation(float s, float y, float v);
 
-    bool shouldFire(float tmp_yaw, float v_yaw, float timeDelay);
+    bool shouldFire(const auto_aim_interfaces::msg::Target::SharedPtr& msg);
 
     using FireCallback = std::function<void(bool)>;
 
@@ -105,20 +105,20 @@ public:
         fireCallback = callback;
     }
 
-    void calculateArmorPosition(const auto_aim_interfaces::msg::Target::SharedPtr& msg, bool use_1, bool use_average_radius);
+    void calculateArmorPosition(const auto_aim_interfaces::msg::Target::SharedPtr& msg, bool use_1, bool use_average_radius, float target0_yaw);
 
     std::pair<float, float> calculatePitchAndYaw(int idx, const auto_aim_interfaces::msg::Target::SharedPtr& msg, float timeDelay, float s_bias, float z_bias, float current_v, bool use_target_center_for_yaw,float& aim_x, float& aim_y, float& aim_z);
 
     int selectArmor(const auto_aim_interfaces::msg::Target::SharedPtr& msg, bool select_by_min_yaw);
     
-    void fireLogicIsTop(float& pitch, float& yaw, float& aim_x, float& aim_y, float& aim_z, const auto_aim_interfaces::msg::Target::SharedPtr& msg);
+    void fireLogicIsTop(float& pitch, float& yaw, float& aim_x, float& aim_y, float& aim_z, const auto_aim_interfaces::msg::Target::SharedPtr& msg, float target0_yaw);
 
     void fireLogicDefault(float& pitch, float& yaw, float& aim_x, float& aim_y, float& aim_z, const auto_aim_interfaces::msg::Target::SharedPtr& msg);
 
     void fireLogicOnlycentry(float& pitch, float& yaw, float& aim_x, float& aim_y, float& aim_z, const auto_aim_interfaces::msg::Target::SharedPtr& msg);
 
     //根据最优决策得出被击打装甲板 自动解算弹道
-    void autoSolveTrajectory(float& send_pitch, float& send_yaw, float& aim_x, float& aim_y, float& aim_z, const auto_aim_interfaces::msg::Target::SharedPtr msg);
+    void autoSolveTrajectory(float& send_pitch, float& send_yaw, float& aim_x, float& aim_y, float& aim_z, const auto_aim_interfaces::msg::Target::SharedPtr msg ,float target0_yaw);
 private:    
     FireCallback fireCallback;
     

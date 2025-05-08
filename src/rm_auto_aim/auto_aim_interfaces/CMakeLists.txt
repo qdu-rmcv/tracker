@@ -30,6 +30,8 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 
   "msg/AllLatency.msg"
 
+  "msg/Test.msg"
+
   DEPENDENCIES
     std_msgs
     geometry_msgs
