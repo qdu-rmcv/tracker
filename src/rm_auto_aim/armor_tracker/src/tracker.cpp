@@ -239,6 +239,13 @@ void Tracker::handleArmorJump(const Armor & current_armor)
   target_state(6) = yaw;
   updateArmorsNum(current_armor);
 
+  // Only 4 armors has 2 radius and height
+  if (tracked_armors_num == ArmorsNum::NORMAL_4) {
+    dz = target_state(4) - current_armor.pose.position.z;
+    target_state(4) = current_armor.pose.position.z;
+    std::swap(target_state(9), another_r);
+  }
+
   // If position difference is larger than max_match_distance_,
   // take this case as the ekf diverged, reset the state
   auto p = current_armor.pose.position;

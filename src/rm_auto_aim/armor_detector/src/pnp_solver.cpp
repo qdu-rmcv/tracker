@@ -44,10 +44,33 @@ bool PnPSolver::solvePnP(const Armor & armor, cv::Mat & rvec, cv::Mat & tvec)
   image_armor_points.emplace_back(armor.right_light.bottom);
 
   // Solve pnp
+  // 使用 IPNP 方法,专精于平面视觉,对于装甲板情况估计较好
+  // 方法还是应该使用 IPNP 但是未来可以改为 solvePNPRansac
+  // 使用solvePNPRance 平滑滤波处理
   auto object_points = armor.type == ArmorType::SMALL ? small_armor_points_ : large_armor_points_;
-  return cv::solvePnP(
+
+  bool success = cv::solvePnP(
     object_points, image_armor_points, camera_matrix_, dist_coeffs_, rvec, tvec, false,
     cv::SOLVEPNP_IPPE);
+
+  // // Solve PnP using RANSAC
+  // cv::Mat inliers;  // To store inliers
+  // bool success = cv::solvePnPRansac(
+  //   object_points,                // 3D 点的模型坐标
+  //   image_armor_points,           // 2D 图像点的像素坐标
+  //   camera_matrix_,               // 相机内参矩阵
+  //   dist_coeffs_,                 // 相机畸变系数
+  //   rvec,                         // 输出的旋转向量
+  //   tvec,                         // 输出的平移向量
+  //   false,                        // 是否使用初始值
+  //   100,                          // 最大迭代次数
+  //   8.0,                          // 内点阈值（像素单位）
+  //   0.99,                         // 置信度
+  //   inliers,                       // 输出内点掩码
+  //   cv::SOLVEPNP_IPPE
+  // );
+
+  return success;
 }
 
 float PnPSolver::calculateDistanceToCenter(const cv::Point2f & image_point)

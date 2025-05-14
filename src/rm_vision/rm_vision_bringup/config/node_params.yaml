@@ -19,7 +19,7 @@
     debug: true
 
     detect_color: 0 #0-RED, 1-BLUE
-    binary_thres: 68
+    binary_thres: 70
 
     light.min_ratio: 0.1
     light.min_fill_ratio: 0.6
@@ -55,9 +55,9 @@
 
       # 注意: 弹道解算的参数也在这里
       k: 0.038
-      bias_time: 100  # 单位 ms
+      bias_time: 30  # 单位 ms
       s_bias: 0.18375
-      z_bias: 0.0
+      z_bias: 0.07
 
 
 /buff_detector:
