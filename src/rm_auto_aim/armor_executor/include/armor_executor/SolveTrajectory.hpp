@@ -1,5 +1,6 @@
 #ifndef __SOLVETRAJECTORY_H__
 #define __SOLVETRAJECTORY_H__
+#include <auto_aim_interfaces/msg/detail/all_latency__struct.hpp>
 #include <auto_aim_interfaces/msg/detail/receive__struct.hpp>
 #include <functional>
 #ifndef PI
@@ -12,8 +13,10 @@ typedef unsigned char uint8_t;
 #include "auto_aim_interfaces/msg/target.hpp"
 #include "auto_aim_interfaces/msg/velocity.hpp"
 #include "auto_aim_interfaces/msg/receive.hpp"
+#include "auto_aim_interfaces/msg/send.hpp"
 
 #include <iostream>
+#include <rclcpp/logger.hpp>
 
 namespace rm_auto_aim
 {
@@ -54,7 +57,7 @@ public:
         float yaw;         //装甲板坐标系相对于世界坐标系的yaw角
     };
 
-    SolveTrajectory(const float &k, const int &bias_time, const float &s_bias, const float &z_bias);
+    SolveTrajectory(const float &k, const int &bias_time, const float &s_bias, const float &z_bias, const float &fire_k);
     
     float k;             //弹道系数
 
@@ -71,11 +74,19 @@ public:
     float s_bias;         //枪口前推的距离
     float z_bias;         //yaw轴电机到枪口水平面的垂直距离
 
+    int det_latency;
+
     // float use_v_yaw;
 
     float tar_yaw;        //目标yaw
 
     float ftime = 0.11;    //飞行时间
+
+    bool is_fire;  // 开火指令
+    float d_yaw;    // send_yaw 与 receive_yaw 差,判断 fire_k 
+    float fire_k;   // 开火 yaw 范围
+
+    int latency_time;
 
     // std::vector<tar_pos> tar_position;
 
@@ -90,6 +101,8 @@ public:
     void initReceive(const auto_aim_interfaces::msg::Receive::SharedPtr receive_msg);
     void solveTimeInit(float s_bias, float z_bias, float current_v, const auto_aim_interfaces::msg::Target::SharedPtr& msg);
 
+    void initLatency(const auto_aim_interfaces::msg::AllLatency::SharedPtr detector_msg);
+
     float calculateFlyTime(float s, float v, float angle);
     //单方向空气阻力模型
     float monoDirectionalAirResistanceModel(float s, float v, float angle);
@@ -97,13 +110,8 @@ public:
     //pitch弹道补偿
     float pitchTrajectoryCompensation(float s, float y, float v);
 
-    bool shouldFire(const auto_aim_interfaces::msg::Target::SharedPtr& msg);
-
-    using FireCallback = std::function<void(bool)>;
-
-    void setFireCallback(FireCallback callback) {
-        fireCallback = callback;
-    }
+    // fire
+    bool shouldFire(const float send_yaw, const float receive_msg);
 
     void calculateArmorPosition(const auto_aim_interfaces::msg::Target::SharedPtr& msg, bool use_1, bool use_average_radius, float target0_yaw);
 
@@ -120,13 +128,9 @@ public:
     //根据最优决策得出被击打装甲板 自动解算弹道
     void autoSolveTrajectory(float& send_pitch, float& send_yaw, float& aim_x, float& aim_y, float& aim_z, const auto_aim_interfaces::msg::Target::SharedPtr msg ,float target0_yaw);
 private:    
-    FireCallback fireCallback;
     
     //完全空气阻力模型
     float completeAirResistanceModel(float s, float v, float angle);
-
-
-
 };
 
 } // namespace rm_auto_aim

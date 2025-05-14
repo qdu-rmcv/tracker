@@ -121,7 +121,7 @@ void Tracker::update(const Armors::SharedPtr & armors_msg)
           // Find the closest armor
           diff_min_position_diff = position_diff;
           diff_tracked_armor = armor;
-        }  
+        }
       }
     }
     if (diff_count != 0) {
@@ -238,18 +238,13 @@ void Tracker::handleArmorJump(const Armor & current_armor)
   double yaw = orientationToYaw(current_armor.pose.orientation);
   target_state(6) = yaw;
   updateArmorsNum(current_armor);
-  // Only 4 armors has 2 radius and height
-  if (tracked_armors_num == ArmorsNum::NORMAL_4) {
-    dz = target_state(4) - current_armor.pose.position.z;
-    target_state(4) = current_armor.pose.position.z;
-    std::swap(target_state(9), another_r);
-  }
 
   // If position difference is larger than max_match_distance_,
   // take this case as the ekf diverged, reset the state
   auto p = current_armor.pose.position;
   Eigen::Vector3d current_p(p.x, p.y, p.z);
   Eigen::Vector3d infer_p = getArmorPositionFromState(target_state);
+
   if ((current_p - infer_p).norm() > max_match_distance_) {
     double r = target_state(9);
     target_state(0) = p.x + r * cos(yaw);  // xc
@@ -264,6 +259,12 @@ void Tracker::handleArmorJump(const Armor & current_armor)
     // target_state(9) = 0;                    // aa_yaw
     RCLCPP_ERROR(rclcpp::get_logger("armor_tracker"), "Reset State!");
   }
+  // } else {  // 一个测试
+  //   double r = target_state(9);
+  //   target_state(0) = p.x + r * cos(yaw);  // xc
+  //   target_state(2) = p.y + r * sin(yaw);  // yc
+  //   target_state(4) = p.z;                 // za
+  // }
 
   ekf.setState(target_state);
 }

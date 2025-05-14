@@ -12,6 +12,7 @@
 
 // STD
 #include <algorithm>
+#include <auto_aim_interfaces/msg/detail/receive__struct.hpp>
 #include <cmath>
 #include <cstddef>
 #include <iterator>
@@ -23,8 +24,8 @@
 
 namespace rm_auto_aim
 {
-SolveTrajectory::SolveTrajectory(const float &k, const int &bias_time, const float &s_bias, const float &z_bias)
-: k(k), bias_time(bias_time), s_bias(s_bias), z_bias(z_bias)
+SolveTrajectory::SolveTrajectory(const float &k, const int &bias_time, const float &s_bias, const float &z_bias, const float &fire_k)
+: k(k), bias_time(bias_time), s_bias(s_bias), z_bias(z_bias), fire_k(fire_k)
 {}
 
 
@@ -43,9 +44,21 @@ void SolveTrajectory::init(const auto_aim_interfaces::msg::Velocity::SharedPtr v
 
 void SolveTrajectory::initReceive(const auto_aim_interfaces::msg::Receive::SharedPtr receive_msg)
 {
+    // if (std::isnan(receive_msg->yaw)) {
+    //     RCLCPP_WARN(rclcpp::get_logger("armor_tracker"), "receive_msg 为 空");
+    // }
+
     receive_pitch = receive_msg->pitch;
     receive_yaw = receive_msg->yaw;
     receive_roll = receive_msg->roll;
+}
+
+void SolveTrajectory::initLatency(const auto_aim_interfaces::msg::AllLatency::SharedPtr detector_msg){
+    if (detector_msg->detector_latency > 150) {
+        det_latency = 100;
+    } else {
+        det_latency = detector_msg->detector_latency;
+    }
 }
 
 //! 单方向无空气阻力弹道模型
@@ -100,6 +113,18 @@ void SolveTrajectory::solveTimeInit(float s_bias, float z_bias, float current_v,
     theata = std::atan(ttheta);
 
     ftime = calculateFlyTime(s, current_v, theata);
+}
+
+
+bool SolveTrajectory::shouldFire(const float send_yaw, const float receive_yaw){
+    d_yaw = std::abs(send_yaw - receive_yaw);
+    fire_k = 0.002;
+    is_fire = false;
+    if(d_yaw < fire_k){
+        is_fire = true;
+    }
+
+    return is_fire;
 }
 
 /**
@@ -320,14 +345,22 @@ int SolveTrajectory::selectArmor(const auto_aim_interfaces::msg::Target::SharedP
 void SolveTrajectory::fireLogicIsTop(float& send_pitch, float& send_yaw, float& aim_x, float& aim_y, float& aim_z, const auto_aim_interfaces::msg::Target::SharedPtr& msg, float target0_yaw) {
 
     tar_yaw = msg->yaw;
-    // // 线性预测
-    float timeDelay = bias_time/1000.0 + ftime;  // 改为 测距 所用时间 
-
-
+    // int delay_time = bias_time + det_latency;
+    int delay_time = bias_time;
     // 线性预测
-    // float timeDelay = bias_time/1000.0 + fly_time;
+    float timeDelay = delay_time/1000.0 + ftime;  // 改为 测距 所用时间 
+
+
+    // // 线性预测
+    // if (msg->a_yaw < 20 && msg->v_yaw < 3) {
+    //     tar_yaw += msg->v_yaw * timeDelay + 0.5 * msg->a_yaw * timeDelay * timeDelay; 
+    // } else {
+    //     tar_yaw += msg->v_yaw * timeDelay;
+    // }
+
     tar_yaw += msg->v_yaw * timeDelay;
-    // std::cout << "tar_yaw: " << tar_yaw << std::endl;
+    
+    // std::cout << "tar_yaw: " << tar_yaw << std::endl; 
     //计算四块装甲板的位置
     //装甲板id顺序，以四块装甲板为例，逆时针编号
     //      2
@@ -374,6 +407,7 @@ void SolveTrajectory::fireLogicIsTop(float& send_pitch, float& send_yaw, float& 
     // 使用 pitch_and_yaw 的值
     send_pitch = pitch_and_yaw.first;
     send_yaw = pitch_and_yaw.second;
+
 }
 
 /**

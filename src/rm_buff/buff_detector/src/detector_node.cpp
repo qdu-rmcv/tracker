@@ -136,13 +136,13 @@ std::vector<Blade> BuffDetectorNode::DetectBlades(
 
 
 
-  // 遍历每个像素，交换 R 和 B 通道
-  for (int y = 0; y < img.rows; ++y) {
-      for (int x = 0; x < img.cols; ++x) {
-          cv::Vec3b& pixel = img.at<cv::Vec3b>(y, x);
-          std::swap(pixel[0], pixel[2]);  // B <-> R
-      }
-  }
+  // // 遍历每个像素，交换 R 和 B 通道
+  // for (int y = 0; y < img.rows; ++y) {
+  //     for (int x = 0; x < img.cols; ++x) {
+  //         cv::Vec3b& pixel = img.at<cv::Vec3b>(y, x);
+  //         std::swap(pixel[0], pixel[2]);  // B <-> R
+  //     }
+  // }
 
 
 

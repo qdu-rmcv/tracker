@@ -66,7 +66,8 @@ ArmorDetectorNode::ArmorDetectorNode(const rclcpp::NodeOptions & options)
     this->create_publisher<visualization_msgs::msg::MarkerArray>("/detector/marker", 10);
 
   detector_latency_pub_ = 
-    this->create_publisher<auto_aim_interfaces::msg::AllLatency>("/detector/Latency", 10);
+    this->create_publisher<auto_aim_interfaces::msg::AllLatency>("/detector/Latency", 
+      rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data)));
 
   // Debug Publishers
   debug_ = this->declare_parameter("debug", false);
@@ -196,7 +197,7 @@ void ArmorDetectorNode::imageCallback(const sensor_msgs::msg::Image::ConstShared
   auto_aim_interfaces::msg::AllLatency latency_msg;
   rclcpp::Time time = armors_msg_.header.stamp;
   latency_msg.header.stamp = time;
-  latency_msg.detector_latency = detector_latency_dt.seconds();
+  latency_msg.detector_latency = static_cast<int>(detector_latency_dt.seconds() * 1000);
   
   detector_latency_pub_->publish(latency_msg);
 }
@@ -213,8 +214,8 @@ std::unique_ptr<Detector> ArmorDetectorNode::initDetector()
   param_desc.description = "0-RED, 1-BLUE";
   param_desc.integer_range[0].from_value = 0;
   param_desc.integer_range[0].to_value = 1;
-  auto detect_color = declare_parameter("detect_color", RED, param_desc);
-
+  // auto detect_color = declare_parameter("detect_color", RED, param_desc);
+  auto detect_color = declare_parameter("detect_color", RED);
   Detector::LightParams l_params = {
     .min_ratio = declare_parameter("light.min_ratio", 0.1),
     .max_ratio = declare_parameter("light.max_ratio", 0.4),

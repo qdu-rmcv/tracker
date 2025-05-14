@@ -1,12 +1,22 @@
 camera: hik
 
+# odom2camera:
+#   xyz: "\"0.05 0.0  0.15\""
+#   rpy: "\"0.0  0.0  0.0\""
+
+# 全向
 odom2camera:
-  xyz: "\"0.05 0.18  0.09\""
+  xyz: "\"0.05 0.10  0.09\""
   rpy: "\"0.0  0.0  0.0\""
 
 armor_detector_log_level: INFO
 armor_tracker_log_level: INFO
 buff_detector_log_level: INFO
 buff_tracker_log_level: INFO
-serial_log_level: INFO
+serial_log_level: ERROR
 auto_record_log_level: INFO
+
+# 全向
+# odom2camera:
+#   xyz: "\"0.05 0.18  0.15\""
+#   rpy: "\"0.0  0.0  0.0\""

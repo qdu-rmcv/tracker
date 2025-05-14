@@ -12,6 +12,7 @@
 #include <tf2_ros/message_filter.h>
 #include <tf2_ros/transform_listener.h>
 
+#include <auto_aim_interfaces/msg/detail/all_latency__struct.hpp>
 #include <auto_aim_interfaces/msg/detail/receive__struct.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <std_msgs/msg/detail/float32__struct.hpp>
@@ -51,6 +52,7 @@ public:
 private:
   void velocityCallback(const auto_aim_interfaces::msg::Velocity::SharedPtr velocity_msg);
   void receiveCallback(const auto_aim_interfaces::msg::Receive::SharedPtr receive_msg);
+  void latencyCallback(const auto_aim_interfaces::msg::AllLatency::SharedPtr latency_msg);
 
   void armorsCallback(const auto_aim_interfaces::msg::Armors::SharedPtr armors_ptr);
 
@@ -95,6 +97,7 @@ private:
 
   rclcpp::Subscription<auto_aim_interfaces::msg::Velocity>::SharedPtr velocity_sub_;
   rclcpp::Subscription<auto_aim_interfaces::msg::Receive>::SharedPtr receive_sub_;
+  rclcpp::Subscription<auto_aim_interfaces::msg::AllLatency>::SharedPtr detctor_sub_;
   std::shared_ptr<velocity_tf2_filter> velocity_filter_;
 
   // Tracker info publisher

@@ -34,7 +34,7 @@ RMSerialDriver::RMSerialDriver(const rclcpp::NodeOptions & options)
 
   getParams();
 
-  armor_or_buff_ = this->declare_parameter("armor_or_buff", 1);
+  armor_or_buff_ = this->declare_parameter("armor_or_buff", 0);
 
   // TF broadcaster
   timestamp_offset_ = this->declare_parameter("timestamp_offset", 0.0);
@@ -160,6 +160,7 @@ void RMSerialDriver::receiveData()
           // crc16::Verify_CRC16_Check_Sum(reinterpret_cast<const uint8_t *>(&packet), sizeof(packet));
           crc16::CRC16_Verify(reinterpret_cast<const uint8_t *>(&packet), sizeof(packet)); 
         if (crc_ok) {
+          
           packet.detect_color = 0;
           if (!initial_set_param_ || packet.detect_color != previous_receive_color_) {
             setParam(rclcpp::Parameter("detect_color", packet.detect_color));

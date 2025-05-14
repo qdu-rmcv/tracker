@@ -43,7 +43,7 @@ struct SendPacket
   float z;  //装甲板在世界坐标系下的z
   float v_yaw;
 
-  float pitch;
+  float pitch; 
   float yaw;  //云台的yaw
   uint16_t checksum = 0;
 } __attribute__((packed));

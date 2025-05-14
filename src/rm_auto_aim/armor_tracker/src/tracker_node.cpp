@@ -34,11 +34,14 @@ ArmorTrackerNode::ArmorTrackerNode(const rclcpp::NodeOptions & options)
   float s_bias = this->declare_parameter("tracker.s_bias", 0.18375);
   float z_bias = this->declare_parameter("tracker.z_bias", 0.196);
 
+  // 判断开火范围
+  float fire_k = this->declare_parameter("tracker.fire_k", 0.001);
+
   // // v_yaw 切换,判断攻击装甲板还是攻击车中心
   // float use_v_yaw = this->declare_parameter("use_v_yaw", 15.0);
 
   // 解算的智能指针
-  gaf_solver = std::make_unique<SolveTrajectory>(k, bias_time, s_bias, z_bias);
+  gaf_solver = std::make_unique<SolveTrajectory>(k, bias_time, s_bias, z_bias, fire_k);
 
 
 
@@ -353,6 +356,11 @@ ArmorTrackerNode::ArmorTrackerNode(const rclcpp::NodeOptions & options)
     "/tracker/receive", rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data)),
     std::bind(&ArmorTrackerNode::receiveCallback, this, std::placeholders::_1));
 
+  // detector 延迟 订阅
+  detctor_sub_= this->create_subscription<auto_aim_interfaces::msg::AllLatency>(
+    "/detector/Latency", rclcpp::QoS(rclcpp::QoSInitialization::from_rmw(rmw_qos_profile_sensor_data)),
+    std::bind(&ArmorTrackerNode::latencyCallback, this, std::placeholders::_1));
+
   // subscriber and filter
   armors_sub_.subscribe(this, "/detector/armors", rmw_qos_profile_sensor_data);
   target_frame_ = this->declare_parameter("target_frame", "odom");
@@ -363,7 +371,7 @@ ArmorTrackerNode::ArmorTrackerNode(const rclcpp::NodeOptions & options)
   tf2_filter_->registerCallback(&ArmorTrackerNode::armorsCallback, this);
 
 
- 
+
   // Measurement publisher (for debug usage)
   info_pub_ = this->create_publisher<auto_aim_interfaces::msg::TrackerInfo>("/tracker/info", 10);
 
@@ -422,22 +430,24 @@ ArmorTrackerNode::ArmorTrackerNode(const rclcpp::NodeOptions & options)
   aiming_point_.color.g = 1.0;
   aiming_point_.color.b = 1.0;
   aiming_point_.color.a = 1.0;
-  aiming_point_.lifetime = rclcpp::Duration::from_seconds(0.1);
+  // aiming_point_.lifetime = rclcpp::Duration::from_seconds(0.1);
 
   marker_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("/tracker/marker", 10);
 }
 
 //! 速度回调,在这里给的速度初始值
-void ArmorTrackerNode::velocityCallback(const auto_aim_interfaces::msg::Velocity::SharedPtr velocity_msg)
-{
+void ArmorTrackerNode::velocityCallback(const auto_aim_interfaces::msg::Velocity::SharedPtr velocity_msg){
 
   gaf_solver->init(velocity_msg);
 
 }
 
-void ArmorTrackerNode::receiveCallback(const auto_aim_interfaces::msg::Receive::SharedPtr receive_msg)
-{
+void ArmorTrackerNode::receiveCallback(const auto_aim_interfaces::msg::Receive::SharedPtr receive_msg){
   gaf_solver->initReceive(receive_msg);
+}
+
+void ArmorTrackerNode::latencyCallback(const auto_aim_interfaces::msg::AllLatency::SharedPtr detector_msg){
+  gaf_solver->initLatency(detector_msg);
 }
 
 void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::SharedPtr armors_msg)
@@ -477,6 +487,10 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
   target_msg.header.stamp = time;
   target_msg.header.frame_id = target_frame_;
 
+  // 测试通道
+  target0_yaw = 0;
+
+
   // Update tracker
   if (tracker_->tracker_state == Tracker::LOST) {
     tracker_->init(armors_msg);
@@ -515,7 +529,7 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
       target_msg.yaw = state(6);
       target_msg.v_yaw = state(7);
       target_msg.a_yaw = state(8);
-      // target_msg.aa_yaw = state(9);
+
       target_msg.radius_1 = state(9);
       target_msg.radius_2 = tracker_->another_r;
       target_msg.dz = tracker_->dz;
@@ -525,8 +539,6 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
       // v_yaw 单位换算到 degree/s
       target_msg.v_yaw_degree = target_msg.v_yaw * (180.0 / M_PI);
 
-      // 测试通道
-      target0_yaw = 0;
       
       //* 弹道解算
       // 算出来的 pitch与yaw就是 云台要去的yaw
@@ -534,9 +546,6 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
       auto msg = std::make_shared<auto_aim_interfaces::msg::Target>(target_msg);
       gaf_solver->autoSolveTrajectory(send_pitch, send_yaw, aim_x, aim_y, aim_z, msg, target0_yaw);
 
-      // 开火指令
-      // 下面的仍然是 拉姆达表达式 [&] 按引用捕获外部作用域中的所有变量。这意味着在 Lambda 内部可以直接访问和修改外部变量
-      gaf_solver->setFireCallback([&](bool is_fire) { send_msg.is_fire = is_fire;});
       send_msg.position.x = aim_x;
       send_msg.position.y = aim_y;
       send_msg.position.z = aim_z;
@@ -544,24 +553,33 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
       send_msg.pitch = send_pitch;
       send_msg.yaw = send_yaw;
 
+      // 开火指令
+      // 下面的仍然是 拉姆达表达式 [&] 按引用捕获外部作用域中的所有变量。这意味着在 Lambda 内部可以直接访问和修改外部变量
+      send_msg.is_fire = gaf_solver->shouldFire(send_msg.yaw, gaf_solver->receive_yaw);
+
+
+
+
     } else if (tracker_->tracker_state == Tracker::CHANGE_TARGET) {
       target_msg.tracking = false;
     }
   }
-  // tracker 延迟计算
+  
   last_time_ = time;
 
+  // tracker 延迟计算
   auto tracker_latency_end = this->get_clock()->now();
   auto tracker_latency_dt = tracker_latency_end - tracker_latency_start;
 
   auto_aim_interfaces::msg::AllLatency tracker_latency_msg;
   tracker_latency_msg.header.stamp = time;
-  tracker_latency_msg.tracker_latency = tracker_latency_dt.seconds();
+  tracker_latency_msg.tracker_latency = static_cast<int>(tracker_latency_dt.seconds() * 1000);
 
   // 测试通道
   auto_aim_interfaces::msg::Test target0_yaw_;
   target0_yaw_.header.stamp = time; 
-  target0_yaw_.yaw = target0_yaw;
+  target0_yaw_.yaw = target0_yaw; 
+  target0_yaw_.d_yaw = gaf_solver->d_yaw;
 
   test_pub_->publish(target0_yaw_);
 
@@ -577,6 +595,9 @@ void ArmorTrackerNode::armorsCallback(const auto_aim_interfaces::msg::Armors::Sh
   publishMarkers(target_msg);
 
 }
+
+
+
 
 
 

@@ -1,25 +1,25 @@
 /camera_node:
   ros__parameters:
-    camera_info_url: package://rm_vision_bringup/config/camera_info_4.yaml
-    exposure_time: 5500
-    gain: 12.0
+    camera_info_url: package://rm_vision_bringup/config/camera_info_3.yaml
+    exposure_time: 1000
+    gain: 16.0
 
 /serial_driver:
   ros__parameters:
-    timestamp_offset: 0.006
+    timestamp_offset: 0.0045
     device_name: /dev/ttyACM0
     baud_rate: 460800
     flow_control: none
     parity: none
     stop_bits: "1"
-    armor_or_buff: 1  #1:armor 0:buff
+    armor_or_buff: 1 #1:armor 0:buff
 
 /armor_detector:
   ros__parameters:
     debug: true
 
     detect_color: 0 #0-RED, 1-BLUE
-    binary_thres: 78
+    binary_thres: 68
 
     light.min_ratio: 0.1
     light.min_fill_ratio: 0.6
@@ -34,28 +34,28 @@
     max_armor_distance: 15.0
 
     ekf:
-      sigma2_q_xyz_max: 0.05  #0.05
+      sigma2_q_xyz_max: 0.06  #0.05
       sigma2_q_xyz_min: 0.05  #0.05
-      sigma2_q_yaw_max: 1.14   #1.14
-      sigma2_q_yaw_min: 0.50  #0.67
-      sigma2_q_r: 40.0
+      sigma2_q_yaw_max: 0.50   #1.14
+      sigma2_q_yaw_min: 0.45  #0.67
+      sigma2_q_r: 80.0
 
-      r_xyz_factor: 8e-5
-      r_yaw: 8e-4
+      r_xyz_factor: 4e-4  # 8e-5
+      r_yaw: 5e-3 #8e-4
 
       sigma2_q_xyz: 0.05
       segma2_q_yaw: 5.0
 
     tracker:
-      max_match_distance: 5.0
-      max_match_yaw_diff: 0.8
+      max_match_distance: 1.0
+      max_match_yaw_diff: 0.6
 
-      tracking_thres: 3
+      tracking_thres: 1
       lost_time_thres: 1.0
 
       # 注意: 弹道解算的参数也在这里
       k: 0.038
-      bias_time: 100
+      bias_time: 100  # 单位 ms
       s_bias: 0.18375
       z_bias: 0.0
 

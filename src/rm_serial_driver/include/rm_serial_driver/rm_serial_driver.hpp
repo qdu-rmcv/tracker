@@ -81,7 +81,7 @@ private:
 
   // Param client to set detect_colr
   using ResultFuturePtr = std::shared_future<std::vector<rcl_interfaces::msg::SetParametersResult>>;
-  bool initial_set_param_ = false;
+  bool initial_set_param_ = true;
   uint8_t previous_receive_color_ = 0;
   rclcpp::AsyncParametersClient::SharedPtr detector_param_client_;
   ResultFuturePtr set_param_future_;
