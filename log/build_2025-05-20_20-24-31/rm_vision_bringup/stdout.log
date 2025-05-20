@@ -1,0 +1,47 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake_auto: 1.3.11 (/opt/ros/humble/share/ament_cmake_auto/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/hdm/tracker_plus_ttttt/tracker_plus/build/rm_vision_bringup
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/launch/common.py
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/launch/no_hardware.launch.py
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/launch/vision_bringup.launch.py
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/config/camera_info.yaml
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/config/camera_info_1.yaml
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/config/camera_info_3.yaml
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/config/camera_info_4.yaml
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/config/camera_info_7.yaml
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/config/launch_params.yaml
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/config/node_params.yaml
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/config/odom2camera.txt
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/ament_index/resource_index/package_run_dependencies/rm_vision_bringup
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/ament_index/resource_index/parent_prefix_path/rm_vision_bringup
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/environment/ament_prefix_path.sh
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/environment/ament_prefix_path.dsv
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/environment/path.sh
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/environment/path.dsv
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/local_setup.bash
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/local_setup.sh
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/local_setup.zsh
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/local_setup.dsv
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/package.dsv
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/ament_index/resource_index/packages/rm_vision_bringup
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/cmake/rm_vision_bringupConfig.cmake
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/cmake/rm_vision_bringupConfig-version.cmake
+-- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/rm_vision_bringup/share/rm_vision_bringup/package.xml

@@ -1,0 +1,92 @@
+[0.010s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/hdm/tracker_plus_ttttt/tracker_plus/src/rm_buff/buff_detector -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector
+[0.058s] -- The C compiler identification is GNU 11.4.0
+[0.103s] -- The CXX compiler identification is GNU 11.4.0
+[0.110s] -- Detecting C compiler ABI info
+[0.178s] -- Detecting C compiler ABI info - done
+[0.186s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.186s] -- Detecting C compile features
+[0.186s] -- Detecting C compile features - done
+[0.189s] -- Detecting CXX compiler ABI info
+[0.267s] -- Detecting CXX compiler ABI info - done
+[0.273s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.273s] -- Detecting CXX compile features
+[0.274s] -- Detecting CXX compile features - done
+[0.276s] -- Found ament_cmake_auto: 1.3.11 (/opt/ros/humble/share/ament_cmake_auto/cmake)
+[0.413s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.471s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.498s] -- Found OpenCV: /home/hdm/environment (found version "4.5.4") 
+[0.502s] -- Looking for pthread.h
+[0.566s] -- Looking for pthread.h - found
+[0.566s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.627s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.628s] -- Found Threads: TRUE  
+[0.710s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.714s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.720s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.728s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.740s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.769s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.771s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.841s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.864s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.898s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.018s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[1.019s] -- Found Eigen3: TRUE (found version "3.3.7") 
+[1.020s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.083s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.099s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.099s] -- Configured cppcheck include dirs: /home/hdm/tracker_plus_ttttt/tracker_plus/src/rm_buff/buff_detector/include
+[1.099s] -- Configured cppcheck exclude dirs and/or files: 
+[1.099s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.099s] -- Added test 'lint_cmake' to check CMake code style
+[1.100s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.100s] -- Added test 'xmllint' to check XML markup files
+[1.102s] -- Configuring done
+[1.115s] -- Generating done
+[1.119s] -- Build files have been written to: /home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector
+[1.128s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector' returned '0': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/hdm/tracker_plus_ttttt/tracker_plus/src/rm_buff/buff_detector -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector
+[1.130s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector -- -j24 -l24
+[1.172s] [ 16%] [32mBuilding CXX object CMakeFiles/buff_detector.dir/src/detector.cpp.o[0m
+[1.173s] [ 50%] [32mBuilding CXX object CMakeFiles/buff_detector.dir/src/detector_node.cpp.o[0m
+[1.173s] [ 50%] [32mBuilding CXX object CMakeFiles/buff_detector.dir/src/pnp_solver.cpp.o[0m
+[1.174s] [ 66%] [32mBuilding CXX object CMakeFiles/buff_detector_node.dir/rclcpp_components/node_main_buff_detector_node.cpp.o[0m
+[4.483s] [ 83%] [32m[1mLinking CXX executable buff_detector_node[0m
+[4.632s] [ 83%] Built target buff_detector_node
+[17.198s] [100%] [32m[1mLinking CXX shared library libbuff_detector.so[0m
+[18.043s] [100%] Built target buff_detector
+[18.053s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector' returned '0': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector -- -j24 -l24
+[18.055s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector
+[18.064s] -- Install configuration: ""
+[18.064s] -- Execute custom install script
+[18.065s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/lib/buff_detector/buff_detector_node
+[18.071s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/include/buff_detector/blade.hpp
+[18.078s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/include/buff_detector/detector.hpp
+[18.088s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/include/buff_detector/detector_node.hpp
+[18.095s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/include/buff_detector/pnp_solver.hpp
+[18.103s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/environment/library_path.sh
+[18.110s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/environment/library_path.dsv
+[18.119s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/lib/libbuff_detector.so
+[18.125s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/models/buff_quantized.bin
+[18.134s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/models/buff_quantized.xml
+[18.141s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/models/metadata.yaml
+[18.150s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/launch/buff_detector.launch.py
+[18.158s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/ament_index/resource_index/package_run_dependencies/buff_detector
+[18.164s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/ament_index/resource_index/parent_prefix_path/buff_detector
+[18.172s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/environment/ament_prefix_path.sh
+[18.181s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/environment/ament_prefix_path.dsv
+[18.188s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/environment/path.sh
+[18.195s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/environment/path.dsv
+[18.203s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/local_setup.bash
+[18.212s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/local_setup.sh
+[18.219s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/local_setup.zsh
+[18.228s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/local_setup.dsv
+[18.235s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/package.dsv
+[18.242s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/ament_index/resource_index/packages/buff_detector
+[18.251s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/ament_index/resource_index/rclcpp_components/buff_detector
+[18.259s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/cmake/ament_cmake_export_dependencies-extras.cmake
+[18.267s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/cmake/ament_cmake_export_include_directories-extras.cmake
+[18.276s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/cmake/ament_cmake_export_libraries-extras.cmake
+[18.282s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/cmake/buff_detectorConfig.cmake
+[18.291s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/cmake/buff_detectorConfig-version.cmake
+[18.301s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_detector/share/buff_detector/package.xml
+[18.311s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector' returned '0': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/buff_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/hdm/tracker_plus_ttttt/tracker_plus/build/buff_detector

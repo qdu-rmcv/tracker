@@ -1,0 +1,537 @@
+[0.015s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/hdm/tracker_plus_ttttt/tracker_plus/src/rm_auto_aim/auto_aim_interfaces -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces
+[0.101s] -- The C compiler identification is GNU 11.4.0
+[0.173s] -- The CXX compiler identification is GNU 11.4.0
+[0.181s] -- Detecting C compiler ABI info
+[0.240s] -- Detecting C compiler ABI info - done
+[0.246s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.246s] -- Detecting C compile features
+[0.247s] -- Detecting C compile features - done
+[0.250s] -- Detecting CXX compiler ABI info
+[0.319s] -- Detecting CXX compiler ABI info - done
+[0.325s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.325s] -- Detecting CXX compile features
+[0.326s] -- Detecting CXX compile features - done
+[0.330s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.469s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.524s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.547s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.550s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.555s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.592s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.624s] -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.935s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.135s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.415s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.443s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[1.444s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.470s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[1.470s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.470s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.470s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[1.488s] -- Found PythonExtra: .so  
+[1.550s] -- Configuring done
+[1.598s] -- Generating done
+[1.607s] -- Build files have been written to: /home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces
+[1.616s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/hdm/tracker_plus_ttttt/tracker_plus/src/rm_auto_aim/auto_aim_interfaces -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces
+[1.616s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces -- -j24 -l24
+[1.659s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.669s] [  1%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[1.687s] [  1%] Built target ament_cmake_python_symlink_auto_aim_interfaces
+[1.937s] running egg_info
+[1.937s] creating auto_aim_interfaces.egg-info
+[1.937s] writing auto_aim_interfaces.egg-info/PKG-INFO
+[1.938s] writing dependency_links to auto_aim_interfaces.egg-info/dependency_links.txt
+[1.938s] writing top-level names to auto_aim_interfaces.egg-info/top_level.txt
+[1.938s] writing manifest file 'auto_aim_interfaces.egg-info/SOURCES.txt'
+[1.940s] reading manifest file 'auto_aim_interfaces.egg-info/SOURCES.txt'
+[1.941s] writing manifest file 'auto_aim_interfaces.egg-info/SOURCES.txt'
+[1.974s] [  1%] Built target ament_cmake_python_build_auto_aim_interfaces_egg
+[2.945s] [  1%] Built target auto_aim_interfaces__cpp
+[2.965s] [  1%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[2.982s] [  2%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[2.995s] [  3%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[3.573s] [  4%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/armors__functions.c.o[0m
+[3.590s] [  5%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/debug_armor__functions.c.o[0m
+[3.590s] [  6%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/debug_armors__functions.c.o[0m
+[3.591s] [  7%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/target__functions.c.o[0m
+[3.594s] [  8%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/tracker_info__functions.c.o[0m
+[3.596s] [  8%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/time_info__functions.c.o[0m
+[3.596s] [  9%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/debug_light__functions.c.o[0m
+[3.598s] [ 10%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/send__functions.c.o[0m
+[3.609s] [ 10%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/all_latency__functions.c.o[0m
+[3.610s] [ 11%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/test__functions.c.o[0m
+[3.612s] [ 11%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/armor__functions.c.o[0m
+[3.621s] [ 11%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/debug_lights__functions.c.o[0m
+[3.646s] [ 12%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/receive__functions.c.o[0m
+[3.687s] [ 13%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_c.dir/rosidl_generator_c/auto_aim_interfaces/msg/detail/velocity__functions.c.o[0m
+[4.019s] [ 14%] [32m[1mLinking C shared library libauto_aim_interfaces__rosidl_generator_c.so[0m
+[4.181s] [ 14%] Built target auto_aim_interfaces__rosidl_generator_c
+[4.204s] [ 15%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[4.207s] [ 16%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[4.240s] [ 17%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[4.607s] [ 19%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/armor__type_support.cpp.o[0m
+[4.607s] [ 19%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/armors__type_support.cpp.o[0m
+[4.607s] [ 19%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/target__type_support.cpp.o[0m
+[4.608s] [ 21%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/debug_lights__type_support.cpp.o[0m
+[4.608s] [ 21%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/debug_light__type_support.cpp.o[0m
+[4.611s] [ 22%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/tracker_info__type_support.cpp.o[0m
+[4.611s] [ 23%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/debug_armors__type_support.cpp.o[0m
+[4.611s] [ 23%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/send__type_support.cpp.o[0m
+[4.612s] [ 23%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/debug_armor__type_support.cpp.o[0m
+[4.618s] [ 24%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/all_latency__type_support.cpp.o[0m
+[4.619s] [ 24%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/test__type_support.cpp.o[0m
+[4.645s] [ 25%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/receive__type_support.cpp.o[0m
+[4.645s] [ 26%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/time_info__type_support.cpp.o[0m
+[4.682s] [ 27%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/auto_aim_interfaces/msg/velocity__type_support.cpp.o[0m
+[4.881s] [ 28%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/armor__type_support.cpp.o[0m
+[4.884s] [ 29%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/armors__type_support.cpp.o[0m
+[4.891s] [ 29%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/debug_light__type_support.cpp.o[0m
+[4.891s] [ 30%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/target__type_support.cpp.o[0m
+[4.921s] [ 31%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/debug_lights__type_support.cpp.o[0m
+[4.932s] [ 32%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/debug_armor__type_support.cpp.o[0m
+[5.169s] [ 33%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/debug_armors__type_support.cpp.o[0m
+[5.233s] [ 33%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/tracker_info__type_support.cpp.o[0m
+[5.277s] [ 34%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/time_info__type_support.cpp.o[0m
+[5.284s] [ 35%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/velocity__type_support.cpp.o[0m
+[5.288s] [ 36%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/send__type_support.cpp.o[0m
+[5.342s] [ 36%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/receive__type_support.cpp.o[0m
+[5.374s] [ 37%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/all_latency__type_support.cpp.o[0m
+[5.441s] [ 38%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/auto_aim_interfaces/msg/detail/test__type_support.cpp.o[0m
+[5.876s] [ 39%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/armor__type_support.cpp.o[0m
+[5.897s] [ 40%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/armors__type_support.cpp.o[0m
+[5.898s] [ 40%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/target__type_support.cpp.o[0m
+[5.908s] [ 41%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/debug_lights__type_support.cpp.o[0m
+[5.914s] [ 42%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/debug_light__type_support.cpp.o[0m
+[5.927s] [ 43%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/debug_armor__type_support.cpp.o[0m
+[5.960s] [ 43%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/debug_armors__type_support.cpp.o[0m
+[5.970s] [ 44%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/tracker_info__type_support.cpp.o[0m
+[6.053s] [ 45%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/time_info__type_support.cpp.o[0m
+[6.087s] [ 46%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/all_latency__type_support.cpp.o[0m
+[6.088s] [ 46%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/velocity__type_support.cpp.o[0m
+[6.090s] [ 47%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/receive__type_support.cpp.o[0m
+[6.117s] [ 48%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/test__type_support.cpp.o[0m
+[6.122s] [ 49%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/auto_aim_interfaces/msg/detail/dds_fastrtps/send__type_support.cpp.o[0m
+[6.136s] [ 50%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/armor__type_support.c.o[0m
+[6.145s] [ 51%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/armors__type_support.c.o[0m
+[6.147s] [ 51%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/target__type_support.c.o[0m
+[6.150s] [ 52%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/debug_light__type_support.c.o[0m
+[6.182s] [ 53%] [32m[1mLinking CXX shared library libauto_aim_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[6.222s] [ 54%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/debug_lights__type_support.c.o[0m
+[6.225s] [ 55%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/debug_armor__type_support.c.o[0m
+[6.233s] [ 55%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/debug_armors__type_support.c.o[0m
+[6.247s] [ 56%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/tracker_info__type_support.c.o[0m
+[6.251s] [ 57%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/time_info__type_support.c.o[0m
+[6.280s] [ 58%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/velocity__type_support.c.o[0m
+[6.286s] [ 58%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/send__type_support.c.o[0m
+[6.294s] [ 59%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/receive__type_support.c.o[0m
+[6.302s] [ 60%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/all_latency__type_support.c.o[0m
+[6.312s] [ 61%] [32m[1mLinking CXX shared library libauto_aim_interfaces__rosidl_typesupport_cpp.so[0m
+[6.313s] [ 61%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/auto_aim_interfaces/msg/detail/test__type_support.c.o[0m
+[6.371s] [ 61%] Built target auto_aim_interfaces__rosidl_typesupport_introspection_cpp
+[6.410s] [ 62%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/target__type_support_c.cpp.o[0m
+[6.411s] [ 63%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/armor__type_support_c.cpp.o[0m
+[6.413s] [ 64%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/debug_light__type_support_c.cpp.o[0m
+[6.415s] [ 64%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/armors__type_support_c.cpp.o[0m
+[6.421s] [ 65%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/debug_lights__type_support_c.cpp.o[0m
+[6.423s] [ 66%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/debug_armor__type_support_c.cpp.o[0m
+[6.428s] [ 66%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/debug_armors__type_support_c.cpp.o[0m
+[6.474s] [ 67%] [32m[1mLinking C shared library libauto_aim_interfaces__rosidl_typesupport_introspection_c.so[0m
+[6.495s] [ 67%] Built target auto_aim_interfaces__rosidl_typesupport_cpp
+[6.537s] [ 68%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/time_info__type_support_c.cpp.o[0m
+[6.545s] [ 68%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/send__type_support_c.cpp.o[0m
+[6.554s] [ 69%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/tracker_info__type_support_c.cpp.o[0m
+[6.590s] [ 69%] Built target auto_aim_interfaces__rosidl_typesupport_introspection_c
+[6.641s] [ 70%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/receive__type_support_c.cpp.o[0m
+[6.655s] [ 71%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/velocity__type_support_c.cpp.o[0m
+[6.719s] [ 71%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/test__type_support_c.cpp.o[0m
+[6.750s] [ 72%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/auto_aim_interfaces/msg/detail/all_latency__type_support_c.cpp.o[0m
+[7.226s] [ 73%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/armors__type_support.cpp.o[0m
+[7.226s] [ 73%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/armor__type_support.cpp.o[0m
+[7.226s] [ 73%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/debug_lights__type_support.cpp.o[0m
+[7.227s] [ 74%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/debug_armors__type_support.cpp.o[0m
+[7.227s] [ 75%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/debug_armor__type_support.cpp.o[0m
+[7.228s] [ 76%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/tracker_info__type_support.cpp.o[0m
+[7.229s] [ 76%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/time_info__type_support.cpp.o[0m
+[7.230s] [ 77%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/velocity__type_support.cpp.o[0m
+[7.231s] [ 79%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/send__type_support.cpp.o[0m
+[7.231s] [ 79%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/receive__type_support.cpp.o[0m
+[7.231s] [ 79%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/all_latency__type_support.cpp.o[0m
+[7.235s] [ 80%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/target__type_support.cpp.o[0m
+[7.246s] [ 81%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/debug_light__type_support.cpp.o[0m
+[7.249s] [ 82%] [32mBuilding CXX object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/auto_aim_interfaces/msg/test__type_support.cpp.o[0m
+[7.309s] [ 83%] [32m[1mLinking CXX shared library libauto_aim_interfaces__rosidl_typesupport_c.so[0m
+[7.369s] [ 83%] Built target auto_aim_interfaces__rosidl_typesupport_c
+[7.414s] [ 83%] [32m[1mLinking CXX shared library libauto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[7.435s] [ 84%] [32m[1mLinking CXX shared library libauto_aim_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[7.501s] [ 84%] Built target auto_aim_interfaces__rosidl_typesupport_fastrtps_cpp
+[7.507s] [ 84%] Built target auto_aim_interfaces__rosidl_typesupport_fastrtps_c
+[7.526s] [ 84%] Built target auto_aim_interfaces
+[7.543s] [ 85%] [34m[1mGenerating Python code for ROS interfaces[0m
+[8.579s] [ 85%] Built target auto_aim_interfaces__py
+[8.598s] [ 85%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_armors_s.c.o[0m
+[8.598s] [ 86%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_target_s.c.o[0m
+[8.599s] [ 87%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_debug_lights_s.c.o[0m
+[8.600s] [ 87%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_debug_armor_s.c.o[0m
+[8.600s] [ 88%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_tracker_info_s.c.o[0m
+[8.601s] [ 89%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_armor_s.c.o[0m
+[8.601s] [ 89%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_send_s.c.o[0m
+[8.601s] [ 90%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_debug_armors_s.c.o[0m
+[8.602s] [ 91%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_debug_light_s.c.o[0m
+[8.604s] [ 92%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_test_s.c.o[0m
+[8.604s] [ 92%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_all_latency_s.c.o[0m
+[8.605s] [ 93%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_time_info_s.c.o[0m
+[8.606s] [ 94%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_velocity_s.c.o[0m
+[8.606s] [ 95%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_generator_py.dir/rosidl_generator_py/auto_aim_interfaces/msg/_receive_s.c.o[0m
+[8.752s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/auto_aim_interfaces/libauto_aim_interfaces__rosidl_generator_py.so[0m
+[8.786s] [ 96%] Built target auto_aim_interfaces__rosidl_generator_py
+[8.804s] [ 97%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/auto_aim_interfaces/_auto_aim_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[8.804s] [ 98%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/auto_aim_interfaces/_auto_aim_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[8.804s] [ 99%] [32mBuilding C object CMakeFiles/auto_aim_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/auto_aim_interfaces/_auto_aim_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[8.904s] [ 99%] [32m[1mLinking C shared library rosidl_generator_py/auto_aim_interfaces/auto_aim_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[8.905s] [ 99%] [32m[1mLinking C shared library rosidl_generator_py/auto_aim_interfaces/auto_aim_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[8.905s] [100%] [32m[1mLinking C shared library rosidl_generator_py/auto_aim_interfaces/auto_aim_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[8.940s] [100%] Built target auto_aim_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[8.940s] [100%] Built target auto_aim_interfaces__rosidl_typesupport_c__pyext
+[8.943s] [100%] Built target auto_aim_interfaces__rosidl_typesupport_introspection_c__pyext
+[8.952s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces -- -j24 -l24
+[8.954s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces
+[8.959s] -- Install configuration: ""
+[8.960s] -- Execute custom install script
+[8.960s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/ament_index/resource_index/rosidl_interfaces/auto_aim_interfaces
+[8.966s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/all_latency.h
+[8.972s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/armor.h
+[8.978s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/armors.h
+[8.984s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/debug_armor.h
+[8.991s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/debug_armors.h
+[8.998s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/debug_light.h
+[9.005s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/debug_lights.h
+[9.011s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__functions.h
+[9.017s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__struct.h
+[9.023s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__type_support.h
+[9.030s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__functions.h
+[9.036s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__struct.h
+[9.041s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__type_support.h
+[9.047s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__functions.h
+[9.052s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__struct.h
+[9.059s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__type_support.h
+[9.065s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__functions.h
+[9.071s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__struct.h
+[9.078s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__type_support.h
+[9.085s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__functions.h
+[9.090s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__struct.h
+[9.095s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__type_support.h
+[9.101s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__functions.h
+[9.107s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__struct.h
+[9.113s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__type_support.h
+[9.118s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__functions.h
+[9.125s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__struct.h
+[9.131s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__type_support.h
+[9.138s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__functions.h
+[9.144s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__struct.h
+[9.149s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__type_support.h
+[9.154s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__functions.h
+[9.161s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__struct.h
+[9.166s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__type_support.h
+[9.174s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__functions.h
+[9.182s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__struct.h
+[9.189s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__type_support.h
+[9.196s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__functions.h
+[9.202s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__struct.h
+[9.207s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__type_support.h
+[9.214s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__functions.h
+[9.222s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__struct.h
+[9.227s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__type_support.h
+[9.234s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__functions.h
+[9.242s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__struct.h
+[9.248s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__type_support.h
+[9.256s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__functions.h
+[9.262s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__struct.h
+[9.268s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__type_support.h
+[9.274s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/receive.h
+[9.280s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/rosidl_generator_c__visibility_control.h
+[9.287s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/send.h
+[9.292s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/target.h
+[9.299s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/test.h
+[9.305s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/time_info.h
+[9.311s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/tracker_info.h
+[9.317s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/velocity.h
+[9.323s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/environment/library_path.sh
+[9.329s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/environment/library_path.dsv
+[9.336s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__rosidl_typesupport_fastrtps_c.h
+[9.341s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__rosidl_typesupport_fastrtps_c.h
+[9.347s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__rosidl_typesupport_fastrtps_c.h
+[9.353s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__rosidl_typesupport_fastrtps_c.h
+[9.359s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__rosidl_typesupport_fastrtps_c.h
+[9.364s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__rosidl_typesupport_fastrtps_c.h
+[9.371s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__rosidl_typesupport_fastrtps_c.h
+[9.377s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__rosidl_typesupport_fastrtps_c.h
+[9.383s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__rosidl_typesupport_fastrtps_c.h
+[9.389s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__rosidl_typesupport_fastrtps_c.h
+[9.395s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__rosidl_typesupport_fastrtps_c.h
+[9.401s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__rosidl_typesupport_fastrtps_c.h
+[9.407s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__rosidl_typesupport_fastrtps_c.h
+[9.413s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__rosidl_typesupport_fastrtps_c.h
+[9.419s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[9.426s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__rosidl_typesupport_introspection_c.h
+[9.432s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__rosidl_typesupport_introspection_c.h
+[9.437s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__rosidl_typesupport_introspection_c.h
+[9.443s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__rosidl_typesupport_introspection_c.h
+[9.449s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__rosidl_typesupport_introspection_c.h
+[9.455s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__rosidl_typesupport_introspection_c.h
+[9.461s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__rosidl_typesupport_introspection_c.h
+[9.467s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__rosidl_typesupport_introspection_c.h
+[9.473s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__rosidl_typesupport_introspection_c.h
+[9.480s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__rosidl_typesupport_introspection_c.h
+[9.486s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__rosidl_typesupport_introspection_c.h
+[9.493s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__rosidl_typesupport_introspection_c.h
+[9.499s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__rosidl_typesupport_introspection_c.h
+[9.505s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__rosidl_typesupport_introspection_c.h
+[9.512s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[9.520s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/all_latency.hpp
+[9.527s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/armor.hpp
+[9.534s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/armors.hpp
+[9.543s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/debug_armor.hpp
+[9.550s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/debug_armors.hpp
+[9.557s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/debug_light.hpp
+[9.567s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/debug_lights.hpp
+[9.578s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__builder.hpp
+[9.587s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__struct.hpp
+[9.597s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__traits.hpp
+[9.606s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__type_support.hpp
+[9.616s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__builder.hpp
+[9.623s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__struct.hpp
+[9.630s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__traits.hpp
+[9.639s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__type_support.hpp
+[9.649s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__builder.hpp
+[9.656s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__struct.hpp
+[9.663s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__traits.hpp
+[9.671s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__type_support.hpp
+[9.678s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__builder.hpp
+[9.688s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__struct.hpp
+[9.698s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__traits.hpp
+[9.706s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__type_support.hpp
+[9.713s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__builder.hpp
+[9.725s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__struct.hpp
+[9.737s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__traits.hpp
+[9.747s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__type_support.hpp
+[9.756s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__builder.hpp
+[9.764s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__struct.hpp
+[9.771s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__traits.hpp
+[9.779s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__type_support.hpp
+[9.788s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__builder.hpp
+[9.797s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__struct.hpp
+[9.807s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__traits.hpp
+[9.818s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__type_support.hpp
+[9.825s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__builder.hpp
+[9.833s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__struct.hpp
+[9.839s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__traits.hpp
+[9.849s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__type_support.hpp
+[9.856s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__builder.hpp
+[9.864s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__struct.hpp
+[9.872s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__traits.hpp
+[9.880s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__type_support.hpp
+[9.887s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__builder.hpp
+[9.894s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__struct.hpp
+[9.900s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__traits.hpp
+[9.907s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__type_support.hpp
+[9.916s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__builder.hpp
+[9.923s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__struct.hpp
+[9.932s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__traits.hpp
+[9.939s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__type_support.hpp
+[9.947s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__builder.hpp
+[9.953s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__struct.hpp
+[9.961s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__traits.hpp
+[9.970s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__type_support.hpp
+[9.977s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__builder.hpp
+[9.985s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__struct.hpp
+[9.995s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__traits.hpp
+[10.002s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__type_support.hpp
+[10.009s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__builder.hpp
+[10.017s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__struct.hpp
+[10.024s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__traits.hpp
+[10.032s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__type_support.hpp
+[10.039s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/receive.hpp
+[10.046s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+[10.053s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/send.hpp
+[10.060s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/target.hpp
+[10.070s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/test.hpp
+[10.077s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/time_info.hpp
+[10.085s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/tracker_info.hpp
+[10.093s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/velocity.hpp
+[10.100s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__rosidl_typesupport_fastrtps_cpp.hpp
+[10.105s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__rosidl_typesupport_fastrtps_cpp.hpp
+[10.111s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__rosidl_typesupport_fastrtps_cpp.hpp
+[10.119s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__rosidl_typesupport_fastrtps_cpp.hpp
+[10.126s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__rosidl_typesupport_fastrtps_cpp.hpp
+[10.133s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__rosidl_typesupport_fastrtps_cpp.hpp
+[10.140s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__rosidl_typesupport_fastrtps_cpp.hpp
+[10.146s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__rosidl_typesupport_fastrtps_cpp.hpp
+[10.152s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__rosidl_typesupport_fastrtps_cpp.hpp
+[10.158s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__rosidl_typesupport_fastrtps_cpp.hpp
+[10.164s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__rosidl_typesupport_fastrtps_cpp.hpp
+[10.171s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__rosidl_typesupport_fastrtps_cpp.hpp
+[10.179s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__rosidl_typesupport_fastrtps_cpp.hpp
+[10.187s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__rosidl_typesupport_fastrtps_cpp.hpp
+[10.194s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[10.204s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/all_latency__rosidl_typesupport_introspection_cpp.hpp
+[10.211s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armor__rosidl_typesupport_introspection_cpp.hpp
+[10.219s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/armors__rosidl_typesupport_introspection_cpp.hpp
+[10.226s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armor__rosidl_typesupport_introspection_cpp.hpp
+[10.235s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_armors__rosidl_typesupport_introspection_cpp.hpp
+[10.242s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_light__rosidl_typesupport_introspection_cpp.hpp
+[10.248s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/debug_lights__rosidl_typesupport_introspection_cpp.hpp
+[10.257s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/receive__rosidl_typesupport_introspection_cpp.hpp
+[10.265s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/send__rosidl_typesupport_introspection_cpp.hpp
+[10.274s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/target__rosidl_typesupport_introspection_cpp.hpp
+[10.282s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/test__rosidl_typesupport_introspection_cpp.hpp
+[10.291s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/time_info__rosidl_typesupport_introspection_cpp.hpp
+[10.297s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/tracker_info__rosidl_typesupport_introspection_cpp.hpp
+[10.303s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/include/auto_aim_interfaces/auto_aim_interfaces/msg/detail/velocity__rosidl_typesupport_introspection_cpp.hpp
+[10.311s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/environment/pythonpath.sh
+[10.318s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/environment/pythonpath.dsv
+[10.326s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces-2.0.0-py3.10.egg-info/PKG-INFO
+[10.332s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces-2.0.0-py3.10.egg-info/SOURCES.txt
+[10.339s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces-2.0.0-py3.10.egg-info/dependency_links.txt
+[10.346s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces-2.0.0-py3.10.egg-info/top_level.txt
+[10.352s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/__init__.py
+[10.358s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/_auto_aim_interfaces_s.ep.rosidl_typesupport_c.c
+[10.366s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/_auto_aim_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[10.374s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/_auto_aim_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[10.383s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/auto_aim_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[10.391s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/auto_aim_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[10.397s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/auto_aim_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[10.403s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/libauto_aim_interfaces__rosidl_generator_py.so
+[10.409s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/__init__.py
+[10.416s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_all_latency.py
+[10.423s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_all_latency_s.c
+[10.431s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_armor.py
+[10.437s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_armor_s.c
+[10.443s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_armors.py
+[10.450s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_armors_s.c
+[10.457s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_armor.py
+[10.464s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_armor_s.c
+[10.470s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_armors.py
+[10.476s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_armors_s.c
+[10.484s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_light.py
+[10.490s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_light_s.c
+[10.496s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_lights.py
+[10.503s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_lights_s.c
+[10.509s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_receive.py
+[10.514s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_receive_s.c
+[10.520s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_send.py
+[10.527s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_send_s.c
+[10.532s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_target.py
+[10.540s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_target_s.c
+[10.547s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_test.py
+[10.554s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_test_s.c
+[10.561s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_time_info.py
+[10.568s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_time_info_s.c
+[10.573s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_tracker_info.py
+[10.580s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_tracker_info_s.c
+[10.587s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_velocity.py
+[10.593s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_velocity_s.c
+[10.601s] -- Up-to-date symlink: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/auto_aim_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[10.601s] -- Up-to-date symlink: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/auto_aim_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[10.602s] -- Up-to-date symlink: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/auto_aim_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[10.602s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Armor.idl
+[10.608s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Armors.idl
+[10.615s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Target.idl
+[10.621s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/DebugLight.idl
+[10.627s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/DebugLights.idl
+[10.635s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/DebugArmor.idl
+[10.642s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/DebugArmors.idl
+[10.649s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/TrackerInfo.idl
+[10.657s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/TimeInfo.idl
+[10.664s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Send.idl
+[10.671s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Velocity.idl
+[10.678s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Receive.idl
+[10.685s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/AllLatency.idl
+[10.692s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Test.idl
+[10.698s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Armor.msg
+[10.705s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Armors.msg
+[10.712s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Target.msg
+[10.719s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/DebugLight.msg
+[10.726s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/DebugLights.msg
+[10.735s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/DebugArmor.msg
+[10.742s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/DebugArmors.msg
+[10.749s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/TrackerInfo.msg
+[10.755s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/TimeInfo.msg
+[10.762s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Send.msg
+[10.769s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Velocity.msg
+[10.778s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Receive.msg
+[10.786s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/AllLatency.msg
+[10.795s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/msg/Test.msg
+[10.803s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/ament_index/resource_index/package_run_dependencies/auto_aim_interfaces
+[10.810s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/ament_index/resource_index/parent_prefix_path/auto_aim_interfaces
+[10.818s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/environment/ament_prefix_path.sh
+[10.830s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/environment/ament_prefix_path.dsv
+[10.839s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/environment/path.sh
+[10.851s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/environment/path.dsv
+[10.859s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/local_setup.bash
+[10.867s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/local_setup.sh
+[10.877s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/local_setup.zsh
+[10.887s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/local_setup.dsv
+[10.895s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/package.dsv
+[10.906s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/ament_index/resource_index/packages/auto_aim_interfaces
+[10.915s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/rosidl_cmake-extras.cmake
+[10.925s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[10.935s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[10.943s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[10.954s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[10.963s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[10.973s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[10.984s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/auto_aim_interfacesConfig.cmake
+[10.992s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/auto_aim_interfacesConfig-version.cmake
+[11.000s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/package.xml
+[11.009s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_generator_c.so
+[11.010s] -- Set runtime path of "/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_generator_c.so" to ""
+[11.010s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_fastrtps_c.so
+[11.010s] -- Set runtime path of "/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[11.011s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_introspection_c.so
+[11.011s] -- Set runtime path of "/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[11.011s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_c.so
+[11.012s] -- Set runtime path of "/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_c.so" to ""
+[11.012s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[11.012s] -- Set runtime path of "/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[11.012s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_introspection_cpp.so
+[11.013s] -- Set runtime path of "/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[11.014s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_cpp.so
+[11.014s] -- Set runtime path of "/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_typesupport_cpp.so" to ""
+[11.059s] Listing '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces'...
+[11.059s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/__init__.py'...
+[11.059s] Listing '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg'...
+[11.059s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/__init__.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_all_latency.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_armor.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_armors.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_armor.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_armors.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_light.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_debug_lights.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_receive.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_send.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_target.py'...
+[11.060s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_test.py'...
+[11.061s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_time_info.py'...
+[11.061s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_tracker_info.py'...
+[11.061s] Compiling '/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages/auto_aim_interfaces/msg/_velocity.py'...
+[11.064s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_generator_py.so
+[11.064s] -- Set runtime path of "/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib/libauto_aim_interfaces__rosidl_generator_py.so" to ""
+[11.064s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/export_auto_aim_interfaces__rosidl_generator_cExport.cmake
+[11.065s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/export_auto_aim_interfaces__rosidl_generator_cExport-noconfig.cmake
+[11.065s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/export_auto_aim_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[11.065s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/export_auto_aim_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[11.065s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/auto_aim_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[11.065s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/auto_aim_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[11.065s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/auto_aim_interfaces__rosidl_typesupport_cExport.cmake
+[11.066s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/auto_aim_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[11.066s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/export_auto_aim_interfaces__rosidl_generator_cppExport.cmake
+[11.066s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/export_auto_aim_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[11.066s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/export_auto_aim_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[11.066s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/auto_aim_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[11.066s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/auto_aim_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[11.066s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/auto_aim_interfaces__rosidl_typesupport_cppExport.cmake
+[11.067s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/auto_aim_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[11.067s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/export_auto_aim_interfaces__rosidl_generator_pyExport.cmake
+[11.067s] -- Installing: /home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/share/auto_aim_interfaces/cmake/export_auto_aim_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[11.071s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hdm/tracker_plus_ttttt/tracker_plus/build/auto_aim_interfaces

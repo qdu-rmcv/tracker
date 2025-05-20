@@ -1,0 +1,85 @@
+[0.015s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/hdm/tracker_plus_ttttt/tracker_plus/src/ros2_hik_camera -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera
+[0.095s] -- The C compiler identification is GNU 11.4.0
+[0.166s] -- The CXX compiler identification is GNU 11.4.0
+[0.171s] -- Detecting C compiler ABI info
+[0.234s] -- Detecting C compiler ABI info - done
+[0.240s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.240s] -- Detecting C compile features
+[0.240s] -- Detecting C compile features - done
+[0.243s] -- Detecting CXX compiler ABI info
+[0.310s] -- Detecting CXX compiler ABI info - done
+[0.316s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.316s] -- Detecting CXX compile features
+[0.317s] -- Detecting CXX compile features - done
+[0.319s] -- Found ament_cmake_auto: 1.3.11 (/opt/ros/humble/share/ament_cmake_auto/cmake)
+[0.461s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.517s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.624s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.627s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.633s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.642s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.653s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.691s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.693s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.775s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.800s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.831s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.837s] -- Looking for pthread.h
+[0.898s] -- Looking for pthread.h - found
+[0.899s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.970s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.971s] -- Found Threads: TRUE  
+[1.096s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.113s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.113s] -- Configured cppcheck include dirs: /home/hdm/tracker_plus_ttttt/tracker_plus/src/ros2_hik_camera/hikSDK/include
+[1.113s] -- Configured cppcheck exclude dirs and/or files: 
+[1.113s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.114s] -- Added test 'lint_cmake' to check CMake code style
+[1.114s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.114s] -- Added test 'xmllint' to check XML markup files
+[1.116s] -- Configuring done
+[1.126s] -- Generating done
+[1.131s] -- Build files have been written to: /home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera
+[1.138s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/hdm/tracker_plus_ttttt/tracker_plus/src/ros2_hik_camera -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera
+[1.140s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera -- -j24 -l24
+[1.183s] [ 25%] [32mBuilding CXX object CMakeFiles/hik_camera_node.dir/rclcpp_components/node_main_hik_camera_node.cpp.o[0m
+[1.184s] [ 50%] [32mBuilding CXX object CMakeFiles/hik_camera.dir/src/hik_camera_node.cpp.o[0m
+[5.704s] [ 75%] [32m[1mLinking CXX executable hik_camera_node[0m
+[6.245s] [ 75%] Built target hik_camera_node
+[6.500s] [100%] [32m[1mLinking CXX shared library libhik_camera.so[0m
+[6.874s] [100%] Built target hik_camera
+[6.907s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera -- -j24 -l24
+[6.909s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera
+[6.926s] -- Install configuration: ""
+[6.926s] -- Execute custom install script
+[6.926s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/lib/libFormatConversion.so
+[6.938s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/lib/libMVRender.so
+[6.956s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/lib/libMediaProcess.so
+[6.969s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/lib/libMvCameraControl.so
+[6.982s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/lib/libMvUsb3vTL.so
+[6.995s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/lib/hik_camera/hik_camera_node
+[7.008s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/environment/library_path.sh
+[7.021s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/environment/library_path.dsv
+[7.034s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/lib/libhik_camera.so
+[7.047s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/config/camera_info.yaml
+[7.060s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/config/camera_params.yaml
+[7.075s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/launch/hik_camera.launch.py
+[7.084s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/ament_index/resource_index/package_run_dependencies/hik_camera
+[7.093s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/ament_index/resource_index/parent_prefix_path/hik_camera
+[7.102s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/environment/ament_prefix_path.sh
+[7.111s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/environment/ament_prefix_path.dsv
+[7.134s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/environment/path.sh
+[7.143s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/environment/path.dsv
+[7.158s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/local_setup.bash
+[7.165s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/local_setup.sh
+[7.195s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/local_setup.zsh
+[7.228s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/local_setup.dsv
+[7.238s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/package.dsv
+[7.258s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/ament_index/resource_index/packages/hik_camera
+[7.267s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/ament_index/resource_index/rclcpp_components/hik_camera
+[7.278s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/cmake/ament_cmake_export_dependencies-extras.cmake
+[7.288s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/cmake/ament_cmake_export_libraries-extras.cmake
+[7.302s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/cmake/hik_cameraConfig.cmake
+[7.314s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/cmake/hik_cameraConfig-version.cmake
+[7.331s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/hik_camera/share/hik_camera/package.xml
+[7.355s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/hdm/tracker_plus_ttttt/tracker_plus/build/hik_camera

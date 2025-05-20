@@ -1,0 +1,81 @@
+[0.013s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/hdm/tracker_plus_ttttt/tracker_plus/src/rm_auto_aim/armor_executor -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor
+[0.073s] -- The C compiler identification is GNU 11.4.0
+[0.136s] -- The CXX compiler identification is GNU 11.4.0
+[0.147s] -- Detecting C compiler ABI info
+[0.230s] -- Detecting C compiler ABI info - done
+[0.238s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.238s] -- Detecting C compile features
+[0.238s] -- Detecting C compile features - done
+[0.241s] -- Detecting CXX compiler ABI info
+[0.326s] -- Detecting CXX compiler ABI info - done
+[0.339s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.339s] -- Detecting CXX compile features
+[0.340s] -- Detecting CXX compile features - done
+[0.344s] -- Found ament_cmake_auto: 1.3.11 (/opt/ros/humble/share/ament_cmake_auto/cmake)
+[0.545s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.612s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.747s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.752s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.759s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.771s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.785s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.825s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.828s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.919s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.946s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.986s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.994s] -- Looking for pthread.h
+[1.073s] -- Looking for pthread.h - found
+[1.073s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.164s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.166s] -- Found Threads: TRUE  
+[1.332s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[1.333s] -- Found Eigen3: TRUE (found version "3.3.7") 
+[1.333s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[1.424s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.453s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.454s] -- Configured cppcheck include dirs: /home/hdm/tracker_plus_ttttt/tracker_plus/src/rm_auto_aim/armor_executor/include
+[1.454s] -- Configured cppcheck exclude dirs and/or files: 
+[1.454s] -- Added test 'lint_cmake' to check CMake code style
+[1.455s] -- Added test 'xmllint' to check XML markup files
+[1.456s] -- Added test 'clang_format' to check C / C++ code style
+[1.458s] -- Configuring done
+[1.473s] -- Generating done
+[1.478s] -- Build files have been written to: /home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor
+[1.488s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor' returned '0': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake /home/hdm/tracker_plus_ttttt/tracker_plus/src/rm_auto_aim/armor_executor -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor
+[1.489s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor -- -j24 -l24
+[1.545s] [ 25%] [32mBuilding CXX object CMakeFiles/armor_executor.dir/src/SolveTrajectory.cpp.o[0m
+[1.547s] [ 50%] [32mBuilding CXX object CMakeFiles/armor_executor_node.dir/rclcpp_components/node_main_armor_executor_node.cpp.o[0m
+[3.418s] [ 75%] [32m[1mLinking CXX shared library libarmor_executor.so[0m
+[3.944s] [ 75%] Built target armor_executor
+[7.053s] [100%] [32m[1mLinking CXX executable armor_executor_node[0m
+[7.177s] [100%] Built target armor_executor_node
+[7.190s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor' returned '0': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --build /home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor -- -j24 -l24
+[7.193s] Invoking command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor
+[7.199s] -- Install configuration: ""
+[7.200s] -- Execute custom install script
+[7.200s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/lib/armor_executor/armor_executor_node
+[7.212s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/include/armor_executor/SolveTrajectory.hpp
+[7.222s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/environment/library_path.sh
+[7.234s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/environment/library_path.dsv
+[7.245s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/lib/libarmor_executor.so
+[7.257s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/ament_index/resource_index/package_run_dependencies/armor_executor
+[7.269s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/ament_index/resource_index/parent_prefix_path/armor_executor
+[7.280s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/environment/ament_prefix_path.sh
+[7.292s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/environment/ament_prefix_path.dsv
+[7.304s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/environment/path.sh
+[7.316s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/environment/path.dsv
+[7.328s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/local_setup.bash
+[7.340s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/local_setup.sh
+[7.352s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/local_setup.zsh
+[7.365s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/local_setup.dsv
+[7.377s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/package.dsv
+[7.389s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/ament_index/resource_index/packages/armor_executor
+[7.402s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/ament_index/resource_index/rclcpp_components/armor_executor
+[7.414s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/cmake/ament_cmake_export_dependencies-extras.cmake
+[7.427s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/cmake/ament_cmake_export_include_directories-extras.cmake
+[7.439s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/cmake/ament_cmake_export_libraries-extras.cmake
+[7.452s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/cmake/armor_executorConfig.cmake
+[7.464s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/cmake/armor_executorConfig-version.cmake
+[7.476s] -- Symlinking: /home/hdm/tracker_plus_ttttt/tracker_plus/install/armor_executor/share/armor_executor/package.xml
+[7.491s] Invoked command in '/home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor' returned '0': AMENT_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces:/opt/ros/humble LD_LIBRARY_PATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/home/hdm/tracker_plus_ttttt/tracker_plus/install/auto_aim_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/cmake --install /home/hdm/tracker_plus_ttttt/tracker_plus/build/armor_executor
