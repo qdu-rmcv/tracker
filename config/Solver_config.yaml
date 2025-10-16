@@ -1,0 +1,32 @@
+%YAML:1.0
+#---
+# 相机配置参数
+
+camera_name: "Basler acA1920-40gm"
+camera_index: 0
+
+# 图像尺寸
+image_width: 1920
+image_height: 1080
+
+# 相机内参矩阵 (Camera Matrix)
+camera_matrix: !!opencv-matrix
+   rows: 3
+   cols: 3
+   dt: d # d for double
+   data: [ 1200.5, 0., 960.2,
+           0., 1200.5, 540.8,
+           0., 0., 1. ]
+
+# 畸变系数 (Distortion Coefficients)
+distortion_coeffs: !!opencv-matrix
+   rows: 1
+   cols: 5
+   dt: d
+   data: [ 0.05, -0.02, 0.001, -0.0005, 0.002 ]
+
+# 图像处理参数 (一个嵌套的映射)
+processing_settings:
+   enable_blur: 1 # 用 1 表示 true
+   blur_kernel_size: 5
+   canny_threshold: 150.75

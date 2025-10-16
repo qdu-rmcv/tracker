@@ -1,0 +1,6 @@
+/build
+/install
+/log
+.vscode/
+.history/
+.cache/
