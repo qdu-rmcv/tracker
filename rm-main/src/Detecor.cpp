@@ -21,6 +21,7 @@ std::vector<Armor> Detector::DectectedArmor(cv::Mat& frame) {
     cv::Mat binary_img = preprocessImage(frame); //预处理图像
     std::deque<Light> lights = FindLight(frame, binary_img); //寻找灯条
     std::deque<Armor> possible_armors = FindArmor(lights); //寻找装甲板
+    // std::cout<<possible_armors.size()<<std::endl;
     std::vector<Armor> armors = ClassifyArmor(possible_armors);
     return armors;
 }
@@ -56,14 +57,14 @@ std::deque<Light> Detector::FindLight(const cv::Mat & rgb_img, const cv::Mat & b
     double aspect_ratio = light.length/light.width; //长宽比
     if (aspect_ratio < 2) continue; //长宽比阈值
 
-    if (light.length < 10 || light.width > 100) continue; //长度，宽度阈值
+    if (light.length < 10 || light.width > 200) continue; //长度，宽度阈值
 
     auto AngleIsOK = [&light]() ->bool
     {
         double tilt_angle = std::atan2(std::abs(light.top.x - light.bottom.x), std::abs(light.top.y - light.bottom.y));
         tilt_angle = tilt_angle / CV_PI * 180;
 
-        if (tilt_angle > 30) return false;
+        if (tilt_angle > 60) return false;
         return true;
     };
     if (!AngleIsOK()) continue; //角度阈值
@@ -126,9 +127,9 @@ std::deque<Armor> Detector::FindArmor(const std::deque<Light> & lights)
     {
         //长度匹配
         double biglen = std::max(light1.length, light2.length);
-        double smalen = std::min(light1.length,light2.length);
+        double smalen = std::min(light1.length, light2.length);
         double rate = smalen / biglen;
-        if(rate<0.7) return false;
+        if(rate<0.6) return false;
 
         //灯条平行匹配
         cv::Point2f L1vec = light1.top-light1.bottom,
@@ -142,11 +143,11 @@ std::deque<Armor> Detector::FindArmor(const std::deque<Light> & lights)
         cv::Point2f L1ToL2vec = light1.center-light2.center;
 
         double HighDiff = std::abs(toward.dot(L1ToL2vec)/cv::norm(toward));
-        if(HighDiff>(smalen*0.4)) return false;
+        if(HighDiff>smalen) return false;
 
         //距离匹配
         double distance = cv::norm(L1ToL2vec);
-        if(distance>(6*biglen)||distance<(smalen*0.5)) return false;
+        if(distance>(6*biglen)||distance<(smalen*0.2)) return false;
 
         //匹配成功
         return true;
@@ -297,6 +298,6 @@ void Detector::ArmorShow(cv::Mat & rgb_img, const std::vector<Armor> & armors)
         std::vector<std::vector<cv::Point>> contours{Lightcorners};
 
         cv::polylines(rgb_img,contours,1,cv::Scalar(0, 255, 0),3,cv::LINE_AA);
-        // std::cout<<"id:"<<armor.type<<std::endl;
+        std::cout<<"id:"<<armor.type<<std::endl;
     }
 }

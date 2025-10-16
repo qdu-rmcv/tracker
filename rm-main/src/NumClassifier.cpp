@@ -6,7 +6,7 @@ NumClassifier::NumClassifier(std::string model_path)
 {
     Net = cv::dnn::readNetFromONNX(model_path);
     // 设置首选的计算后端为 OpenVINO Inference Engine
-    Net.setPreferableBackend(cv::dnn::DNN_BACKEND_INFERENCE_ENGINE);
+    // Net.setPreferableBackend(cv::dnn::DNN_BACKEND_INFERENCE_ENGINE);
     // 设置首选的计算目标设备为 CPU
     Net.setPreferableTarget(cv::dnn::DNN_TARGET_CPU);
     // Create blob from image

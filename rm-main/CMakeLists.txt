@@ -19,6 +19,7 @@ add_executable(sdk
     src/logger.cpp
     src/Detecor.cpp
     src/NumClassifier.cpp
+    src/Solver.cpp
 )
 target_include_directories(sdk PUBLIC ${MVS_INCLUDE_DIRS})
 target_link_libraries(sdk ${OpenCV_LIBS} fmt::fmt spdlog::spdlog ${LIBUSB_1.0_LIBRARIES} ${MVS_LIBS} openvino::runtime)

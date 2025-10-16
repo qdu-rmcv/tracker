@@ -18,7 +18,10 @@ public:
 private:
     cv::Mat_<double> cameraMatrix;
     cv::Mat_<double> distCoeffs;
-    std::vector<cv::Point3d> objectPoints;
+    std::array<cv::Mat_<double>,4> objectBigArmor;
+    std::array<cv::Mat_<double>,4> objectSmallArmor;
+    std::vector<cv::Point3f> objectBigArmorP{{0,0,0},{230,0,0},{0,55,0},{230,55,0}};
+    std::vector<cv::Point3f> objectSmallArmorP{{0,0,0},{135,0,0},{0,55,0},{135,55,0}};
 };
 
 #endif
