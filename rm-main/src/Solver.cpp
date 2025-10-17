@@ -2,6 +2,7 @@
 #include <array>
 #include <iostream>
 #include <opencv2/core/mat.hpp>
+#include <opencv2/core/types.hpp>
 #include <vector>
 
 Solver::Solver(std::string config_path)
@@ -82,7 +83,7 @@ std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
             reprojectionError
         );}
         // if(reprojectionError[0]>10||reprojectionError[1]) continue;
-
+        // std::cerr<<reprojectionError.front()<<" "<<reprojectionError.back()<<std::endl;
         //筛选歧义解
         double Z_data[3]{0,0,10};
         cv::Mat Z_vector(cv::Size(1,3),CV_64FC1,Z_data);
@@ -98,7 +99,7 @@ std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
         // std::cerr<<Z_camera_0.at<double>(2,0)<<" "<<Z_camera_1.at<double>(2,0)<<std::endl;
         if(Z_camera_0.at<double>(2,0) > 0) {R = r_0; T = tvecs.front();}
         else {R = r_1; T = tvecs.back();}
-
+        std::cerr<<cv::norm(T)<<std::endl;
         std::array<cv::Point3d,4> posi;
         for(int i=0;i<4;i++)
         {
@@ -149,8 +150,6 @@ void Solver::ansShow(const cv::Point3d& posi,cv::Mat& image)
     } else {
         std::cout << "Projected point is outside the image frame." << std::endl;
     }
-
-
     // 显示图像
     cv::imshow("Projected Point Visualization", image);
     cv::waitKey(1); // 等待按键后退出

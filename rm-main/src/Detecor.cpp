@@ -298,6 +298,6 @@ void Detector::ArmorShow(cv::Mat & rgb_img, const std::vector<Armor> & armors)
         std::vector<std::vector<cv::Point>> contours{Lightcorners};
 
         cv::polylines(rgb_img,contours,1,cv::Scalar(0, 255, 0),3,cv::LINE_AA);
-        std::cout<<"id:"<<armor.type<<std::endl;
+        // std::cout<<"id:"<<armor.type<<std::endl;
     }
 }
