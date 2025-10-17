@@ -3,6 +3,7 @@
 #include "Armor.hpp"
 #include "string"
 #include "opencv2/opencv.hpp"
+#include <opencv2/core/base.hpp>
 #include <opencv2/core/hal/interface.h>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/core/types.hpp>
@@ -14,6 +15,7 @@ public:
     Solver(std::string config_path);
     std::vector<ArmorPosi> SolvePnP(const std::vector<Armor>& armors);
     void ConverToWorld(ArmorPosi armor_posi);
+    void ansShow(const cv::Point3d& posi,cv::Mat& image);
 
 private:
     cv::Mat_<double> cameraMatrix;

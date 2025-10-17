@@ -88,16 +88,16 @@ std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
         cv::Mat Z_vector(cv::Size(1,3),CV_64FC1,Z_data);
 
         cv::Mat r_0,r_1;
-        cv::Rodrigues(rvecs[0], r_0);
-        cv::Rodrigues(rvecs[1], r_1);
+        cv::Rodrigues(rvecs.front(), r_0);
+        cv::Rodrigues(rvecs.back(), r_1);
 
-        cv::Mat Z_camera_0 = r_0 * Z_vector + tvecs[0];
-        cv::Mat Z_camera_1 = r_1 * Z_vector + tvecs[1];
+        cv::Mat Z_camera_0 = r_0 * Z_vector + tvecs.front();
+        cv::Mat Z_camera_1 = r_1 * Z_vector + tvecs.back();
 
         cv::Mat R,T;
-        std::cerr<<Z_camera_0.at<double>(2,0)<<" "<<Z_camera_1.at<double>(2,0)<<std::endl;
-        if(Z_camera_0.at<double>(2,0) > 0) {R = r_0; T = tvecs[0];}
-        else {R = r_1; T = tvecs[1];}
+        // std::cerr<<Z_camera_0.at<double>(2,0)<<" "<<Z_camera_1.at<double>(2,0)<<std::endl;
+        if(Z_camera_0.at<double>(2,0) > 0) {R = r_0; T = tvecs.front();}
+        else {R = r_1; T = tvecs.back();}
 
         std::array<cv::Point3d,4> posi;
         for(int i=0;i<4;i++)
@@ -113,4 +113,45 @@ std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
         armors_posi.emplace_back(posi,armor.type);//记录
     }
     return armors_posi;
+}
+
+void Solver::ansShow(const cv::Point3d& posi,cv::Mat& image)
+{
+    cv::Mat rvec = cv::Mat::zeros(3, 1, CV_64F); // 单位旋转向量
+    cv::Mat tvec = cv::Mat::zeros(3, 1, CV_64F); // 单位平移向量
+
+    // 3. 执行投影
+    // cv::projectPoints 需要一个点的向量作为输入
+    std::vector<cv::Point3d> objectPoints;
+    objectPoints.push_back(posi);
+
+    // 用于存储投影结果的2D点向量
+    std::vector<cv::Point2d> imagePoints;
+
+    //重投影
+    cv::projectPoints(objectPoints, rvec, tvec, cameraMatrix, distCoeffs, imagePoints);
+
+    //在图像上绘制结果
+    // 输出和可视化结果
+    // 投影后的2D点坐标
+    cv::Point2d projectedPoint = imagePoints[0];
+    int imageWidth = image.rows;
+    int imageHeight = image.cols;
+
+    // 在图像上绘制投影点 (画一个红色的圆圈)
+    // 检查点是否在图像范围内
+    if (projectedPoint.x >= 0 && projectedPoint.x < imageWidth &&
+        projectedPoint.y >= 0 && projectedPoint.y < imageHeight)
+    {
+        cv::circle(image, projectedPoint, 5, cv::Scalar(0, 0, 255), -1); // 红色实心圆
+        cv::putText(image, "Projected Point", cv::Point(projectedPoint.x + 10, projectedPoint.y),
+                    cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+    } else {
+        std::cout << "Projected point is outside the image frame." << std::endl;
+    }
+
+
+    // 显示图像
+    cv::imshow("Projected Point Visualization", image);
+    cv::waitKey(1); // 等待按键后退出
 }
