@@ -68,8 +68,13 @@ void HikCamera::capture_start()
   set_enum_value("GainAuto", MV_GAIN_MODE_OFF);
   set_float_value("ExposureTime", this->parame.exposure_ms);
   set_float_value("Gain", this->parame.gain);
-  MV_CC_SetFrameRate(handle_, 150);
 
+
+  ret = MV_CC_SetFloatValue(handle_, "AcquisitionFrameRate", 249.0);;
+  if (ret != MV_OK) {
+    tools::logger()->warn("MV_CC_SetFloatValue(set framerate) failed: {:#x}", ret);
+    return;
+  }
   ret = MV_CC_StartGrabbing(handle_);
   if (ret != MV_OK) {
     tools::logger()->warn("MV_CC_StartGrabbing failed: {:#x}", ret);

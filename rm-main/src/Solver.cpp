@@ -99,7 +99,7 @@ std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
         // std::cerr<<Z_camera_0.at<double>(2,0)<<" "<<Z_camera_1.at<double>(2,0)<<std::endl;
         if(Z_camera_0.at<double>(2,0) > 0) {R = r_0; T = tvecs.front();}
         else {R = r_1; T = tvecs.back();}
-        std::cerr<<cv::norm(T)<<std::endl;
+
         std::array<cv::Point3d,4> posi;
         for(int i=0;i<4;i++)
         {

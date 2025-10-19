@@ -19,7 +19,7 @@ int main()
     cv::namedWindow("result");
     cv::namedWindow("debug");
 
-    Detector indentifyAomor(Light::Color::Red,0.5,"/home/king/desktop/SinAim_rm/10.16/rm-main/model/mlp.onnx");
+    Detector indentifyAomor(Light::Color::Blue,0.5,"/home/king/desktop/SinAim_rm/10.16/rm-main/model/mlp.onnx");
     Solver Sov("/home/king/desktop/SinAim_rm/10.16/config/Solver_config.yaml");
     
     while(true)
@@ -47,6 +47,7 @@ int main()
         {
             cv::Point3d center = (armors_posi[0].posi[0]+armors_posi[0].posi[2])/2;
             Sov.ansShow(center, frame.image);
+            if(num%100==0&&num!=0) std::cerr<<cv::norm(center)<<std::endl;
         }
         indentifyAomor.ArmorShow(frame.image, armors);
         cv::imshow("hh",frame.image);
