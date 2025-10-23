@@ -20,16 +20,25 @@ template <typename T>
     {
         if (Front == Back) return false;
 
-        dst = queue[Back];
+        dst = std::move(queue[Back]);
         Back = (Back+1)%queue.size();
         return true;
     }
 
     bool push(const T& src) 
     {
-        if( (Front+1)%queue.size()  == Back ) { Back = (Back+1)%queue.size(); }
+        if( (Front+1)%queue.size()  == Back ) return false;
         
         queue[Front] = src;
+        Front = (Front+1)%queue.size();
+        return true;
+    }
+
+    bool push(T&& src) 
+    {
+        if( (Front+1)%queue.size()  == Back ) return false;
+        
+        queue[Front] = std::move(src);
         Front = (Front+1)%queue.size();
         return true;
     }
@@ -41,13 +50,17 @@ template <typename T>
     T& back() { return queue[Back]; }
     
     T& operator[](size_t index)  { return queue[(Back+index)%queue.size()]; }
+
+    size_t size() const {return (Front-Back+queue.size())%queue.size();}
     
     T& at(size_t index)  
     {   
-        size_t i=(Back+index)%queue.size();
-        if(!(Front>i&&i>=Back)||(Back>i&&i>=Front))
+        size_t current_size=(Front-Back+queue.size())%queue.size();
+        
+        if(index >= current_size)
             throw std::out_of_range("Index out of range!");
-        return queue[i];
+
+        return queue[(Back + index) % queue.size()];
     }
 
     bool pop() 
@@ -56,8 +69,6 @@ template <typename T>
         Back = (Back+1)%queue.size();
         return true;
     }
-
-
 
 
    private:
