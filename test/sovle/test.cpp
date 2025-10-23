@@ -19,7 +19,7 @@ int main()
     cv::namedWindow("result");
     cv::namedWindow("debug");
 
-    Detector indentifyAomor(Light::Color::Blue,0.5,"/home/king/desktop/SinAim_rm/10.16/rm-main/model/mlp.onnx");
+    Detector indentifyAomor(Light::Color::Red,0.5,"/home/king/desktop/SinAim_rm/10.16/rm-main/model/mlp.onnx");
     Solver Sov("/home/king/desktop/SinAim_rm/10.16/config/Solver_config.yaml");
     
     while(true)

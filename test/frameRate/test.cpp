@@ -11,10 +11,14 @@
 #include <vector>
 
 static int num=0;
+static int Armor_num=0;
 static std::chrono::duration<double> total_elapsed_seconds(0.0);
+static std::chrono::duration<double> delay_seconds(0.0);
 int main()
 {
-    io::HikCamera Hik(5,3,10);
+    Detector indentifyAomor(Light::Color::Red,0.5,"/home/king/desktop/SinAim_rm/10.16/rm-main/model/mlp.onnx");
+    Solver Sov("/home/king/desktop/SinAim_rm/10.16/config/Solver_config.yaml");
+    io::HikCamera Hik(3,3.7,10);
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
     while(true)
     {
@@ -22,11 +26,24 @@ int main()
         Hik.read(frame);
         num++;
 
+        std::chrono::steady_clock::time_point read_time = std::chrono::steady_clock::now();
+        if(delay_seconds<(read_time-frame.time)) delay_seconds = read_time-frame.time;
+
+        std::vector<Armor> armors = indentifyAomor.DectectedArmor(frame.image);
+        std::vector<ArmorPosi> armors_posi = Sov.SolvePnP(armors);
+        Armor_num += armors_posi.size();
+
         if(num%1000==0&&num!=0)
         {
             std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
             total_elapsed_seconds = end - start;
-            std::cout<<num/total_elapsed_seconds.count()<<std::endl;
+            std::cout<<"最高读取延迟："<< delay_seconds.count()<<std::endl;
+            std::cout<<"帧率："<<num/total_elapsed_seconds.count()<<std::endl;
+            std::cout<<"检测到装甲板数量："<<Armor_num<<std::endl;
+
+            num = 0;
+            Armor_num = 0;
+            start = std::chrono::steady_clock::now();
         }
 
        

@@ -63,6 +63,46 @@ void HikCamera::capture_start()
     return;
   }
 
+  unsigned int nImageNodeNum = 1;
+  ret = MV_CC_SetImageNodeNum(handle_, nImageNodeNum);
+  if (MV_OK != ret)
+  {
+      // 设置失败
+      tools::logger()->warn("MV_CC_SetImageNodeNum failed: {:#x}", ret);
+      return;
+  }
+  // ret = MV_CC_SetEnumValueByString(handle_, "AcquisitionMode", "Continuous");
+  // if (MV_OK != ret) {
+  //     tools::logger()->warn("Set Acquisition Mode to Continuous fail! nRet [0x%x]\n", ret);
+  //     return;
+  // }
+
+  // // 2. 将触发模式设置为开启 (On)
+  // //    参数 "TriggerMode" 的值: 0 表示 Off, 1 表示 On
+  // ret = MV_CC_SetEnumValue(handle_, "TriggerMode", 1); 
+  // if (MV_OK != ret) {
+  //     tools::logger()->warn("Set Trigger Mode to On fail! nRet [0x%x]\n", ret);
+  //     return;
+  // }
+
+  // // 3. 设置触发源为外部硬件触发 (Line0)
+  // //    可用的值通常有 "Line0", "Line1", "Line2", "Software", "FrequencyConverter" 等
+  // //    请根据您的物理接线选择正确的一项
+  // ret = MV_CC_SetEnumValueByString(handle_, "TriggerSource", "Line0");
+  // if (MV_OK != ret) {
+  //     tools::logger()->warn("Set Trigger Source to Line0 fail! nRet [0x%x]\n", ret);
+  //     return;
+  // }
+
+  // // 4. (可选) 设置触发激活方式
+  // //    例如设置为上升沿触发 "RisingEdge"
+  // //    其他可选值如 "FallingEdge", "LevelHigh", "LevelLow"
+  // ret = MV_CC_SetEnumValueByString(handle_, "TriggerActivation", "RisingEdge");
+  // if (MV_OK != ret) {
+  //     tools::logger()->warn("Set Trigger Activation to RisingEdge fail! nRet [0x%x]\n", ret);
+  //     return;
+  // }
+
   set_enum_value("BalanceWhiteAuto", MV_BALANCEWHITE_AUTO_CONTINUOUS);
   set_enum_value("ExposureAuto", MV_EXPOSURE_AUTO_MODE_OFF);
   set_enum_value("GainAuto", MV_GAIN_MODE_OFF);
@@ -90,7 +130,7 @@ void HikCamera::capture_start()
     MV_CC_PIXEL_CONVERT_PARAM cvt_param;
 
     while (true) {
-      std::this_thread::sleep_for(1ms);
+      // std::this_thread::sleep_for(1ms);
 
       unsigned int ret;
       unsigned int nMsec = 100;
