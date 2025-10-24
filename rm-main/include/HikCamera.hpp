@@ -5,17 +5,20 @@
 #include <chrono>
 #include <string>
 #include <thread>
+#include <condition_variable>
+#include <chrono>
 
-#include "thread_safe_queue.hpp"
-#include <libusb-1.0/libusb.h>
+#include "fast_queue.hpp"
 #include "MvCameraControl.h"
 #include "opencv2/opencv.hpp"
 
 namespace io{
+using namespace std::chrono_literals;
 
 class HikCamera
 {
 public:
+    
     struct ImageData
     {
         cv::Mat image;
@@ -23,8 +26,9 @@ public:
     };
     HikCamera(unsigned int MaxframeNum,
               double exposure_ms, 
-              double gain);
-    
+              double gain,
+              bool autocap=true);
+
     void read(ImageData& imgdata);
 
     ~HikCamera();
@@ -36,6 +40,7 @@ private:
     {
         double exposure_ms;
         double gain;
+        bool autocap;
     };
     struct protect
     {
@@ -55,7 +60,7 @@ private:
     std::atomic<Hik> HikState;
     std::thread HikSDKthread;
     unsigned int MaxframeNum;
-    tools::ThreadSafeQueue<ImageData,true> Frames{MaxframeNum};
+    FastQueue<ImageData> Frames{MaxframeNum};
 
     void ProtectRunning();
 

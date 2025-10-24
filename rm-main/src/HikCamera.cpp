@@ -1,23 +1,23 @@
 #include "../include/HikCamera.hpp"
-// #include <libusb-1.0/libusb.h>
-
 #include "../include/logger.hpp"
+#include <chrono>
+#include <ratio>
 #include <thread>
-
-using namespace std::chrono_literals;
 
 namespace io
 {
 HikCamera::HikCamera(unsigned int MaxframeNum,
                      double exposure_ms, 
-                     double gain)
+                     double gain,
+                     bool autocap)
                      :MaxframeNum(MaxframeNum),
                       HikState(Hik::Stopped)
 {
-    // this->set_vid_pid(vid_pid);
 
     this->parame.exposure_ms = exposure_ms*1e3;
     this->parame.gain = gain;
+    this->parame.autocap = autocap;
+
     this->capture_start();
     this->ProtectRunning();
 }
@@ -30,7 +30,11 @@ HikCamera::~HikCamera()
 
 void HikCamera::read(ImageData& imgdata)
 {
-    imgdata = this->Frames.pop();
+  while (true) 
+  {
+    bool popOK = this->Frames.pop(imgdata);
+    if(popOK) return;
+  }
 }
 
 
@@ -71,37 +75,49 @@ void HikCamera::capture_start()
       tools::logger()->warn("MV_CC_SetImageNodeNum failed: {:#x}", ret);
       return;
   }
-  // ret = MV_CC_SetEnumValueByString(handle_, "AcquisitionMode", "Continuous");
-  // if (MV_OK != ret) {
-  //     tools::logger()->warn("Set Acquisition Mode to Continuous fail! nRet [0x%x]\n", ret);
-  //     return;
-  // }
 
-  // // 2. 将触发模式设置为开启 (On)
-  // //    参数 "TriggerMode" 的值: 0 表示 Off, 1 表示 On
-  // ret = MV_CC_SetEnumValue(handle_, "TriggerMode", 1); 
-  // if (MV_OK != ret) {
-  //     tools::logger()->warn("Set Trigger Mode to On fail! nRet [0x%x]\n", ret);
-  //     return;
-  // }
-
-  // // 3. 设置触发源为外部硬件触发 (Line0)
-  // //    可用的值通常有 "Line0", "Line1", "Line2", "Software", "FrequencyConverter" 等
-  // //    请根据您的物理接线选择正确的一项
-  // ret = MV_CC_SetEnumValueByString(handle_, "TriggerSource", "Line0");
-  // if (MV_OK != ret) {
-  //     tools::logger()->warn("Set Trigger Source to Line0 fail! nRet [0x%x]\n", ret);
-  //     return;
-  // }
-
-  // // 4. (可选) 设置触发激活方式
-  // //    例如设置为上升沿触发 "RisingEdge"
-  // //    其他可选值如 "FallingEdge", "LevelHigh", "LevelLow"
-  // ret = MV_CC_SetEnumValueByString(handle_, "TriggerActivation", "RisingEdge");
-  // if (MV_OK != ret) {
-  //     tools::logger()->warn("Set Trigger Activation to RisingEdge fail! nRet [0x%x]\n", ret);
-  //     return;
-  // }
+  if(!this->parame.autocap)
+  {
+    ret = MV_CC_SetEnumValueByString(handle_, "AcquisitionMode", "Continuous");
+    if (MV_OK != ret) {
+        tools::logger()->warn("Set Acquisition Mode to Continuous fail! nRet [0x%x]\n", ret);
+        return;
+    }
+  
+    //    将触发模式设置为开启 (On)
+    //    参数 "TriggerMode" 的值: 0 表示 Off, 1 表示 On
+    ret = MV_CC_SetEnumValue(handle_, "TriggerMode", 1); 
+    if (MV_OK != ret) {
+        tools::logger()->warn("Set Trigger Mode to On fail! nRet [0x%x]\n", ret);
+        return;
+    }
+  
+    //    设置触发源为外部硬件触发 (Line0)
+    //    可用的值通常有 "Line0", "Line1", "Line2", "Software", "FrequencyConverter" 等
+    //    请根据您的物理接线选择正确的一项
+    ret = MV_CC_SetEnumValueByString(handle_, "TriggerSource", "Line0");
+    if (MV_OK != ret) {
+        tools::logger()->warn("Set Trigger Source to Line0 fail! nRet [0x%x]\n", ret);
+        return;
+    }
+  
+    //    (可选) 设置触发激活方式
+    //    例如设置为上升沿触发 "RisingEdge"
+    //    其他可选值如 "FallingEdge", "LevelHigh", "LevelLow"
+    ret = MV_CC_SetEnumValueByString(handle_, "TriggerActivation", "RisingEdge");
+    if (MV_OK != ret) {
+        tools::logger()->warn("Set Trigger Activation to RisingEdge fail! nRet [0x%x]\n", ret);
+        return;
+    }
+  }else{
+    //将触发模式设置为开启 (On)
+    //参数 "TriggerMode" 的值: 0 表示 Off, 1 表示 On
+    ret = MV_CC_SetEnumValue(handle_, "TriggerMode", 0); 
+    if (MV_OK != ret) {
+        tools::logger()->warn("Set Trigger Mode to Off fail! nRet [0x%x]\n", ret);
+        return;
+    }
+  }
 
   set_enum_value("BalanceWhiteAuto", MV_BALANCEWHITE_AUTO_CONTINUOUS);
   set_enum_value("ExposureAuto", MV_EXPOSURE_AUTO_MODE_OFF);
@@ -155,12 +171,15 @@ void HikCamera::capture_start()
       cv::cvtColor(img, dst_image, type_map.at(pixel_type));
       img = dst_image;
 
-      Frames.push({img, timestamp});
+      bool pushOK = Frames.push({img, timestamp});
 
       ret = MV_CC_FreeImageBuffer(handle_, &raw);
       if (ret != MV_OK) {
         tools::logger()->warn("MV_CC_FreeImageBuffer failed: {:#x}", ret);
         break;
+      }
+      if(!pushOK){
+        tools::logger()->warn("The read thread did not work: {:#x}", ret);
       }
     }
 

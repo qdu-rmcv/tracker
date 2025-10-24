@@ -16,8 +16,8 @@ static std::chrono::duration<double> total_elapsed_seconds(0.0);
 static std::chrono::duration<double> delay_seconds(0.0);
 int main()
 {
-    Detector indentifyAomor(Light::Color::Red,0.5,"/home/king/desktop/SinAim_rm/10.16/rm-main/model/mlp.onnx");
-    Solver Sov("/home/king/desktop/SinAim_rm/10.16/config/Solver_config.yaml");
+    Detector indentifyAomor(Light::Color::Red,0.5,"../../../rm-main/model/mlp.onnx");
+    Solver Sov("../../../config/Solver_config.yaml");
     io::HikCamera Hik(3,3.7,10);
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
     while(true)
