@@ -7,6 +7,7 @@
 #include <opencv2/core/hal/interface.h>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/core/types.hpp>
+#include <opencv2/core/quaternion.hpp>
 #include <vector>
 class Solver
 {
@@ -14,12 +15,16 @@ public:
 
     Solver(std::string config_path);
     std::vector<ArmorPosi> SolvePnP(const std::vector<Armor>& armors);
-    void ConverToWorld(ArmorPosi armor_posi);
+    void ConverToWorld(ArmorPosi& armor_posi, const cv::Quatd& q_gripper_to_world);
     void ansShow(const cv::Point3d& posi,cv::Mat& image);
 
 private:
     cv::Mat_<double> cameraMatrix;
     cv::Mat_<double> distCoeffs;
+
+    cv::Mat_<double> R_Cam_to_gripper;
+    cv::Mat_<double> T_Cam_to_gripper;
+
     std::array<cv::Mat_<double>,4> objectBigArmor;
     std::array<cv::Mat_<double>,4> objectSmallArmor;
     std::vector<cv::Point3f> objectBigArmorP{{0,0,0},{230,0,0},{230,55,0},{0,55,0}};

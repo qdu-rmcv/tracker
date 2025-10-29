@@ -15,3 +15,16 @@ distortion_coeffs: !!opencv-matrix
    dt: d
    data: [-0.09746546688493234,0.6924958994958991,0.004918347352910374,0.002319538535074707,-4.336522013241317]
 
+   # 相机到云台的旋转矩阵 (Rotation Matrix from Camera to Gripper)
+   R_Cam_to_gripper: !!opencv-matrix
+      rows: 3
+      cols: 3
+      dt: d
+      data: [0.9998476951563913, 0.01745240643728351, 0, -0.01745240643728351, 0.9998476951563913, 0, 0, 0, 1]
+
+   # 相机到云台的平移矩阵 (Translation Matrix from Camera to Gripper)
+   T_Cam_to_gripper: !!opencv-matrix
+      rows: 3
+      cols: 1
+      dt: d
+      data: [0, 0, 0]

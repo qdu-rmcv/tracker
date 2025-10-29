@@ -23,7 +23,12 @@ Solver::Solver(std::string config_path)
     fs["distortion_coeffs"] >> this->distCoeffs;
     // std::cout<<cameraMatrix.size<<std::endl;
 
-    
+    // 相机到云台的旋转矩阵 (Rotation Matrix from Camera to Gripper)
+    fs["R_Cam_to_gripper"] >> this->R_Cam_to_gripper;
+
+    // 相机到云台的平移矩阵 (Translation Matrix from Camera to Gripper)
+    fs["T_Cam_to_gripper"] >> this->T_Cam_to_gripper;
+
     for(int i=0;i<4;i++)
     {
         this->objectBigArmor[i] = cv::Mat_<double>(3, 1);
