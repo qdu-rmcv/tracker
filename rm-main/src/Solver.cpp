@@ -121,6 +121,28 @@ std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
     return armors_posi;
 }
 
+void Solver::ConverToWorld(ArmorPosi& armor_posi, const cv::Quatd& q_gripper_to_world)
+{
+    // 将装甲板位置从相机坐标系转换到手坐标系
+    for (auto& pos : armor_posi.posi) 
+    {
+        cv::Mat P = this->R_Cam_to_gripper * cv::Mat(cv::Point3d(pos.x, pos.y, pos.z)) + this->T_Cam_to_gripper;
+        pos = cv::Point3d(P.at<double>(0, 0), P.at<double>(1, 0), P.at<double>(2, 0));
+    }
+
+    // 将装甲板位置从手坐标系转换到世界坐标系
+    cv::Mat R(q_gripper_to_world.toRotMat3x3());
+
+    for (auto& pos : armor_posi.posi) 
+    {
+        cv::Mat P = R * cv::Mat(cv::Point3d(pos.x, pos.y, pos.z));
+        pos = cv::Point3d(P.at<double>(0, 0), P.at<double>(1, 0), P.at<double>(2, 0));
+    }
+
+
+}
+
+
 void Solver::ansShow(const cv::Point3d& posi,cv::Mat& image)
 {
     cv::Mat rvec = cv::Mat::zeros(3, 1, CV_64F); // 单位旋转向量
