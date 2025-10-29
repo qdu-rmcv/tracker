@@ -20,7 +20,8 @@ int main()
 {
     Detector indentifyAomor(Light::Color::Red,0.5,"../../../rm-main/model/mlp.onnx");
     Solver Sov("../../../config/Solver_config.yaml");
-    io::HikCamera Hik(3,3.7,10);
+    io::HikCamera Hik(3,10);
+    Hik.continueCap(5);
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
     while(true)
     {

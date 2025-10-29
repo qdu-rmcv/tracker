@@ -19,6 +19,12 @@ public:
   {
   }
 
+  void setSize(size_t size)
+  {
+    this->max_size_ = size;
+  }
+
+  
   void push(const T & value)
   {
     std::unique_lock<std::mutex> lock(mutex_);

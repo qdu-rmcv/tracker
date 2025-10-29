@@ -14,7 +14,8 @@ static int num=0;
 static std::chrono::duration<double> total_elapsed_seconds(0.0);
 int main()
 {
-    io::HikCamera Hik(5,3,10);
+    io::HikCamera Hik(3,10);
+    Hik.continueCap(5);
     cv::namedWindow("hh");
     cv::namedWindow("result");
     cv::namedWindow("debug");

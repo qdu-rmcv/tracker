@@ -8,9 +8,9 @@
 #include <condition_variable>
 #include <chrono>
 
-#include "fast_queue.hpp"
 #include "MvCameraControl.h"
 #include "opencv2/opencv.hpp"
+#include "thread_safe_queue.hpp"
 
 namespace io{
 using namespace std::chrono_literals;
@@ -24,12 +24,12 @@ public:
         cv::Mat image;
         std::chrono::steady_clock::time_point time;
     };
-    HikCamera(unsigned int MaxframeNum,
-              double exposure_ms, 
+    HikCamera(double exposure_ms, 
               double gain,
               bool autocap=true);
 
     void read(ImageData& imgdata);
+    void continueCap(size_t MaxframeNum);
 
     ~HikCamera();
 
@@ -56,15 +56,18 @@ private:
     
     config parame;
     protect guard;
+
+    bool conCapOpen = false;
     
     std::atomic<Hik> HikState;
     std::thread HikSDKthread;
-    unsigned int MaxframeNum;
-    FastQueue<ImageData> Frames{MaxframeNum};
+    size_t MaxframeNum=0;
+    tools::ThreadSafeQueue<ImageData> Frames{0};
 
     void ProtectRunning();
 
-    void capture_start();
+    void capture_init();
+
     void capture_stop();
 
     void set_float_value(const std::string & name, double value);

@@ -6,19 +6,17 @@
 
 namespace io
 {
-HikCamera::HikCamera(unsigned int MaxframeNum,
-                     double exposure_ms, 
+HikCamera::HikCamera(double exposure_ms, 
                      double gain,
                      bool autocap)
-                     :MaxframeNum(MaxframeNum),
-                      HikState(Hik::Stopped)
+                     :HikState(Hik::Stopped)
 {
 
     this->parame.exposure_ms = exposure_ms*1e3;
     this->parame.gain = gain;
     this->parame.autocap = autocap;
 
-    this->capture_start();
+    this->capture_init();
     this->ProtectRunning();
 }
 
@@ -30,17 +28,48 @@ HikCamera::~HikCamera()
 
 void HikCamera::read(ImageData& imgdata)
 {
-  while (true) 
+  if(conCapOpen)
   {
-    bool popOK = this->Frames.pop(imgdata);
-    if(popOK) return;
+    this->Frames.pop(imgdata);
+    return;
   }
+  
+  if(this->HikState == Hik::Stopped) return;
+  
+  MV_FRAME_OUT raw;
+  unsigned int ret;
+  unsigned int nMsec = 100;
+
+  ret = MV_CC_GetImageBuffer(handle_, &raw, nMsec);
+  if (ret != MV_OK) {
+    tools::logger()->warn("MV_CC_GetImageBuffer failed: {:#x}", ret);
+  }
+
+  auto timestamp = std::chrono::steady_clock::now();
+  cv::Mat img(cv::Size(raw.stFrameInfo.nWidth, raw.stFrameInfo.nHeight), CV_8U, raw.pBufAddr);
+
+  const auto & frame_info = raw.stFrameInfo;
+  auto pixel_type = frame_info.enPixelType;
+  cv::Mat dst_image;
+  const static std::unordered_map<MvGvspPixelType, cv::ColorConversionCodes> type_map = {
+    {PixelType_Gvsp_BayerGR8, cv::COLOR_BayerGR2RGB},
+    {PixelType_Gvsp_BayerRG8, cv::COLOR_BayerRG2RGB},
+    {PixelType_Gvsp_BayerGB8, cv::COLOR_BayerGB2RGB},
+    {PixelType_Gvsp_BayerBG8, cv::COLOR_BayerBG2RGB}};
+  cv::cvtColor(img, dst_image, type_map.at(pixel_type));
+  img = dst_image;
+
+  ret = MV_CC_FreeImageBuffer(handle_, &raw);
+  if (ret != MV_OK) {
+    tools::logger()->warn("MV_CC_FreeImageBuffer failed: {:#x}", ret);
+  }
+
+  imgdata = {img, timestamp};
 }
 
 
-void HikCamera::capture_start()
+void HikCamera::capture_init()
 {
-
   unsigned int ret;
 
   MV_CC_DEVICE_INFO_LIST device_list;
@@ -137,12 +166,22 @@ void HikCamera::capture_start()
     return;
   }
 
-
   this->HikState = Hik::Running;
+}
+
+void HikCamera::continueCap(size_t MaxframeNum)
+{
+  this->conCapOpen =true;
+  this->MaxframeNum = MaxframeNum;
+  this->Frames.setSize(this->MaxframeNum);
+
+  if(this->HikState == Hik::Stopped) return;
+
   this->HikSDKthread = std::thread{[this] {
 
     tools::logger()->info("HikRobot's capture thread started."); 
     MV_FRAME_OUT raw;
+
     MV_CC_PIXEL_CONVERT_PARAM cvt_param;
 
     while (true) {
@@ -171,22 +210,18 @@ void HikCamera::capture_start()
       cv::cvtColor(img, dst_image, type_map.at(pixel_type));
       img = dst_image;
 
-      bool pushOK = Frames.push({img, timestamp});
+      Frames.push({img, timestamp});
 
       ret = MV_CC_FreeImageBuffer(handle_, &raw);
       if (ret != MV_OK) {
         tools::logger()->warn("MV_CC_FreeImageBuffer failed: {:#x}", ret);
         break;
       }
-      if(!pushOK){
-        tools::logger()->warn("The read thread did not work: {:#x}", ret);
-      }
     }
 
     std::unique_lock<std::mutex> lock(this->guard.mux);
     this->HikState = Hik::Stopped;
     this->guard.HikIsquit.notify_all();
-    
     tools::logger()->info("HikRobot's capture thread stopped.");
   }};
 }
@@ -202,7 +237,8 @@ void HikCamera::ProtectRunning()
       {
         this->guard.HikIsquit.wait(lock,[this] { return (this->HikState == Hik::Stopped);});
         this->capture_stop();
-        this->capture_start();
+        this->capture_init();
+        if(conCapOpen) this->continueCap(this->MaxframeNum);
       }
     }
   };
