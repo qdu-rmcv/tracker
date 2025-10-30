@@ -8,54 +8,53 @@
 #include <deque>
 #include <chrono>
 #include <opencv2/imgcodecs.hpp>
+#include <thread>
 #include <vector>
 
 static int num=0;
 static std::chrono::duration<double> total_elapsed_seconds(0.0);
+using namespace std::chrono_literals;
 int main()
 {
-    io::HikCamera Hik(0.5,10);
-    Hik.continueCap(5);
+    io::HikCamera Hik(3,10);
+    // Hik.continueCap(3);
     cv::namedWindow("hh");
     cv::namedWindow("result");
     cv::namedWindow("debug");
 
     Detector indentifyAomor(Light::Color::Red,0.5,"/home/king/desktop/SinAim_rm/10.16/rm-main/model/mlp.onnx");
     Solver Sov("/home/king/desktop/SinAim_rm/10.16/config/Solver_config.yaml");
-    
-    while(true)
+
+
+    io::HikCamera::ImageData frame;
+while (true) {
+
+    std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+    Hik.read(frame);
+    std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    std::cout<<"capture time: "<<(end - start).count()*1e-6<<" ms"<<std::endl;
+
+    if(!frame.image.empty())
     {
-        io::HikCamera::ImageData frame; 
-        Hik.read(frame);
-        // frame.image = cv::imread("/home/king/Desktop/SinAim_rm/10.15.13/workindentify/images/frame2.png");
-        cv::Mat debug = indentifyAomor.preprocessImage(frame.image);
+    // frame.image = cv::imread("/home/king/Desktop/SinAim_rm/10.15.13/workindentify/images/frame2.png");
+    // cv::Mat debug = indentifyAomor.preprocessImage(frame.image);
 
-        std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-        std::vector<Armor> armors = indentifyAomor.DectectedArmor(frame.image);
-        std::vector<ArmorPosi> armors_posi = Sov.SolvePnP(armors);
-        std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         
-        total_elapsed_seconds += end - start;
-        num++;
+    //     std::vector<Armor> armors = indentifyAomor.DectectedArmor(frame.image);
+    //     std::vector<ArmorPosi> armors_posi = Sov.SolvePnP(armors);
 
-        if(num%100==0&&num!=0)
-        {
-            std::cout<<total_elapsed_seconds.count()/num<<std::endl;
-        }
+        
 
-        //可视化装甲板中心
-        if(!armors_posi.empty())
-        {
-            cv::Point3d center = (armors_posi[0].posi[0]+armors_posi[0].posi[2])/2;
-            Sov.ansShow(center, frame.image);
-            if(num%100==0&&num!=0) std::cerr<<cv::norm(center)<<std::endl;
-        }
-        indentifyAomor.ArmorShow(frame.image, armors);
+        // indentifyAomor.ArmorShow(frame.image, armors);
         cv::imshow("hh",frame.image);
-        cv::imshow("result",frame.image);
-        cv::imshow("debug",debug);
-        cv::waitKey(1);
-    }
+        // cv::imshow("result",frame.image);
+        // cv::imshow("debug",debug);
+    //     cv::waitKey(10);
+    // std::this_thread::sleep_for(ms);    
+}else {
+  std::cerr<<"here"<<std::endl;
+}
+}
 }
     // std::string config_path = "/home/king/desktop/SinAim_rm/10.16/config/Solver_config.yaml";
 

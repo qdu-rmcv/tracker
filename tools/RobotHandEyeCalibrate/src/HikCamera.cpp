@@ -1,5 +1,5 @@
-#include "../include/HikCamera.hpp"
-#include "../include/logger.hpp"
+#include "HikCamera.hpp"
+#include "logger.hpp"
 #include <chrono>
 #include <iostream>
 #include <ratio>
@@ -40,7 +40,7 @@ void HikCamera::read(ImageData& imgdata)
   MV_FRAME_OUT raw;
   unsigned int ret;
   unsigned int nMsec = 100;
-  
+
   ret = MV_CC_GetImageBuffer(handle_, &raw, nMsec);
   if (ret != MV_OK) {
     tools::logger()->warn("MV_CC_GetImageBuffer failed: {:#x}", ret);
