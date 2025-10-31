@@ -1,4 +1,6 @@
+#include <memory>
 #include <opencv2/core/mat.hpp>
+#include <opencv2/core/persistence.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/calib3d.hpp>
 #include <opencv2/imgproc.hpp>
@@ -17,6 +19,19 @@ int main()
     const Size BOARD_SIZE(11, 8);  // 棋盘内角点数量 (列数, 行数)
     const float SQUARE_SIZE = 20.0f;  // 每个方格的实际尺寸 (毫米)
     
+    string config_path = "../Data/Calibration_R_T.yaml";
+    
+    //
+    //加载存储数据的YAML文件
+    FileStorage fs;
+    if (!fs.open(config_path, FileStorage::READ)) {
+        cerr << "Error: Failed to open YAML file: " << config_path << endl;
+        return -1;  // 失败时返回
+    } else {
+        cout << "open YAML yes" << endl;
+    }
+
+
     // 创建棋盘的世界坐标系坐标点
     vector<Point3f> objectPoints;
     for (int i = 0; i < BOARD_SIZE.height; i++) {
@@ -31,6 +46,7 @@ int main()
     
     // 获取图像文件列表
     vector<String> imageFiles;
+    vector<String> havChessBFiles;
     glob("../Data/*.png", imageFiles);
     
     if (imageFiles.empty()) {
@@ -76,6 +92,9 @@ int main()
             // 存储角点
             imagePointsAll.push_back(corners);
             objectPointsAll.push_back(objectPoints);
+
+            //记录图片的名字
+            havChessBFiles.push_back(imageFiles[i]);
             validImages++;
             
             // 绘制角点（可选，用于验证）
@@ -153,13 +172,46 @@ int main()
     cout << "建议: RMS误差小于1.0像素表示标定质量良好" << endl;
 
     // 开始手眼标定
-    vector<Mat> R_world_to_grips;
+    vector<Mat> Rs_world_to_camera,Ts_world_to_camera;
+    Ts_world_to_camera = tvecs;
     for (size_t i = 0; i < rvecs.size(); i++) {
         Mat R;
         Rodrigues(rvecs[i], R);
-        R_world_to_grips.push_back(R);
+        Rs_world_to_camera.push_back(R);
+    }
+
+    vector<Mat> Rs_base_to_hand,Ts_base_to_hand;
+    for(size_t i=0;i<havChessBFiles.size();i++)
+    {
+        if(havChessBFiles[i].length()<5)
+        {
+            cerr<<"错误: 文件名不合法: " << havChessBFiles[i] << endl;
+            return 0;
+        }
+
+        string key = havChessBFiles[i].substr(0, havChessBFiles[i].length() - 4);
+        double tdata[3]={0.,0.,0.};
+        Mat R,T(3,1,CV_64F,tdata);
+        fs[key] >> R;
+        Rs_base_to_hand.push_back(R);
+        Ts_base_to_hand.push_back(T);
     }
     
+    Mat R_hand_to_cam_out, T_hand_to_cam_out,
+        R_base_to_world_out, T_base_to_world_out;
 
+    calibrateRobotWorldHandEye(Rs_world_to_camera, Ts_world_to_camera,
+                               Rs_base_to_hand, Ts_base_to_hand,
+                               R_base_to_world_out, T_base_to_world_out,
+                               R_hand_to_cam_out, T_hand_to_cam_out,
+                               CALIB_ROBOT_WORLD_HAND_EYE_SHAH
+                               );
+
+    cout<<"----------------------------------"<<endl;
+    cout<<"手眼标定完成："<<endl;
+    cout<<"手到眼的旋转矩阵："<<endl<<R_hand_to_cam_out<<endl;
+    cout<<"手到眼的平移向量："<<endl<<T_hand_to_cam_out<<endl;
+
+    fs.release(); // 关闭文件
     return 0;
 }
