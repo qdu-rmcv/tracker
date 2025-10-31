@@ -1,3 +1,4 @@
+#include <opencv2/core/mat.hpp>
 #include <opencv2/opencv.hpp>
 #include <opencv2/calib3d.hpp>
 #include <opencv2/imgproc.hpp>
@@ -30,7 +31,7 @@ int main()
     
     // 获取图像文件列表
     vector<String> imageFiles;
-    glob("../CalibrationImage/*.png", imageFiles);
+    glob("../Data/*.png", imageFiles);
     
     if (imageFiles.empty()) {
         cout << "错误: 在image文件夹中没有找到PNG图片文件!" << endl;
@@ -150,6 +151,15 @@ int main()
     
     cout << "\n=== 标定完成 ===" << endl;
     cout << "建议: RMS误差小于1.0像素表示标定质量良好" << endl;
+
+    // 开始手眼标定
+    vector<Mat> R_world_to_grips;
+    for (size_t i = 0; i < rvecs.size(); i++) {
+        Mat R;
+        Rodrigues(rvecs[i], R);
+        R_world_to_grips.push_back(R);
+    }
     
+
     return 0;
 }

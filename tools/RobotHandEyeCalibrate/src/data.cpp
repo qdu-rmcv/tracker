@@ -21,7 +21,7 @@ static int Num=0;
 std::string generate_filename(int &Num) {
     
     std::string ss;
-    ss ="image_"+std::to_string(Num++)+"_.png";
+    ss ="image_"+std::to_string(Num++)+"_";
     return ss;
 }
 
@@ -174,7 +174,7 @@ int main() {
             cv::Mat R_world_to_grip(matched_queue.front().imu.orientation.toRotMat3x3());
             fs << filename << R_world_to_grip;
 
-
+            
             if (saved) {
                 std::cout << "图片已保存: " << filepath << std::endl;
             } else {
