@@ -16,6 +16,7 @@ public:
     Solver(std::string config_path);
     std::vector<ArmorPosi> SolvePnP(const std::vector<Armor>& armors);
     void ConverToWorld(ArmorPosi& armor_posi, const cv::Quatd& q_gripper_to_world);
+    void ConverToWorld(std::vector<ArmorPosi>& armor_posi, const cv::Quatd& q_gripper_to_world);
     void ansShow(const cv::Point3d& posi,cv::Mat& image);
 
 private:

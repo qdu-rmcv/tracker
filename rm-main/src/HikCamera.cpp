@@ -29,7 +29,7 @@ HikCamera::~HikCamera()
 
 void HikCamera::read(ImageData& imgdata)
 {
-  if(conCapOpen)
+  if(this->conCapOpen)
   {
     this->Frames.pop(imgdata);
     return;
@@ -40,7 +40,7 @@ void HikCamera::read(ImageData& imgdata)
   MV_FRAME_OUT raw;
   unsigned int ret;
   unsigned int nMsec = 100;
-  
+
   ret = MV_CC_GetImageBuffer(handle_, &raw, nMsec);
   if (ret != MV_OK) {
     tools::logger()->warn("MV_CC_GetImageBuffer failed: {:#x}", ret);
