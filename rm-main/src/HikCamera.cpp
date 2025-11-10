@@ -259,14 +259,14 @@ void HikCamera::capture_stop()
     return;
   }
 
-  ret = MV_CC_SetCommandValue(handle_, "DeviceReset");
-  if (ret != MV_OK) {
-      tools::logger()->error("Hard Reset failed: MV_CC_SetCommandValue('DeviceReset') failed with {:#x}", ret);
-      // 即使失败，也尝试关闭设备
-      MV_CC_CloseDevice(handle_);
-      MV_CC_DestroyHandle(handle_);
-      return ;
-  }
+  // ret = MV_CC_SetCommandValue(handle_, "DeviceReset");
+  // if (ret != MV_OK) {
+  //     tools::logger()->error("Hard Reset failed: MV_CC_SetCommandValue('DeviceReset') failed with {:#x}", ret);
+  //     // 即使失败，也尝试关闭设备
+  //     MV_CC_CloseDevice(handle_);
+  //     MV_CC_DestroyHandle(handle_);
+  //     return ;
+  // }
   
   ret = MV_CC_CloseDevice(handle_);
   if (ret != MV_OK) {
