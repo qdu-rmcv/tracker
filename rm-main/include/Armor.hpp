@@ -44,9 +44,9 @@ struct Armor{
     Light left, right;
     double confidence;
     std::vector<cv::Point2f> Lightcorners; //装甲板四个顶点
-    enum Type {one   = 0,two  = 1,three    = 2,
-               four  = 3,five = 4,outpost  = 5,
-               guard = 6,base = 7,negative = 8} type; 
+    enum Type : int {base    = 0, hero     = 1, two   = 2,
+                     three   = 3, four     = 4, guard = 5,
+                     outpost = 6, negative = 7} type; 
 };
 
 struct ArmorPosi{

@@ -1,9 +1,8 @@
-1
+base
+hero
 2
 3
 4
-5
-outpost
 guard
-base
+outpost
 negative

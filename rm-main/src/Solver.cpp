@@ -59,7 +59,8 @@ std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
         std::vector<cv::Mat> rvecs,tvecs;
         std::vector<double> reprojectionError;
 
-        if(armor.type == Armor::Type::one)//区分大小装甲板
+        if(armor.type == Armor::Type::hero || armor.type == Armor::Type::base )//区分大小装甲板
+           
         int solutions = cv::solvePnPGeneric(
             this->objectBigArmorP,
             armor.Lightcorners,
@@ -108,7 +109,7 @@ std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
         std::array<cv::Point3d,4> posi;
         for(int i=0;i<4;i++)
         {
-            if(armor.type==Armor::Type::one){
+            if(armor.type==Armor::Type::hero){
                 cv::Mat P = R * objectBigArmor[i] + T;
                 posi[i] = cv::Point3d(P.at<double>(0,0),P.at<double>(1,0),P.at<double>(2,0));
             }else {

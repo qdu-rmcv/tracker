@@ -12,7 +12,7 @@
 #include <string>
 #include <utility>
 #include <vector>
-
+#define Debug
 using namespace std::chrono_literals;
 static int num=0;
 static int Armor_num=0;
@@ -21,8 +21,7 @@ static std::chrono::duration<double> delay_seconds(0.0);
 static std::chrono::duration<double> total_delay_seconds(0.0);
 int main()
 {
-    Detector detect(Light::Color::Red,0.3,"../../../rm-main/model/mlp.onnx");
-    Solver Sov("../../../config/Solver_config.yaml");
+    Detector detect(Light::Color::Blue,0.3,"../../../rm-main/model/mobilenet_v3_112_rgb.onnx");
     io::HikCamera Hik(3,17);
     Hik.continueCap(5);
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
@@ -34,15 +33,21 @@ int main()
         Hik.read(frame);
         
         if(frame.image.empty()) continue;
+
         cv::Mat gray_img = detect.preprocessImage(frame.image);
 
-        auto armors_v = detect(frame.image);
         
-        std::deque<Armor> armors (std::make_move_iterator(armors_v.begin()),
-                         std::make_move_iterator(armors_v.end()));
-    //   
+        auto lights  = detect.FindLight(gray_img);
+        #ifdef Debug
+        std::cout <<"lights num:" << lights.size() << "\n";
+        #endif
+        auto armors = detect.FindArmor(lights);
+        #ifdef Debug
+        std::cout <<"armors num:" << armors.size() << "\n";
+        #endif
         auto roi = detect.ROIArmor( armors );
-        // std::cout<<"armor num:"<<armors_v.size()<<"\n";
+
+
         detect.ArmorShow(frame.image, armors);
         cv::imshow("gray_img",frame.image);
         cv::waitKey(1);
@@ -50,7 +55,7 @@ int main()
         for(const auto& img : roi )
         {
             cv::imshow("roi",img);
-            // cv::imwrite("/home/king/AUTO-Aming-system/images/image_"+std::to_string(num++)+".png", img);
+            cv::imwrite("/home/king/Pytorch/train/data/val/0_base/image_"+std::to_string(num++)+".png", img);
             cv::waitKey(1);
         }
     }

@@ -25,6 +25,18 @@ target_include_directories(test PUBLIC ${MVS_INCLUDE_DIRS})
 target_link_libraries(test ${OpenCV_LIBS} fmt::fmt spdlog::spdlog ${LIBUSB_1.0_LIBRARIES} ${MVS_LIBS} openvino::runtime)
 
 
+add_executable(negative 
+    negative.cpp
+    ../../rm-main/src/HikCamera.cpp
+    ../../rm-main/src/logger.cpp
+    ../../rm-main/src/Detecor.cpp
+    ../../rm-main/src/NumClassifier.cpp
+    ../../rm-main/src/Solver.cpp
+)
+target_include_directories(negative PUBLIC ${MVS_INCLUDE_DIRS})
+target_link_libraries(negative ${OpenCV_LIBS} fmt::fmt spdlog::spdlog ${LIBUSB_1.0_LIBRARIES} ${MVS_LIBS} openvino::runtime)
+
+
 
 
 

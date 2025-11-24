@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(MyProject VERSION 1.0 LANGUAGES CXX)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR})
-find_package(OpenCV REQUIRED)
+find_package(OpenCV REQUIRED )
 find_package(fmt REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(MVS REQUIRED)

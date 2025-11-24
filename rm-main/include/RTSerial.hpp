@@ -23,7 +23,7 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 
-
+namespace io{
 /**
  * number of serial data bits
  */
@@ -726,6 +726,6 @@ int RTSerial<Packet>::available()
     return nBytes;
 }
 
-
+}
 
 #endif // serialib_H

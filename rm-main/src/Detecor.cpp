@@ -1,33 +1,46 @@
 #include "../include/Detector.hpp"
 #include "../include/NumClassifier.hpp"
 #include <deque>
-#include <iterator>
+#include <iostream>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/core/types.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <vector>
 #include <cmath>
-// #ifndef NDEBUG
-// //Debug
-// #endif
-Detector::Detector(Light::Color color,double confidence,std::string model_path): 
+// #define Debug
+//Debug
+
+Detector::Detector(Light::Color color,float confidence,std::string model_path): 
                    color(color),
                    confidence(confidence),
                    classifier(model_path){}
 
-std::vector<Armor> Detector::DectectedArmor(cv::Mat& frame) {
-
+std::vector<Armor> Detector:: operator () (cv::Mat& frame) 
+{
     cv::Mat binary_img = preprocessImage(frame); //预处理图像
-    std::deque<Light> lights = FindLight(frame, binary_img); //寻找灯条
+
+    std::deque<Light> lights = FindLight(binary_img); //寻找灯条
+    #ifdef Debug
+    std::cout <<"lights num:" << lights.size() << "\n";
+    #endif
+
     std::deque<Armor> possible_armors = FindArmor(lights); //寻找装甲板
-    // std::cout<<possible_armors.size()<<std::endl;
+    #ifdef Debug
+    std::cout <<"possible_armors num:" << possible_armors.size() << "\n";
+    #endif
+    
     std::vector<Armor> armors = ClassifyArmor(possible_armors);
+    #ifdef Debug
+    std::cout <<"sure armors num:" << possible_armors.size() << "\n";
+    #endif   
+
     return armors;
 }
 
 cv::Mat Detector::preprocessImage(cv::Mat& rgb_img) //图像预处理
 {
+  this->rgb_img = rgb_img;
   cv::cvtColor(rgb_img, this->gray_img, cv::COLOR_RGB2GRAY);
   
   cv::Mat binary_img;
@@ -37,7 +50,7 @@ cv::Mat Detector::preprocessImage(cv::Mat& rgb_img) //图像预处理
 }
 
 
-std::deque<Light> Detector::FindLight(const cv::Mat & rgb_img, const cv::Mat & binary_img) //寻找灯条
+std::deque<Light> Detector::FindLight(const cv::Mat & binary_img) //寻找灯条
 {
   std::vector<std::vector<cv::Point>> contours;
   cv::findContours(binary_img, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
@@ -57,7 +70,7 @@ std::deque<Light> Detector::FindLight(const cv::Mat & rgb_img, const cv::Mat & b
     double aspect_ratio = light.length/light.width; //长宽比
     if (aspect_ratio < 2) continue; //长宽比阈值
 
-    if (light.length < 10 || light.width > 200) continue; //长度，宽度阈值
+    if (light.length < 10 || light.width > 100) continue; //长度，宽度阈值
 
     auto AngleIsOK = [&light]() ->bool
     {
@@ -68,8 +81,9 @@ std::deque<Light> Detector::FindLight(const cv::Mat & rgb_img, const cv::Mat & b
         return true;
     };
     if (!AngleIsOK()) continue; //角度阈值
-
-    auto getLightColor = [&rect, &rgb_img]() -> Light::Color
+    
+    auto& rgb_image = this->rgb_img;
+    auto getLightColor = [&rect, &rgb_image]() -> Light::Color
     {
         //getRoi
         std::vector<cv::Point2f> src_rect(4);
@@ -89,7 +103,7 @@ std::deque<Light> Detector::FindLight(const cv::Mat & rgb_img, const cv::Mat & b
         cv::Mat M = cv::getAffineTransform(src_rect, aim_rect);
         // 应用仿射变换
         cv::Mat light_roi;
-        cv::warpAffine(rgb_img, light_roi, M, roi_sz,cv::INTER_NEAREST);
+        cv::warpAffine(rgb_image, light_roi, M, roi_sz,cv::INTER_NEAREST);
         // cv::Scalar light_color=cv::sum(light_roi);
         // return (light_color[0] < light_color[2]) ? Light::Red : Light::Blue;
 
@@ -101,7 +115,7 @@ std::deque<Light> Detector::FindLight(const cv::Mat & rgb_img, const cv::Mat & b
                 cv::Vec3b color = light_roi.at<cv::Vec3b>(i,j);
                 if(color[2] > color[0])
                     redrate++;
-                else
+                else if(color[2] < color[0])
                     bluerate++;
             }
         }
@@ -129,21 +143,21 @@ std::deque<Armor> Detector::FindArmor(const std::deque<Light> & lights)
         double biglen = std::max(light1.length, light2.length);
         double smalen = std::min(light1.length, light2.length);
         double rate = smalen / biglen;
-        if(rate<0.6) return false;
+        if(rate<0.5) return false;
 
         //灯条平行匹配
         cv::Point2f L1vec = light1.top-light1.bottom,
                     L2vec = light2.top-light2.bottom;
         double cosAngle = L1vec.dot(L2vec) / (cv::norm(L1vec) * cv::norm(L2vec));
         double Angle = std::abs( std::acos(cosAngle)/CV_PI*180 );
-        if(Angle>20) return false;
+        if(Angle>30) return false;
 
         //高度匹配
         cv::Point2f toward = L1vec + L2vec;
         cv::Point2f L1ToL2vec = light1.center-light2.center;
 
         double HighDiff = std::abs(toward.dot(L1ToL2vec)/cv::norm(toward));
-        if(HighDiff>smalen) return false;
+        if(HighDiff>(smalen*0.8)) return false;
 
         //距离匹配
         double distance = cv::norm(L1ToL2vec);
@@ -220,30 +234,25 @@ std::vector<cv::Mat> Detector::ROIArmor(const std::deque<Armor> & armors)
     
     for(const auto& armor:armors)
     {
-        const cv::Size roi_sz(20, 28); //裁剪后图像大小
-        const cv::Size armor_sz(32,28);
-        const int extendLen = 8;
-        const int contractWid = 6;
+        const cv::Size roi_sz(112,112); //裁剪后图像大小
+        const int extendHei = 28;
+        const int contractWid = 18;
         
-        std::vector<cv::Point2f> aim_rect{
-            cv::Point2f(-contractWid,extendLen),
-            cv::Point2f(armor_sz.width - contractWid - 1, extendLen),
-            cv::Point2f(armor_sz.width - contractWid - 1, armor_sz.height - extendLen - 1),
-            cv::Point2f(-contractWid, roi_sz.height - extendLen - 1)
+        std::vector<cv::Point2f> Roi_rect{
+            cv::Point2f(-contractWid,extendHei),
+            cv::Point2f(roi_sz.width + contractWid - 1, extendHei),
+            cv::Point2f(roi_sz.width + contractWid - 1, roi_sz.height - extendHei - 1),
+            cv::Point2f(-contractWid, roi_sz.height - extendHei - 1)
         };
         
         // 计算透视变换矩阵
-        cv::Mat M = cv::getPerspectiveTransform(armor.Lightcorners, aim_rect,cv::INTER_NEAREST);
+        cv::Mat M = cv::getPerspectiveTransform(armor.Lightcorners, Roi_rect);
         
         // 应用透视变换
         cv::Mat armor_roi;
-        cv::warpPerspective(this->gray_img, armor_roi, M, roi_sz);
+        cv::warpPerspective(this->rgb_img, armor_roi, M, roi_sz,cv::INTER_LINEAR);
         
-        cv::threshold(armor_roi, armor_roi, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);//cv::THRESH_OTSU自动计算最优阈值
-        
-        // cv::imwrite("/home/king/desktop/homework/workindentify/images/roi2.png",armor_roi);
-        // cv::waitKey(1);
-        armor_roi = armor_roi/255.0;//神经网络输入归一化
+        armor_roi = armor_roi;//神经网络输入归一化
         armors_pattern.push_back(armor_roi);
     }
     return armors_pattern;
@@ -264,9 +273,6 @@ std::vector<Armor> Detector::ClassifyArmor(const std::deque<Armor>& armors)
         
         Armor::Type type = static_cast<Armor::Type>(ans[i].id);
         if(type == Armor::Type::negative) continue;
-        // || 
-        //    type == Armor::Type::base || 
-        //    type == Armor::Type::outpost
         
         result.push_back(armors[i]);
         result.back().confidence = ans[i].confidence;
@@ -278,10 +284,10 @@ std::vector<Armor> Detector::ClassifyArmor(const std::deque<Armor>& armors)
 
 void Detector::ArmorShow(cv::Mat & rgb_img, const std::deque<Armor> & armors)
 {
-    // if(armors.empty()) {std::cout<<"nononnnnnnnnnnnnnnnnnnnn"<<std::endl;cv::imwrite("/home/king/desktop/homework/workindentify/images/frame.png",rgb_img);}
     for(auto& armor:armors)
     {
         std::vector<cv::Point> Lightcorners;
+        Lightcorners.reserve(4);
         for(auto c:armor.Lightcorners) {Lightcorners.push_back(c);}
         std::vector<std::vector<cv::Point>> contours{Lightcorners};
 
@@ -290,14 +296,14 @@ void Detector::ArmorShow(cv::Mat & rgb_img, const std::deque<Armor> & armors)
 }
 void Detector::ArmorShow(cv::Mat & rgb_img, const std::vector<Armor> & armors)
 {
-    // if(armors.empty()) {std::cout<<"nononnnnnnnnnnnnnnnnnnnn"<<std::endl;cv::imwrite("/home/king/desktop/homework/workindentify/images/frame.png",rgb_img);}
     for(auto& armor:armors)
     {
         std::vector<cv::Point> Lightcorners;
+        Lightcorners.reserve(4);
         for(auto c:armor.Lightcorners) {Lightcorners.push_back(c);}
         std::vector<std::vector<cv::Point>> contours{Lightcorners};
-
+        if(!contours.empty()) std::cout<<"contours"<<contours[0].size()<<"\n";
         cv::polylines(rgb_img,contours,1,cv::Scalar(0, 255, 0),3,cv::LINE_AA);
         // std::cout<<"id:"<<armor.type<<std::endl;
     }
-}
+}               

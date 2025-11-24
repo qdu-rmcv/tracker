@@ -13,7 +13,7 @@ class NumClassifier
 public:
     struct Ans{
         int id;
-        double confidence;
+        float confidence;
         Ans(int id,double con):id(id),confidence(con){}
     };
     NumClassifier(std::string model_path);
