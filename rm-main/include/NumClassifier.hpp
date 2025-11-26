@@ -3,7 +3,7 @@
 
 // OpenCV
 #include <opencv2/opencv.hpp>
-
+#include <openvino/openvino.hpp>
 // STL
 #include <string>
 #include <vector>
@@ -20,7 +20,9 @@ public:
     std::vector<Ans> Classify(const std::vector<cv::Mat>& armors_pattern);
 
 private:
-    cv::dnn::Net Net;
+    ov::Core core;
+    ov::CompiledModel compiled_model;
+    ov::InferRequest infer_request;
 };
 
 

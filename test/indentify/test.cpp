@@ -22,7 +22,7 @@ static std::chrono::duration<double> total_delay_seconds(0.0);
 static auto total = std::chrono::nanoseconds(0);
 int main()
 {
-    Detector detect(Light::Color::Red,1,"/home/king/AUTO-Aming-system/rm-main/model/mobilenet_v3_112_rgb.onnx");
+    Detector detect(Light::Color::Red,0.5,"/home/king/AUTO-Aming-system/rm-main/model/mobilenet_v3_112_rgb.onnx");
     Solver Sov("../../../config/Solver_config.yaml");
     io::HikCamera Hik(3,17);
     Hik.continueCap(5);
@@ -35,7 +35,6 @@ int main()
         Hik.read(frame);
 
         if(frame.image.empty()) continue;
-
         auto start = std::chrono::steady_clock::now();
         auto armors = detect(frame.image);
 
@@ -43,7 +42,7 @@ int main()
         {
             total += std::chrono::steady_clock::now() - start;
             num++;
-            if(num%200 == 0&& num != 0)
+            if(num%100 == 0&& num != 0)
             {
                 std::cout<<(total.count()/(float)num)*1e-6<<"\n";
                 num = 0;
@@ -57,7 +56,7 @@ int main()
         cv::waitKey(1);
         if(armors.empty()) continue;
         int Id = static_cast<int>(armors[0].type);
-        std::cout<<"ID: "<<Id<<" confidence: "<< armors[0].confidence<<"\n";
+        // std::cout<<"ID: "<<Id<<" confidence: "<< armors[0].confidence<<"\n";
 
     }
 }

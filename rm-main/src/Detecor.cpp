@@ -251,8 +251,7 @@ std::vector<cv::Mat> Detector::ROIArmor(const std::deque<Armor> & armors)
         // 应用透视变换
         cv::Mat armor_roi;
         cv::warpPerspective(this->rgb_img, armor_roi, M, roi_sz,cv::INTER_LINEAR);
-        
-        armor_roi = armor_roi;//神经网络输入归一化
+    
         armors_pattern.push_back(armor_roi);
     }
     return armors_pattern;
