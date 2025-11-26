@@ -8,7 +8,7 @@ find_package(MVS REQUIRED)
 find_package(PkgConfig REQUIRED)
 # 找到 OpenVINO 包
 # 需要先 source openvino/setupvars.sh
-find_package(OpenVINO REQUIRED)
+
 
 pkg_check_modules(LIBUSB_1.0 REQUIRED libusb-1.0)
 # find_package(LibUSB 1.0 REQUIRED)
@@ -22,7 +22,7 @@ add_executable(test
     ../../rm-main/src/Solver.cpp
 )
 target_include_directories(test PUBLIC ${MVS_INCLUDE_DIRS})
-target_link_libraries(test ${OpenCV_LIBS} fmt::fmt spdlog::spdlog ${LIBUSB_1.0_LIBRARIES} ${MVS_LIBS} openvino::runtime)
+target_link_libraries(test ${OpenCV_LIBS} fmt::fmt spdlog::spdlog ${LIBUSB_1.0_LIBRARIES} ${MVS_LIBS} )
 
 
 

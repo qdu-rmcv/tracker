@@ -19,9 +19,10 @@ static int Armor_num=0;
 static std::chrono::duration<double> total_elapsed_seconds(0.0);
 static std::chrono::duration<double> delay_seconds(0.0);
 static std::chrono::duration<double> total_delay_seconds(0.0);
+static auto total = std::chrono::nanoseconds(0);
 int main()
 {
-    Detector detect(Light::Color::Red,0.3,"../../../rm-main/model/mlp.onnx");
+    Detector detect(Light::Color::Red,1,"/home/king/AUTO-Aming-system/rm-main/model/mobilenet_v3_112_rgb.onnx");
     Solver Sov("../../../config/Solver_config.yaml");
     io::HikCamera Hik(3,17);
     Hik.continueCap(5);
@@ -30,29 +31,34 @@ int main()
     while(true)
     {
         io::HikCamera::ImageData frame; 
-
+            
         Hik.read(frame);
-        
+
         if(frame.image.empty()) continue;
-        cv::Mat gray_img = detect.preprocessImage(frame.image);
 
-        auto armors_v = detect(frame.image);
-        
-        std::deque<Armor> armors (std::make_move_iterator(armors_v.begin()),
-                         std::make_move_iterator(armors_v.end()));
-    //   
-        auto roi = detect.ROIArmor( armors );
-        // std::cout<<"armor num:"<<armors_v.size()<<"\n";
-        detect.ArmorShow(frame.image, armors);
-        cv::imshow("gray_img",frame.image);
-        cv::waitKey(1);
+        auto start = std::chrono::steady_clock::now();
+        auto armors = detect(frame.image);
 
-        for(const auto& img : roi )
+        if(!armors.empty())
         {
-            cv::imshow("roi",img);
-            // cv::imwrite("/home/king/AUTO-Aming-system/images/image_"+std::to_string(num++)+".png", img);
-            cv::waitKey(1);
+            total += std::chrono::steady_clock::now() - start;
+            num++;
+            if(num%200 == 0&& num != 0)
+            {
+                std::cout<<(total.count()/(float)num)*1e-6<<"\n";
+                num = 0;
+                total = std::chrono::nanoseconds(0);
+            }
         }
+
+
+        detect.ArmorShow(frame.image, armors);
+        cv::imshow("hh",frame.image);
+        cv::waitKey(1);
+        if(armors.empty()) continue;
+        int Id = static_cast<int>(armors[0].type);
+        std::cout<<"ID: "<<Id<<" confidence: "<< armors[0].confidence<<"\n";
+
     }
 }
     // std::string config_path = "/home/king/desktop/SinAim_rm/10.16/config/Solver_config.yaml";

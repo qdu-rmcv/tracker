@@ -269,7 +269,7 @@ std::vector<Armor> Detector::ClassifyArmor(const std::deque<Armor>& armors)
     
     for(int i=0;i<armors.size();i++)
     {
-        if(ans[i].confidence<this->confidence) continue;
+        if(ans[i].confidence < this->confidence) continue;
         
         Armor::Type type = static_cast<Armor::Type>(ans[i].id);
         if(type == Armor::Type::negative) continue;
@@ -302,7 +302,6 @@ void Detector::ArmorShow(cv::Mat & rgb_img, const std::vector<Armor> & armors)
         Lightcorners.reserve(4);
         for(auto c:armor.Lightcorners) {Lightcorners.push_back(c);}
         std::vector<std::vector<cv::Point>> contours{Lightcorners};
-        if(!contours.empty()) std::cout<<"contours"<<contours[0].size()<<"\n";
         cv::polylines(rgb_img,contours,1,cv::Scalar(0, 255, 0),3,cv::LINE_AA);
         // std::cout<<"id:"<<armor.type<<std::endl;
     }

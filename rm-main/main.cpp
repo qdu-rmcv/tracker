@@ -17,7 +17,7 @@ int main()
     cv::namedWindow("result");
     cv::namedWindow("debug");
 
-    Detector indentifyAomor(Light::Color::Red,0.5,"/home/king/desktop/SinAim_rm/10.16/rm-main/model/mlp.onnx");
+    Detector indentifyAomor(Light::Color::Red,0.5,"/home/king/desktop/SinAim_rm/10.16/rm-main/model/mobilenet_v3_112_rgb.onnx");
     Solver Sov("/home/king/desktop/SinAim_rm/10.16/config/Solver_config.yaml");
     
     while(true)
@@ -28,7 +28,7 @@ int main()
         cv::Mat debug = indentifyAomor.preprocessImage(frame.image);
 
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-        std::vector<Armor> armors = indentifyAomor.DectectedArmor(frame.image);
+        std::vector<Armor> armors = indentifyAomor(frame.image);
         std::vector<ArmorPosi> armors_posi = Sov.SolvePnP(armors);
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         

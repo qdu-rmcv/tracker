@@ -14,7 +14,7 @@
 #include <vector>
 #define Debug
 using namespace std::chrono_literals;
-static int num=0;
+static int num=623;
 static int Armor_num=0;
 static std::chrono::duration<double> total_elapsed_seconds(0.0);
 static std::chrono::duration<double> delay_seconds(0.0);
@@ -55,7 +55,7 @@ int main()
         for(const auto& img : roi )
         {
             cv::imshow("roi",img);
-            cv::imwrite("/home/king/Pytorch/train/data/val/0_base/image_"+std::to_string(num++)+".png", img);
+            // cv::imwrite("/home/king/Pytorch/train/data/train/5_guard/image_"+std::to_string(num++)+".png", img);
             cv::waitKey(1);
         }
     }

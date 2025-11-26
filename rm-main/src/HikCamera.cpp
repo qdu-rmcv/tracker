@@ -155,7 +155,7 @@ void HikCamera::capture_init()
   set_float_value("Gain", this->parame.gain);
 
 
-  ret = MV_CC_SetFloatValue(handle_, "AcquisitionFrameRate", 60.0);
+  ret = MV_CC_SetFloatValue(handle_, "AcquisitionFrameRate", 200);
   if (ret != MV_OK) {
     tools::logger()->warn("MV_CC_SetFloatValue(set framerate) failed: {:#x}", ret);
     return;

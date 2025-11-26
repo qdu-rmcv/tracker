@@ -10,7 +10,7 @@
 #include <string>
 #define Debug
 using namespace std::chrono_literals;
-static int num=0;
+static int num=1722;
 static int framenum=0;
 static int Armor_num=0;
 static std::chrono::duration<double> total_elapsed_seconds(0.0);
@@ -27,10 +27,10 @@ int cropHeight = 112;
 int stepX = 112; 
 int stepY = 112;
 
-    std::string saveDir = "/home/king/AUTO-Aming-system/images/";
+    std::string saveDir = "/home/king/Pytorch/train/data/train/7_negetive/";
 int main()
 {
-    Detector detect(Light::Color::Blue,0.3,"../../../rm-main/model/mlp.onnx");
+    Detector detect(Light::Color::Blue,0.3,"../../../rm-main/model/mobilenet_v3_112_rgb.onnx");
     io::HikCamera Hik(3,17);
     Hik.continueCap(5);
     std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
@@ -43,18 +43,16 @@ int main()
         
         if(frame.image.empty()) continue;
 
-        framenum ++;
-        if(!(framenum%200 == 0 && framenum!=0 )) continue;
             imshow("Current Crop", frame.image);
             cv::waitKey(1); 
-        for (int y = 0; y <= frame.image.rows - cropHeight; y += stepY) {
-        for (int x = 0; x <= frame.image.cols - cropWidth; x += stepX) {
+
             
             // 定义感兴趣区域 (Region of Interest)
-            cv::Rect roi(x, y, cropWidth, cropHeight);
+ 
             
             // 获取裁剪图像
-            cv::Mat crop = frame.image(roi);
+            cv::Mat crop ;
+            cv::resize(frame.image,crop,cv::Size(112,112));
 
             // 5. 保存图像
             // 生成文件名: crops/crop_0.jpg, crops/crop_1.jpg ...
@@ -62,12 +60,11 @@ int main()
             std::string filename = saveDir + "image_" + std::to_string(num++) + ".png";
             
             // 这里的 clone() 是为了确保数据独立，如果只是显示可以不用
-            imwrite(filename, crop); 
+            // imwrite(filename, crop); 
             
             // 可选：实时显示裁剪过程
 
-        }
-    }
+    
 
 
     }
