@@ -11,6 +11,7 @@ find_package(PkgConfig REQUIRED)
 find_package(OpenVINO REQUIRED)
 
 pkg_check_modules(LIBUSB_1.0 REQUIRED libusb-1.0)
+add_compile_options(-g -O3)
 # find_package(LibUSB 1.0 REQUIRED)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_executable(test 

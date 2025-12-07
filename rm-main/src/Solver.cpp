@@ -107,16 +107,24 @@ std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
         else {R = r_1; T = tvecs.back();}
 
         std::array<cv::Point3d,4> posi;
-        for(int i=0;i<4;i++)
+        
+        if(armor.type == Armor::Type::hero || armor.type == Armor::Type::base)
         {
-            if(armor.type==Armor::Type::hero){
+            for(int i=0;i<4;i++)
+            {
                 cv::Mat P = R * objectBigArmor[i] + T;
                 posi[i] = cv::Point3d(P.at<double>(0,0),P.at<double>(1,0),P.at<double>(2,0));
-            }else {
+            }
+
+        }else{
+
+            for(int i=0;i<4;i++)
+            {
                 cv::Mat P = R * objectSmallArmor[i] + T;
                 posi[i] = cv::Point3d(P.at<double>(0,0),P.at<double>(1,0),P.at<double>(2,0));
-            } 
-        }
+            }
+        } 
+
         armors_posi.emplace_back(posi,armor.type);//记录
     }
     return armors_posi;

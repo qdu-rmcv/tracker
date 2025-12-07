@@ -50,7 +50,7 @@ int main()
             }
         }
 
-
+        // std::cout<<"Armor num: "<<armors.size()<<"\n";
         detect.ArmorShow(frame.image, armors);
         cv::imshow("hh",frame.image);
         cv::waitKey(1);

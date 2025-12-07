@@ -8,7 +8,7 @@
 // 告诉 GPU 永远只申请 8 张图的显存，
 // 这样就再也不用调用 set_shape 了，速度从 1s 优化到 1ms。
 // ==========================================
-static const size_t MAX_BATCH_SIZE = 3;
+static const size_t MAX_BATCH_SIZE = 2;
 
 NumClassifier::NumClassifier(std::string model_path)
 {
@@ -32,7 +32,7 @@ NumClassifier::NumClassifier(std::string model_path)
     // 这些步骤会自动在 GPU 上执行
     ppp.input().preprocess()
         .convert_color(ov::preprocess::ColorFormat::RGB) // BGR 转 RGB (匹配 PyTorch)
-        .convert_element_type(ov::element::f16)          // 转 float
+        .convert_element_type(ov::element::f32)          // 转 float
         .mean({123.675f, 116.280f, 103.530f})            // ImageNet Mean * 255
         // 【精度核心】这里必须使用 PyTorch ImageNet 的精确 Std * 255
         // R: 0.229*255=58.395, G: 0.224*255=57.12, B: 0.225*255=57.375
@@ -103,6 +103,7 @@ std::vector<NumClassifier::Ans> NumClassifier::Classify(const std::vector<cv::Ma
 {
     std::vector<NumClassifier::Ans> ans;
     if(armors_pattern.empty()) return ans;
+    ans.reserve(armors_pattern.size());
 
     // 1. 获取输入 Tensor (显存映射内存)
     // 注意：这里的 input_tensor 形状已经是 [8, 112, 112, 3] (NHWC)
