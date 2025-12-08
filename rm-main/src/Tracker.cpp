@@ -3,13 +3,17 @@
 
 Tracker::Tracker() : is_first_(true) 
 {
-    //d（距离cm）协方差矩阵,构建观测噪声源矩阵
-    this->r << 25;
+    //d（距离mm）协方差矩阵,构建观测噪声源矩阵
+    this->R <<
+        2500, 0,    0,
+        0,    2500, 0,
+        0,    0,    2500;
 
-    //加速度cm/s^2噪声协方差,构建过程噪声源矩阵
-    this->q<< 250000, 0, 0,
-              0, 250000, 0,
-              0, 0, 250000;
+    //加速度mm/s^2噪声协方差,构建过程噪声源矩阵
+    this->q<< 
+        2500, 0,    0,
+        0,    2500, 0,
+        0,    0,    2500;
 
 }
 
@@ -54,13 +58,10 @@ const Eigen::Matrix<double, 6, 1>& Tracker::operator()(const Eigen::Matrix<doubl
     //2构建测量协方差矩阵
     Eigen::Matrix<double, 3, 3>& R = kalman_.Covariance_Measurement();
     
-    //测量噪声驱动矩阵
-    Eigen::Matrix<double, 3, 1> n = measurement/measurement.norm();
-    this->G_R<<
-        n(0)*n(0),
-        n(1)*n(1),
-        n(2)*n(2);
-    R = this->G_R * this->r * this->G_R.transpose() * error;
+    R = R * error;
+    
+    //更新状态向量为先验状态向量
+    kalman_.StateVector() = H * kalman_.StateVector();
 
     return this->kalman_.update(measurement);;
 }

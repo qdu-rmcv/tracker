@@ -50,10 +50,12 @@ struct Armor{
 };
 
 struct ArmorPosi{
-    std::array<cv::Point3d,4> posi;
+    cv::Point3d posi;
+    cv::Point3d face;
+    cv::Point3d toward;
     Armor::Type type;
 
-    ArmorPosi(std::array<cv::Point3d,4> posi,Armor::Type type):
-              posi(posi), type(type){}
+    ArmorPosi(cv::Point3d posi, cv::Point3d face, cv::Point3d toward, Armor::Type type):
+              posi(posi), face(face), toward(toward), type(type){}
 };
 #endif

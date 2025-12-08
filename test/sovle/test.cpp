@@ -31,7 +31,7 @@ int main()
         cv::Mat debug = indentifyAomor.preprocessImage(frame.image);
 
         std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
-        std::vector<Armor> armors = indentifyAomor.DectectedArmor(frame.image);
+        std::vector<Armor> armors = indentifyAomor(frame.image);
         std::vector<ArmorPosi> armors_posi = Sov.SolvePnP(armors);
         std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
         
@@ -46,9 +46,9 @@ int main()
         //可视化装甲板中心
         if(!armors_posi.empty())
         {
-            cv::Point3d center = (armors_posi[0].posi[0]+armors_posi[0].posi[2])/2;
-            Sov.ansShow(center, frame.image);
-            if(num%100==0&&num!=0) std::cerr<<cv::norm(center)<<std::endl;
+            
+            Sov.ansShow(armors_posi[0].posi, frame.image);
+            if(num%100==0&&num!=0) std::cerr<<cv::norm(armors_posi[0].posi)<<std::endl;
         }
         indentifyAomor.ArmorShow(frame.image, armors);
         cv::imshow("hh",frame.image);

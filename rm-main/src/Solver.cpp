@@ -23,32 +23,25 @@ Solver::Solver(std::string config_path)
     fs["distortion_coeffs"] >> this->distCoeffs;
     // std::cout<<cameraMatrix.size<<std::endl;
 
+    this->R_Cam_to_gripper = cv::Mat_<double>(3,3);
+    this->T_Cam_to_gripper = cv::Mat_<double>(3,1);
+
     // 相机到云台的旋转矩阵 (Rotation Matrix from Camera to Gripper)
     fs["R_Cam_to_gripper"] >> this->R_Cam_to_gripper;
 
     // 相机到云台的平移矩阵 (Translation Matrix from Camera to Gripper)
     fs["T_Cam_to_gripper"] >> this->T_Cam_to_gripper;
 
-    for(int i=0;i<4;i++)
-    {
-        this->objectBigArmor[i] = cv::Mat_<double>(3, 1);
-        this->objectSmallArmor[i] = cv::Mat_<double>(3, 1);
-    }
 
-    this->objectBigArmor[0]<< 0, 0, 0;
-    this->objectBigArmor[1]<< 230, 0, 0;
-    this->objectBigArmor[2]<< 230, 55, 0;
-    this->objectBigArmor[3]<< 0, 55, 0;
-
-    this->objectSmallArmor[0]<< 0, 0, 0;
-    this->objectSmallArmor[1]<< 135, 0, 0;
-    this->objectSmallArmor[2]<< 135, 55, 0;
-    this->objectSmallArmor[3]<< 0, 55, 0;
+    this->BigArmorCenter = cv::Mat_<double>(3, 1);
+    this->SmallArmorCenter = cv::Mat_<double>(3, 1);
 
 
+    this->BigArmorCenter<< 115.0, 27.5, 0.0;
+    this->SmallArmorCenter<< 67.5, 27.5, 0.0;
 }
 
-std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
+std::vector<ArmorPosi> Solver::operator()(const std::vector<Armor>& armors)
 {
     std::vector<ArmorPosi> armors_posi;
     if(armors.empty()) return armors_posi;
@@ -106,44 +99,67 @@ std::vector<ArmorPosi> Solver::SolvePnP(const std::vector<Armor>& armors)
         if(Z_camera_0.at<double>(2,0) > 0) {R = r_0; T = tvecs.front();}
         else {R = r_1; T = tvecs.back();}
 
-        std::array<cv::Point3d,4> posi;
-        
+        cv::Point3d posi, face, toward;
         if(armor.type == Armor::Type::hero || armor.type == Armor::Type::base)
         {
-            for(int i=0;i<4;i++)
-            {
-                cv::Mat P = R * objectBigArmor[i] + T;
-                posi[i] = cv::Point3d(P.at<double>(0,0),P.at<double>(1,0),P.at<double>(2,0));
-            }
+            cv::Mat P = R * this->BigArmorCenter + T;
+            posi = cv::Point3d(P.at<double>(0,0),P.at<double>(1,0),P.at<double>(2,0));
 
         }else{
-
-            for(int i=0;i<4;i++)
-            {
-                cv::Mat P = R * objectSmallArmor[i] + T;
-                posi[i] = cv::Point3d(P.at<double>(0,0),P.at<double>(1,0),P.at<double>(2,0));
-            }
+            cv::Mat P = R * this->SmallArmorCenter + T;
+            posi = cv::Point3d(P.at<double>(0,0),P.at<double>(1,0),P.at<double>(2,0));
         } 
 
-        armors_posi.emplace_back(posi,armor.type);//记录
+        cv::Mat P = R * (cv::Mat_<double>(3,1) << 0.0, 0.0, 1.0) + T;
+        face = cv::Point3d(P.at<double>(0,0),P.at<double>(1,0),P.at<double>(2,0));
+
+        P = R * (cv::Mat_<double>(3,1) << 1.0, 0.0, 0.0) + T;
+        toward = cv::Point3d(P.at<double>(0,0),P.at<double>(1,0),P.at<double>(2,0));
+        armors_posi.emplace_back(posi, face, toward, armor.type);//记录
     }
     return armors_posi;
 }
 
-void Solver::ConverToWorld(ArmorPosi& armor_posi, const cv::Quatd& q_gripper_to_world)
+void Solver::ConverToWorld(ArmorPosi& armor_posi, const cv::Quatd& gripper_to_world)
 {
-    cv::Mat R(q_gripper_to_world.toRotMat3x3());// 手坐标系到世界坐标系的旋转矩阵
+    cv::Mat R(gripper_to_world.toRotMat3x3());// 手坐标系到世界坐标系的旋转矩阵
     
-    for (auto& pos : armor_posi.posi) 
+    // 将装甲板位置从相机坐标系转换到手坐标系
+    cv::Mat posi = this->R_Cam_to_gripper * cv::Mat(3,1,CV_64F, &armor_posi.posi) + this->T_Cam_to_gripper;
+    cv::Mat face = this->R_Cam_to_gripper * cv::Mat(3,1,CV_64F, &armor_posi.face) + this->T_Cam_to_gripper;
+    cv::Mat toward = this->R_Cam_to_gripper * cv::Mat(3,1,CV_64F, &armor_posi.toward) + this->T_Cam_to_gripper;
+    
+    // 将装甲板位置从手坐标系转换到世界坐标系
+    posi = R * posi;
+    face = R * face;
+    toward = R * toward;
+
+    // 更新装甲板位置
+    armor_posi.posi = cv::Point3d(posi.at<double>(0, 0), posi.at<double>(1, 0), posi.at<double>(2, 0));
+    armor_posi.face = cv::Point3d(face.at<double>(0, 0), face.at<double>(1, 0), face.at<double>(2, 0));
+    armor_posi.toward = cv::Point3d(toward.at<double>(0, 0), toward.at<double>(1, 0), toward.at<double>(2, 0));
+}
+
+void Solver::ConverToWorld(std::vector<ArmorPosi>& armors_posi, const cv::Quatd& gripper_to_world)
+{
+    cv::Mat R(gripper_to_world.toRotMat3x3());// 手坐标系到世界坐标系的旋转矩阵
+
+    for(auto& armor_posi:armors_posi)
     {
         // 将装甲板位置从相机坐标系转换到手坐标系
-        cv::Mat P = this->R_Cam_to_gripper * cv::Mat(cv::Point3d(pos.x, pos.y, pos.z)) + this->T_Cam_to_gripper;
+        cv::Mat posi = this->R_Cam_to_gripper * cv::Mat(3,1,CV_64F, &armor_posi.posi) + this->T_Cam_to_gripper;
+        cv::Mat face = this->R_Cam_to_gripper * cv::Mat(3,1,CV_64F, &armor_posi.face) + this->T_Cam_to_gripper;
+        cv::Mat toward = this->R_Cam_to_gripper * cv::Mat(3,1,CV_64F, &armor_posi.toward) + this->T_Cam_to_gripper;
         
         // 将装甲板位置从手坐标系转换到世界坐标系
-        P = R * P;
+        posi = R * posi;
+        face = R * face;
+        toward = R * toward;
 
         // 更新装甲板位置
-        pos = cv::Point3d(P.at<double>(0, 0), P.at<double>(1, 0), P.at<double>(2, 0));
+        armor_posi.posi = cv::Point3d(posi.at<double>(0, 0), posi.at<double>(1, 0), posi.at<double>(2, 0));
+        armor_posi.face = cv::Point3d(face.at<double>(0, 0), face.at<double>(1, 0), face.at<double>(2, 0));
+        armor_posi.toward = cv::Point3d(toward.at<double>(0, 0), toward.at<double>(1, 0), toward.at<double>(2, 0));
     }
 }
 
@@ -168,8 +184,8 @@ void Solver::ansShow(const cv::Point3d& posi,cv::Mat& image)
     // 输出和可视化结果
     // 投影后的2D点坐标
     cv::Point2d projectedPoint = imagePoints[0];
-    int imageWidth = image.rows;
-    int imageHeight = image.cols;
+    int imageWidth = image.cols;
+    int imageHeight = image.rows;
 
     // 在图像上绘制投影点 (画一个红色的圆圈)
     // 检查点是否在图像范围内
@@ -185,4 +201,75 @@ void Solver::ansShow(const cv::Point3d& posi,cv::Mat& image)
     // 显示图像
     cv::imshow("Projected Point Visualization", image);
     cv::waitKey(1); // 等待按键后退出
+}
+
+
+void Solver::ansShow(const ArmorPosi& armor,cv::Mat& image)
+{
+    double high = 27.5, width;
+    if(armor.type == Armor::Type::hero || armor.type == Armor::Type::base)
+        width = 115.0;
+    else
+        width = 67.5;
+
+    cv::Point3d toward_w = width * armor.toward;
+    cv::Point3d toward_h = high * (armor.face.cross(armor.toward)/cv::norm(armor.face.cross(armor.toward)));
+
+    cv::Mat rvec = cv::Mat::zeros(3, 1, CV_64F); // 单位旋转向量
+    cv::Mat tvec = cv::Mat::zeros(3, 1, CV_64F); // 单位平移向量
+
+    // 执行投影
+    // cv::projectPoints 需要一个点的向量作为输入
+    std::vector<cv::Point3d> objectPoints;
+    objectPoints.reserve(5);
+    objectPoints.push_back(armor.posi);
+    objectPoints.push_back(armor.posi - toward_w - toward_h);
+    objectPoints.push_back(armor.posi + toward_w - toward_h);
+    objectPoints.push_back(armor.posi + toward_w + toward_h);
+    objectPoints.push_back(armor.posi - toward_w + toward_h);
+
+
+    // 用于存储投影结果的2D点向量
+    std::vector<cv::Point2d> imagePoints;
+    imagePoints.reserve(5);
+
+    //重投影
+    cv::projectPoints(objectPoints, rvec, tvec, cameraMatrix, distCoeffs, imagePoints);
+
+    //在图像上绘制结果
+    cv::Point2d CenterPoint = imagePoints[0];
+    int imageWidth = image.cols;
+    int imageHeight = image.rows;
+
+    // 在图像上绘制投影点 (画一个红色的圆圈)
+    // 检查点是否在图像范围内
+    if (CenterPoint.x >= 0 && CenterPoint.x < imageWidth &&
+        CenterPoint.y >= 0 && CenterPoint.y < imageHeight)
+    {
+        cv::circle(image, CenterPoint, 5, cv::Scalar(0, 0, 255), -1); // 红色实心圆
+        cv::putText(image, "Projected Point", cv::Point(CenterPoint.x + 10, CenterPoint.y),
+                    cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(255, 255, 255), 1);
+    } else {
+        std::cout << "Projected point is outside the image frame." << std::endl;
+    }
+
+    //绘制装甲板轮廓
+    std::vector<cv::Point2d> points;
+    points.reserve(4);
+    for(int i=1;i<=4;i++)
+    {
+        cv::Point2d Point = imagePoints[i];
+        if (Point.x >= 0 && Point.x < imageWidth &&
+        Point.y >= 0 && Point.y < imageHeight)
+        {
+            points.push_back(Point);
+        } else {
+            std::cout << "Projected point is outside the image frame." << std::endl;
+            return;
+        }
+    }
+
+    // 绘制
+    std::vector<std::vector<cv::Point2d>> contours{points};
+    cv::polylines(image,contours,1,cv::Scalar(0, 255, 0),3,cv::LINE_AA);
 }

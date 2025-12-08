@@ -21,7 +21,7 @@ private:
     };
 
     Eigen::Matrix<double, 3, 1> G_R;//传感器噪声驱动矩阵
-    Eigen::Matrix<double, 1, 1> r;//传感器噪声源协方差矩阵
+    Eigen::Matrix<double, 3, 3> R;//传感器噪声源协方差矩阵
 
     Eigen::Matrix<double, 3, 3> q;//过程噪声源协方差矩阵
 
