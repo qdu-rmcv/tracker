@@ -1,0 +1,23 @@
+/camera_node:
+  ros__parameters:
+    camera_name: gimbal_camera
+    camera_name_lob: gimbal_camera_lob
+    camera_info_url: package://mindvision_camera/config/camera_info.yaml
+    camera_info_url_lob: "package://mindvision_camera/config/camera_info_lob.yaml"
+    device_index: 0
+    device_index_lob: 1
+    # Optional exact matching. Leave empty to use device_index.
+    device_sn: ""
+    device_sn_lob: ""
+    frame_id: camera_optical_frame
+    frame_id_lob: camera_optical_frame_lob
+    exposure_time: 5000.0
+    gain: 16.0
+    gamma: 75 # MindVision SDK raw gamma value; see startup log for camera range
+    autocap: true
+    frame_rate_enable: false
+    frame_rate: 249.0
+    grab_timeout_ms: 20
+    image_node_num: 1
+    fps_stat_period: 1.0
+    rotate: 0 # 0: no rotation, 1: 90 CW, 2: 180, 3: 90 CCW

@@ -1,0 +1,77 @@
+#pragma once
+
+#include "esp_def.hpp"
+
+#include "esp_event.h"
+#include "esp_netif.h"
+#include "esp_wifi.h"
+#include "net/wifi_client.hpp"
+
+namespace LibXR
+{
+
+/**
+ * @brief ESP32 Wi-Fi 客户端实现 / ESP32 Wi-Fi client implementation
+ *
+ * 基于 ESP-IDF 提供连接、断开、扫描、RSSI 查询等接口。
+ * Provides connect/disconnect/scan/RSSI operations via ESP-IDF.
+ */
+class ESP32WifiClient : public WifiClient
+{
+ public:
+  ESP32WifiClient();
+
+
+  bool Enable() override;
+
+  void Disable() override;
+
+  WifiError Connect(const Config& config) override;
+
+  WifiError Disconnect() override;
+
+  bool IsConnected() const override;
+
+  IPAddressRaw GetIPAddress() const override;
+
+  MACAddressRaw GetMACAddress() const override;
+
+  WifiError Scan(ScanResult* out_list, size_t max_count, size_t& out_found) override;
+
+  int GetRSSI() const override;
+
+ private:
+  bool RegisterHandlers();
+  void UnregisterHandlers();
+  void ResetConnectionState();
+  void DrainEvents();
+
+  /**
+   * @brief 事件处理回调 / Event handler callback
+   * @param arg 用户数据 / User pointer
+   * @param event_base 事件域 / Event base type
+   * @param event_id 事件编号 / Event ID
+   * @param event_data 附加数据 / Event payload
+   */
+  static void EventHandler(void* arg, esp_event_base_t event_base, int32_t event_id,
+                           void* event_data);
+
+  static inline bool is_initialized_ =
+      false;  ///< ESP 网络是否已初始化 / Netif initialized
+  static inline esp_netif_t* netif_ = nullptr;  ///< ESP 默认 netif 对象 / Default netif
+
+  bool init_ok_ = false;
+  bool enabled_ = false;    ///< 是否启用 / Whether WiFi is enabled
+  bool handlers_registered_ = false;
+  bool connected_ = false;  ///< 是否连接 / Whether WiFi is connected
+  bool got_ip_ = false;     ///< 是否获取 IP / Whether IP is acquired
+  char ip_str_[16] = {};    ///< 当前 IP 字符串 / Current IP string
+  esp_event_handler_instance_t wifi_connected_handler_ = nullptr;
+  esp_event_handler_instance_t wifi_disconnected_handler_ = nullptr;
+  esp_event_handler_instance_t got_ip_handler_ = nullptr;
+  esp_event_handler_instance_t lost_ip_handler_ = nullptr;
+
+  LibXR::Semaphore semaphore_;  ///< 状态同步信号量 / Event wait semaphore
+};
+
+}  // namespace LibXR

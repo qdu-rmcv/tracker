@@ -16,7 +16,7 @@ TEST(ArmorDetectorNodeTest, NodeStartupTest)
   node.reset();
 }
 
-int main(int argc, char ** argv)
+int main(int argc, char** argv)
 {
   testing::InitGoogleTest(&argc, argv);
   rclcpp::init(argc, argv);

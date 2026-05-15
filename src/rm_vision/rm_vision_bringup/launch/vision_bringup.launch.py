@@ -1,82 +1,166 @@
 import os
 import sys
+
 from ament_index_python.packages import get_package_share_directory
-sys.path.append(os.path.join(get_package_share_directory('rm_vision_bringup'), 'launch'))
+
+from launch import LaunchDescription
+from launch.actions import (
+    DeclareLaunchArgument,
+    ExecuteProcess,
+    OpaqueFunction,
+    RegisterEventHandler,
+    Shutdown,
+)
+from launch.event_handlers import OnProcessExit
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import ComposableNodeContainer
+
+
+sys.path.append(
+    os.path.join(get_package_share_directory("rm_vision_bringup"), "launch")
+)
+
+
+def _safe_taskset_prefix(cpu_list):
+    """Bind a container only if the requested CPU list is valid on this NUC.
+
+    This avoids launch failures on machines that do not have CPU7 or have not
+    been tuned with CPU isolation. If taskset fails, the process is started
+    normally.
+    """
+    cpu_list = str(cpu_list).strip()
+    if not cpu_list:
+        return None
+
+    return (
+        "bash -lc 'CPU_LIST=\"%s\"; "
+        "if command -v taskset >/dev/null 2>&1 && "
+        "taskset -c \"$CPU_LIST\" true >/dev/null 2>&1; then "
+        "exec taskset -c \"$CPU_LIST\" \"$@\"; "
+        "else "
+        "echo \"[launch] skip taskset CPU_LIST=$CPU_LIST: unavailable or invalid on this machine\" >&2; "
+        "exec \"$@\"; "
+        "fi' --"
+    ) % cpu_list
+
+
+# 针对多台 NUC 的兼容优化：
+# - 若 CPU4-6 / CPU7 存在，则按配置绑核；
+# - 若某台 NUC 核心数不足或未做隔离，自动跳过 taskset，不影响启动；
+# - 不再在 launch 里强制 chrt，SCHED_FIFO 由 planning_trajectory 内部实时线程尝试设置。
+def _build_after_checkout(context, *args, **kwargs):
+    from common import (
+        launch_params,
+        robot_state_publisher,
+        get_camera_component,
+        get_detector_component,
+        get_tracker_component,
+        get_trajectory_component,
+        get_serial_component,
+        get_marker_component,
+    )
+
+    robot_type = LaunchConfiguration("robot").perform(context)
+
+    vision_cpu_list = launch_params.get("vision_cpu_list", "4-6")
+    trajectory_cpu_list = launch_params.get("trajectory_cpu_list", "7")
+
+    # 普通视觉节点：优先 CPU4-6；若机器不支持则自动跳过 taskset
+    vision_container = ComposableNodeContainer(
+        name="vision_container",
+        namespace="",
+        package="rclcpp_components",
+        executable="component_container_mt",
+        prefix=_safe_taskset_prefix(vision_cpu_list),
+        composable_node_descriptions=[
+            get_camera_component(robot_type),
+            get_detector_component(robot_type),
+            get_tracker_component(robot_type),
+            get_serial_component(robot_type),
+            get_marker_component(robot_type),
+        ],
+        output="both",
+        emulate_tty=True,
+        parameters=[
+            {"thread_num": os.cpu_count() - 2},
+        ],
+        ros_arguments=[
+            "--ros-args",
+            "--log-level",
+            "armor_detector:=" + launch_params["detector_log_level"],
+            "--log-level",
+            "armor_tracker:=" + launch_params["tracker_log_level"],
+            "--log-level",
+            "serial_driver:=" + launch_params["serial_log_level"],
+        ],
+        on_exit=Shutdown(),
+    )
+
+    # trajectory 单独容器：优先 CPU7；SCHED_FIFO 在节点内部线程里设置
+    trajectory_container = ComposableNodeContainer(
+        name="trajectory_container",
+        namespace="",
+        package="rclcpp_components",
+        executable="component_container_mt",
+        prefix=_safe_taskset_prefix(trajectory_cpu_list),
+        composable_node_descriptions=[
+            get_trajectory_component(robot_type),
+        ],
+        output="both",
+        emulate_tty=True,
+        parameters=[
+            {"thread_num": 2},
+        ],
+        ros_arguments=[
+            "--ros-args",
+            "--log-level",
+            "planning_trajectory:=" + launch_params.get("trajectory_log_level", "INFO"),
+        ],
+        on_exit=Shutdown(),
+    )
+
+    return [
+        robot_state_publisher,
+        vision_container,
+        trajectory_container,
+    ]
 
 
 def generate_launch_description():
+    ws_root = LaunchConfiguration("ws_root")
+    robot = LaunchConfiguration("robot")
 
-    from common import node_params, launch_params, robot_state_publisher, tracker_node
-    from launch_ros.descriptions import ComposableNode
-    from launch_ros.actions import ComposableNodeContainer, Node
-    from launch.actions import TimerAction, Shutdown
-    from launch import LaunchDescription
+    config_repo_rel = "src/rm_vision/rm_vision_bringup/config"
 
-    def get_camera_node(package, plugin):
-        return ComposableNode(
-            package=package,
-            plugin=plugin,
-            name='camera_node',
-            parameters=[node_params],
-            extra_arguments=[{'use_intra_process_comms': True}] #启用进程内的通信，提高性能
-        )
+    checkout_robot = ExecuteProcess(
+        cmd=[
+            "bash",
+            "-lc",
+            "set -e; "
+            'cd "$WS_ROOT"/' + config_repo_rel + "; "
+            "git rev-parse --is-inside-work-tree >/dev/null 2>&1; "
+            'git checkout "$BRANCH"; '
+            "git status --porcelain",
+        ],
+        additional_env={
+            "WS_ROOT": ws_root,
+            "BRANCH": robot,
+        },
+        output="screen",
+    )
 
-    def get_camera_detector_container(camera_node):
-        return ComposableNodeContainer(
-            name='camera_detector_container',
-            namespace='',
-            package='rclcpp_components',
-            executable='component_container',
-            composable_node_descriptions=[
-                camera_node,
-                ComposableNode(
-                    package='armor_detector',
-                    plugin='rm_auto_aim::ArmorDetectorNode',
-                    name='armor_detector',
-                    parameters=[node_params],
-                    extra_arguments=[{'use_intra_process_comms': True}]
+    build_nodes = OpaqueFunction(function=_build_after_checkout)
+
+    return LaunchDescription(
+        [
+            DeclareLaunchArgument("ws_root", default_value=os.getcwd()),
+            DeclareLaunchArgument("robot", default_value=""),
+            checkout_robot,
+            RegisterEventHandler(
+                OnProcessExit(
+                    target_action=checkout_robot,
+                    on_exit=[build_nodes],
                 )
-            ],
-            output='both',
-            emulate_tty=True,
-            ros_arguments=['--ros-args', '--log-level',
-                        'armor_detector:='+launch_params['detector_log_level']],
-            on_exit=Shutdown(),
-        )
-
-    hik_camera_node = get_camera_node('hik_camera', 'hik_camera::HikCameraNode')
-    mv_camera_node = get_camera_node('mindvision_camera', 'mindvision_camera::MVCameraNode')
-
-    if (launch_params['camera'] == 'hik'):
-        cam_detector = get_camera_detector_container(hik_camera_node)
-    elif (launch_params['camera'] == 'mv'):
-        cam_detector = get_camera_detector_container(mv_camera_node)
-
-    serial_driver_node = Node(
-        package='rm_serial_driver',
-        executable='rm_serial_driver_node',
-        name='serial_driver',
-        output='both',
-        emulate_tty=True,
-        parameters=[node_params],
-        on_exit=Shutdown(),
-        ros_arguments=['--ros-args', '--log-level',
-                    'serial_driver:='+launch_params['serial_log_level']],
+            ),
+        ]
     )
-
-    delay_serial_node = TimerAction(
-        period=1.5,
-        actions=[serial_driver_node],
-    )
-
-    delay_tracker_node = TimerAction(
-        period=2.0,
-        actions=[tracker_node],
-    )
-
-    return LaunchDescription([
-        robot_state_publisher,
-        cam_detector,
-        delay_serial_node,
-        delay_tracker_node,
-    ])

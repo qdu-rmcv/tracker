@@ -1,0 +1,23 @@
+<!-- CompileFlags:
+  CompilationDatabase: build/armor_detector
+  Add:
+    - --cuda-path=/usr/local/cuda
+    - --cuda-gpu-arch=sm_89
+    - -I/home/bandiera/Desktop/vision_dev/src/rm_auto_aim/armor_detector/include
+    - -I/usr/local/cuda/include
+    - -I/usr/local/cuda/targets/x86_64-linux/include
+    - -I/usr/include/opencv4
+    - -I/usr/include/x86_64-linux-gnu
+
+    - -x
+    - cuda # In case your CUDA file does not end with a ".cu"
+  Remove:
+    - -forward-unknown-to-host-compiler
+    - -ccbin=*
+    - --options-file
+    - --generate-code=*
+    - -Xcompiler=*
+    - -rdc=true
+Diagnostics:
+  Suppress:
+    - drv_unknown_argument -->

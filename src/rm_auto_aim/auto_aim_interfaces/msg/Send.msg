@@ -1,7 +1,8 @@
 std_msgs/Header header
 bool is_fire
-geometry_msgs/Point position
-float64 v_yaw
 float64 pitch
 float64 yaw
-geometry_msgs/Twist cmd_vel
+float64 vel_yaw
+float64 acc_yaw
+int8 idx
+int8 num

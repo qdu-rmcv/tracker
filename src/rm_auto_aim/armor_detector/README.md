@@ -1,8 +1,15 @@
 # armor_detector
 
-- [DetectorNode](#basedetectornode)
+- [armor\_detector](#armor_detector)
+  - [识别节点](#识别节点)
+    - [DetectorNode](#detectornode)
   - [Detector](#detector)
-    - [NumberClassifier](#numberclassifier)
+    - [preprocessImage](#preprocessimage)
+    - [findLights](#findlights)
+    - [matchLights](#matchlights)
+  - [NumberClassifier](#numberclassifier)
+    - [extractNumbers](#extractnumbers)
+    - [Classify](#classify)
   - [PnPSolver](#pnpsolver)
 
 ## 识别节点
@@ -84,7 +91,7 @@
 
 由于上一步对于数字的提取效果已经非常好，数字图案的特征非常清晰明显，装甲板的远近、旋转都不会使图案产生过多畸变，且图案像素点少，所以我们使用多层感知机（MLP）进行分类。
 
-网络结构中定义了两个隐藏层和一个分类层，将二值化后的数字展平成 20x28=560 维的输入，送入网络进行分类。
+网络结构中定义了两个隐藏层和一个分类层z，将二值化后的数字展平成 20x28=560 维的输入，送入网络进行分类。
 
 网络结构：
 
@@ -102,3 +109,6 @@ PnP解算器
 PnP解算器将 `cv::solvePnP()` 封装，接口中传入 `Armor` 类型的数据即可得到 `geometry_msgs::msg::Point` 类型的三维坐标。
 
 考虑到装甲板的四个点在一个平面上，在PnP解算方法上我们选择了 `cv::SOLVEPNP_IPPE` (Method is based on the paper of T. Collins and A. Bartoli. ["Infinitesimal Plane-Based Pose Estimation"](https://link.springer.com/article/10.1007/s11263-014-0725-5). This method requires coplanar object points.)
+
+
+[def]: #findlights

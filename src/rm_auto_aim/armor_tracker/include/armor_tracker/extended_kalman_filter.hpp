@@ -2,6 +2,8 @@
 #define ARMOR_PROCESSOR__KALMAN_FILTER_HPP_
 
 #include <Eigen/Dense>
+#include <cmath>
+#include <deque>
 #include <functional>
 
 namespace rm_auto_aim
@@ -9,27 +11,45 @@ namespace rm_auto_aim
 
 class ExtendedKalmanFilter
 {
-public:
+ public:
   ExtendedKalmanFilter() = default;
 
-  using VecVecFunc = std::function<Eigen::VectorXd(const Eigen::VectorXd &)>;
-  using VecMatFunc = std::function<Eigen::MatrixXd(const Eigen::VectorXd &)>;
+  using VecVecFunc = std::function<Eigen::VectorXd(const Eigen::VectorXd&)>;
+  using VecMatFunc = std::function<Eigen::MatrixXd(const Eigen::VectorXd&)>;
   using VoidMatFunc = std::function<Eigen::MatrixXd()>;
 
-  explicit ExtendedKalmanFilter(
-    const VecVecFunc & f, const VecVecFunc & h, const VecMatFunc & j_f, const VecMatFunc & j_h,
-    const VoidMatFunc & u_q, const VecMatFunc & u_r, const Eigen::MatrixXd & P0);
+  explicit ExtendedKalmanFilter(const VecVecFunc& f, const VecVecFunc& h,
+                                const VecMatFunc& j_f, const VecMatFunc& j_h,
+                                const VoidMatFunc& u_q, const VecMatFunc& u_r,
+                                const Eigen::MatrixXd& P0);
 
   // Set the initial state
-  void setState(const Eigen::VectorXd & x0);
+  void SetState(const Eigen::VectorXd& x0);
+  void SetState(const Eigen::VectorXd& x0, const Eigen::MatrixXd& P0);
+
+  // Get the estimated state
+  Eigen::VectorXd GetState();
 
   // Compute a predicted state
-  Eigen::MatrixXd predict();
+  Eigen::MatrixXd Predict();
 
-  // Update the estimated state based on measurement
-  Eigen::MatrixXd update(const Eigen::VectorXd & z);
+  // Update the estimated state based on measurement by IEKF
+  Eigen::MatrixXd Update(const Eigen::VectorXd& z);
 
-private:
+  // 新增：给 MatchArmor 用
+  Eigen::VectorXd ComputeInnovation(const Eigen::VectorXd& z) const;
+  Eigen::VectorXd ComputeInnovation(const Eigen::VectorXd& z,
+                                    const Eigen::VectorXd& x) const;
+  double ComputeNIS(const Eigen::VectorXd& z) const;
+
+  // Get the health rate
+  double GetHealthRate();
+
+ private:
+  static constexpr int K_IEKF_ITERATIONS = 5;
+
+  static double NormalizeAngle(double a) { return std::remainder(a, 2.0 * M_PI); }
+
   // Process nonlinear vector function
   VecVecFunc f;
   // Observation nonlinear vector function
@@ -65,6 +85,8 @@ private:
   Eigen::VectorXd x_pri;
   // Posteriori state
   Eigen::VectorXd x_post;
+
+  std::deque<double> nis_window_;
 };
 
 }  // namespace rm_auto_aim

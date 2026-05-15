@@ -1,0 +1,5 @@
+camera: hik
+odom2camera:
+  # 无人机
+  xyz: '"0.0 0.0 0.0"'
+  rpy: '"0.0 0.0 0.0"'

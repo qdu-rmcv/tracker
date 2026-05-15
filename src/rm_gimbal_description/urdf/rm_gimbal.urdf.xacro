@@ -6,6 +6,9 @@
   <xacro:arg name="xyz" default="0.10 0 0.05" />
   <xacro:arg name="rpy" default="0 0 0" />
 
+  <xacro:arg name="lob_xyz" default="0 0 0" />
+  <xacro:arg name="lob_rpy" default="0 0 0" />
+
   <link name="gimbal_odom" />
 
   <link name="yaw_link" />
@@ -21,7 +24,7 @@
   <joint name="pitch_joint" type="continuous">
     <parent link="yaw_link" />
     <child link="pitch_link" />
-    <axis xyz="0 -1 0" />
+    <axis xyz="0 1 0" />
   </joint>
 
   <link name="camera_link" />
@@ -39,6 +42,23 @@
     <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}" />
     <parent link="camera_link" />
     <child link="camera_optical_frame" />
+  </joint>
+
+  <!-- new two-layer lob camera frame -->
+  <link name="camera_lob_link" />
+
+  <joint name="camera_lob_joint" type="fixed">
+    <origin xyz="$(arg lob_xyz)" rpy="$(arg lob_rpy)" />
+    <parent link="yaw_link" />
+    <child link="camera_lob_link" />
+  </joint>
+
+  <link name="camera_optical_frame_lob" />
+
+  <joint name="camera_optical_joint_lob" type="fixed">
+    <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}" />
+    <parent link="camera_lob_link" />
+    <child link="camera_optical_frame_lob" />
   </joint>
 
 </robot>

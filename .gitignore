@@ -5,3 +5,7 @@
 .history/
 .git/
 .cache/
+.marscode/
+AGENTS.md
+.sisyphus/
+Camera/

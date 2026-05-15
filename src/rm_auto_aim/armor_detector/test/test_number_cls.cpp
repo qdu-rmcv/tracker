@@ -7,14 +7,13 @@
 #include <algorithm>
 #include <chrono>
 #include <iostream>
-#include <map>
 #include <vector>
 
 #include "armor_detector/number_classifier.hpp"
 
 using hrc = std::chrono::high_resolution_clock;
 
-TEST(test_nc, benchmark)
+TEST(TestNC, benchmark)
 {
   auto pkg_path = ament_index_cpp::get_package_share_directory("armor_detector");
   auto model_path = pkg_path + "/model/mlp.onnx";
@@ -32,12 +31,14 @@ TEST(test_nc, benchmark)
   double time_max = -DBL_MAX;
   double time_avg = 0;
 
-  for (int i = 0; i < warm_up + loop_num; i++) {
+  for (int i = 0; i < warm_up + loop_num; i++)
+  {
     auto start = hrc::now();
-    nc.classify(dummy_armors);
+    nc.Classify(dummy_armors);
     auto end = hrc::now();
     double time = std::chrono::duration<double, std::milli>(end - start).count();
-    if (i >= warm_up) {
+    if (i >= warm_up)
+    {
       time_min = std::min(time_min, time);
       time_max = std::max(time_max, time);
       time_avg += time;
@@ -45,7 +46,7 @@ TEST(test_nc, benchmark)
   }
   time_avg /= loop_num;
 
-  std::cout << "time_min: " << time_min << "ms" << std::endl;
-  std::cout << "time_max: " << time_max << "ms" << std::endl;
-  std::cout << "time_avg: " << time_avg << "ms" << std::endl;
+  std::cout << "time_min: " << time_min << "ms" << '\n';
+  std::cout << "time_max: " << time_max << "ms" << '\n';
+  std::cout << "time_avg: " << time_avg << "ms" << '\n';
 }

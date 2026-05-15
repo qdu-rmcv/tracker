@@ -1,0 +1,21 @@
+image_width: 1440
+image_height: 1080
+camera_name: gimbal_camera_lob
+# 英雄
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [13630.356358546134, 0.0, -100.07839211905467, 0.0, 13585.25404563817, 636.4093222557301, 0.0, 0.0, 1.0]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 5
+  cols: 1
+  data: [-0.04756972936943866, -10.801508337830489, 0.004919410134523178, -0.006872143489951395, 0.0]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [13555.322265625, 0.0, -99.8096551195431, 0.0, 0.0, 13566.7802734375, 636.1551952164955, 0.0, 0.0, 0.0, 1.0, 0.0]

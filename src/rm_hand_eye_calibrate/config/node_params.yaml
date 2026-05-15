@@ -1,0 +1,29 @@
+/camera_node:
+  ros__parameters:
+    camera_info_url: package://rm_vision_bringup/config/camera_info.yaml
+    exposure_time: 1000.0
+    gain: 6.0
+    autocap: true
+    frame_rate: 249.0
+    frame_id: camera_optical_frame
+    rotate: 0 # 0: 不旋转, 1: 顺时针 90°, 2: 180°, 3: 逆时针 90°
+
+/hand_eye_calibrate_node:
+  ros__parameters:
+    vid: "16d0"
+    pid: "1492"
+    timestamp_offset: 0.0
+    image_topic: "/image_raw"
+    camera_info_topic: "/camera_info"
+    board_cols: 11
+    board_rows: 8
+    square_size: 0.02
+    R_gimbal2imubody: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+    handeye_method: "TSAI"
+    use_robot_world_handeye: true
+    check_min_blur_score: 60.0
+    check_min_angle_dist: 0.087
+    check_max_quat_angular_vel: 0.02
+    max_age_sec: 0.05
+    publish_debug_image: true
+    debug_image_topic: "/rm_hand_eye/debug_image"

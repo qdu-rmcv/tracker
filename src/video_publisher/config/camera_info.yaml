@@ -1,0 +1,21 @@
+image_width: 1440
+image_height: 1080 
+camera_name: gimbal_camera
+
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [1818.3669452465165, 0, 751.06226574703498, 0, 1822.494494078506, 530.43671556112133, 0, 0, 1]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 5
+  cols: 1
+  data: [-0.077944626599568856, 0.15447826031486889, -0.0025714394278524674, 0.00083016311301273629, 0]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [2369.536544, 0.000000, 708.176313, 0.000000, 0.000000, 2367.584318, 521.672316, 0.000000, 0.000000, 0.000000, 1.000000, 0.000000]

@@ -1,97 +1,103 @@
 #ifndef RM_SERIAL_DRIVER__RM_SERIAL_DRIVER_HPP_
 #define RM_SERIAL_DRIVER__RM_SERIAL_DRIVER_HPP_
 
-#include <rclcpp/publisher.hpp>
-#include <rclcpp/rclcpp.hpp>
-#include <rclcpp/subscription.hpp>
-#include <sensor_msgs/msg/joint_state.hpp>
-#include <serial_driver/serial_driver.hpp>
-#include <std_msgs/msg/float64.hpp>
-#include <std_srvs/srv/trigger.hpp>
-#include <visualization_msgs/msg/marker.hpp>
-
-// C++ system
-#include <future>
+// STD
+#include <chrono>
 #include <memory>
-#include <string>
-#include <thread>
-#include <vector>
-#include <fstream>
-#include <iomanip>
 
+// ROS2
+#include <geometry_msgs/msg/twist.hpp>
+#include <rclcpp/node.hpp>
+#include <sensor_msgs/msg/joint_state.hpp>
+#include <std_msgs/msg/bool.hpp>
 
-#include "auto_aim_interfaces/msg/target.hpp"
+// LibXR
+#include "SharedTopic.hpp"
+#include "SharedTopicClient.hpp"
+#include "linux_uart.hpp"
+
+// ROS2自定义消息包
 #include "auto_aim_interfaces/msg/send.hpp"
 #include "auto_aim_interfaces/msg/velocity.hpp"
-#include "auto_aim_interfaces/msg/receive.hpp"
 
 namespace rm_serial_driver
 {
+
+/*LibXR相关*/
+
+// LibXR应用程序入口函数
+static void XRobotMain(LibXR::HardwareContainer& hw)
+{
+  using namespace LibXR;
+  static ApplicationManager appmgr;
+
+  static SharedTopic shared_topic(hw, appmgr, "uart_client", 256,
+                                  {{"ahrs_quaternion"}, {"lob_shot"}});
+
+  static SharedTopicClient shared_topic_client(
+      hw, appmgr, "uart_client", 256,
+      {{"target_euler"}, {"fire_notify", "tracker"}, {"target_num"}});
+}
+
+#pragma pack(push, 1)
+struct HostEulerTarget
+{
+  float rol, pit, yaw;
+  float rol_dot, pit_dot, yaw_dot;
+  float rol_ddot, pit_ddot, yaw_ddot;
+};
+#pragma pack(pop)
+
 class RMSerialDriver : public rclcpp::Node
 {
-public:
-  explicit RMSerialDriver(const rclcpp::NodeOptions & options);
-
+ public:
+  explicit RMSerialDriver(const rclcpp::NodeOptions& options);
   ~RMSerialDriver() override;
-  float pitch_trans(float originAngle);
-  float pitch_re_trans(float originAngle);
-  float yaw_trans(float originAngle);
-  float yaw_re_trans(float originAngle);
-private:
-  // 在 RMSerialDriver 类的头文件中添加成员变量
-  std::ofstream csv_file_;
 
-  void getParams();
+ private:
+  uint8_t fire_notify_ = 1;
+  double timestamp_offset_{};
 
-  void receiveData();
+  /* 函数声明 */
 
-  void sendData(const auto_aim_interfaces::msg::Send::SharedPtr msg);
+  // Send消息回调函数
+  void SendCallBack(const auto_aim_interfaces::msg::Send::SharedPtr msg);
 
-  void reopenPort();
+  /* ROS2发布者 */
+  rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr
+      joint_state_pub_;                                             // 云台关节状态发布者
+  rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr lob_shot_pub_;  // 吊射标志发布者
 
-  void setParam(const rclcpp::Parameter & param);
-
-  void resetTracker();
-
-  // void receive_marker(const auto_aim_interfaces::msg::Receive::SharedPtr msg);
-
-  // Serial port
-  std::unique_ptr<IoContext> owned_ctx_;
-  std::string device_name_;
-  std::unique_ptr<drivers::serial_driver::SerialPortConfig> device_config_;
-  std::unique_ptr<drivers::serial_driver::SerialDriver> serial_driver_;
-
-  // Param client to set detect_colr
-  using ResultFuturePtr = std::shared_future<std::vector<rcl_interfaces::msg::SetParametersResult>>;
-  bool initial_set_param_ = false;
-  uint8_t previous_receive_color_ = 0;
-  rclcpp::AsyncParametersClient::SharedPtr detector_param_client_;
-  ResultFuturePtr set_param_future_;
-
-  // Service client to reset tracker
-  rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr reset_tracker_client_;
-
-  // Aimimg point receiving from serial port for visualization
-  visualization_msgs::msg::Marker aiming_point_;
-
-  auto_aim_interfaces::msg::Receive::SharedPtr receive_msg_;
-
-
-  double timestamp_offset_ = 0;
-  rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joint_state_pub_;
-  rclcpp::Publisher<auto_aim_interfaces::msg::Velocity>::SharedPtr velocity_pub_;
-  rclcpp::Publisher<auto_aim_interfaces::msg::Receive>::SharedPtr receive_pub_;
-
-  rclcpp::Subscription<auto_aim_interfaces::msg::Target>::SharedPtr target_sub_;
+  /* ROS2订阅者 */
   rclcpp::Subscription<auto_aim_interfaces::msg::Send>::SharedPtr send_sub_;
+  //   rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr fire_sub_;
 
+  /* LibXR Topic */
+  LibXR::Topic ahrs_quaternion_topic_;
+  LibXR::Topic target_euler_topic_;
+  LibXR::Topic fire_notify_topic_;
+  LibXR::Topic lob_shot_topic_;
+  LibXR::Topic target_num_topic_;
 
-  rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr latency_pub_;
-  rclcpp::Publisher<visualization_msgs::msg::Marker>::SharedPtr marker_pub_;
+  /* LibXR初始化相关成员变量 */
+  std::unique_ptr<LibXR::RamFS> ramfs_;
+  std::unique_ptr<LibXR::LinuxUART> uart_client_;
+  std::unique_ptr<LibXR::Terminal<1024, 64, 16, 128>> terminal_;
+  std::unique_ptr<LibXR::Thread> term_thread_;
+  std::unique_ptr<LibXR::HardwareContainer> peripherals_;
 
+  /* 云台姿态打印频率相关变量 */
+  int ahrs_receive_cnt_ = 0;
+  int ahrs_print_freq_ = 50;
 
-  std::thread receive_thread_;
+  uint8_t last_lob_val_{0};
+  bool is_hero_{false};
+  bool is_send_vel_ = false;
+
+  std::chrono::time_point<std::chrono::steady_clock,
+                          std::chrono::duration<uint64_t, std::ratio<1, 1000000000>>>
+      last_send_time_{};
 };
-}  // namespace rm_serial_driver
 
+}  // namespace rm_serial_driver
 #endif  // RM_SERIAL_DRIVER__RM_SERIAL_DRIVER_HPP_

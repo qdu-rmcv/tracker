@@ -1,6 +1,19 @@
-/hik_camera:
+/camera_node:
   ros__parameters:
-    camera_name: narrow_stereo
-
-    exposure_time: 500
-    gain: 32.0
+    camera_name: gimbal_camera
+    camera_name_lob: gimbal_camera_lob
+    camera_info_url: package://hik_camera/config/camera_info.yaml
+    camera_info_url_lob: "package://hik_camera/config/camera_info_lob.yaml" # 吊射相机内参文件
+    device_index: 0 # 默认相机设备索引
+    device_index_lob: 0
+    frame_id: camera_optical_frame
+    frame_id_lob: camera_optical_frame_lob
+    exposure_time: 2000.0
+    gain: 0.0
+    autocap: true
+    frame_rate_enable: false
+    frame_rate: 249.0
+    grab_timeout_ms: 20 # 取流短超时时间
+    image_node_num: 1 # SDK 取流缓存节点数
+    fps_stat_period: 1.0
+    rotate: 2 # 0: 不旋转, 1: 顺时针 90°, 2: 180°, 3: 逆时针 90°

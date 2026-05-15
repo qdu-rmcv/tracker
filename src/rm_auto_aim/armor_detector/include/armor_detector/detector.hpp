@@ -1,25 +1,26 @@
 #ifndef ARMOR_DETECTOR__DETECTOR_HPP_
 #define ARMOR_DETECTOR__DETECTOR_HPP_
 
-// OpenCV
+#include <memory>
 #include <opencv2/core.hpp>
-#include <opencv2/core/types.hpp>
-
-// STD
-#include <cmath>
-#include <string>
 #include <vector>
 
 #include "armor_detector/armor.hpp"
+#include "armor_detector/detector_base.hpp"
+#include "armor_detector/light_corner_corrector.hpp"
 #include "armor_detector/number_classifier.hpp"
-#include "auto_aim_interfaces/msg/debug_armors.hpp"
-#include "auto_aim_interfaces/msg/debug_lights.hpp"
+
+namespace rclcpp
+{
+class Node;
+}
 
 namespace rm_auto_aim
 {
-class Detector
+
+class Detector : public DetectorBase
 {
-public:
+ public:
   struct LightParams
   {
     // width / height
@@ -27,6 +28,8 @@ public:
     double max_ratio;
     // vertical angle与垂直方向的最大差角
     double max_angle;
+    // area condition
+    double min_fill_ratio;
   };
 
   struct ArmorParams
@@ -41,38 +44,66 @@ public:
     double max_angle;
   };
 
-  Detector(const int & bin_thres, const int & color, const LightParams & l, const ArmorParams & a);
+  struct ClassifierParams
+  {
+    std::string model_path;
+    std::string label_path;
+    double threshold;
+    std::vector<std::string> ignore_classes;
+  };
 
-  std::vector<Armor> detect(const cv::Mat & input);
+  struct CornerCorrectorParams
+  {
+    bool use_corner_corrector;
+    double max_brightness;
+    double scale;
+    double start;
+    double end;
+  };
 
-  cv::Mat preprocessImage(const cv::Mat & input);
-  std::vector<Light> findLights(const cv::Mat & rbg_img, const cv::Mat & binary_img);
-  std::vector<Armor> matchLights(const std::vector<Light> & lights);
+  struct DetectorParams
+  {
+    int binary_lower_thres;
+    int binary_upper_thres;
+    int detect_color;
+    LightParams l;
+    ArmorParams a;
+    ClassifierParams c;
+    CornerCorrectorParams cc;
+  };
 
-  // For debug usage
-  cv::Mat getAllNumbersImage();
-  void drawResults(cv::Mat & img);
+  static std::unique_ptr<Detector> Create(rclcpp::Node& node);
 
-  int binary_thres;
-  int detect_color;
-  LightParams l;
-  ArmorParams a;
+  explicit Detector(DetectorParams& params);
 
-  std::unique_ptr<NumberClassifier> classifier;
+  DetectionResult Detect(const cv::Mat& input) override;
 
-  // Debug msgs
-  cv::Mat binary_img;
-  auto_aim_interfaces::msg::DebugLights debug_lights;
-  auto_aim_interfaces::msg::DebugArmors debug_armors;
+  cv::Mat PreprocessImage(const cv::Mat& input);
+  std::vector<Light> FindLights(const cv::Mat& rbg_img, const cv::Mat& binary_img) noexcept;
+  std::vector<Armor> MatchLights(const std::vector<Light>& lights);
 
-private:
-  bool isLight(const Light & possible_light);
-  bool containLight(
-    const Light & light_1, const Light & light_2, const std::vector<Light> & lights);
-  ArmorType isArmor(const Light & light_1, const Light & light_2);
+  void DrawResults(cv::Mat& img) override;
 
+ private:
+  bool IsLight(const Light& possible_light);
+  bool ContainLight(const Light& light_1, const Light& light_2,
+                    const std::vector<Light>& lights);
+  ArmorType IsArmor(const Light& light_1, const Light& light_2);
+  const DebugData& GetDebugData();
+  const cv::Mat& GetNumbersImage();
+
+  DetectorParams params_;
+  std::unique_ptr<NumberClassifier> classifier_;
+  std::unique_ptr<LightCornerCorrector> light_corner_corrector_ = nullptr;
   std::vector<Light> lights_;
   std::vector<Armor> armors_;
+
+
+  // Debug msgs
+  cv::Mat binary_img_;
+  cv::Mat gray_img_;
+  cv::Mat all_num_img_;
+  DebugData debug_data_;
 };
 
 }  // namespace rm_auto_aim
