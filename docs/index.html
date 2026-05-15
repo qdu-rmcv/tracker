@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>RM Vision Dev 文档</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="description"
+      content="RoboMaster 视觉自瞄 ROS2 工程模块文档"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+    />
+    <style>
+      :root {
+        --theme-color: #1663b7;
+      }
+      .sidebar-nav li a {
+        font-size: 14px;
+      }
+      .markdown-section code {
+        border-radius: 3px;
+        font-size: 0.85em;
+      }
+      .markdown-section table {
+        display: table;
+        width: 100%;
+      }
+      .markdown-section td,
+      .markdown-section th {
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">正在加载文档...</div>
+    <script>
+      window.$docsify = {
+        el: "#app",
+        name: "RM Vision Dev",
+        repo: "",
+        loadSidebar: true,
+        loadNavbar: true,
+        subMaxLevel: 3,
+        auto2top: true,
+        search: {
+          placeholder: "搜索文档...",
+          noData: "未找到结果",
+          paths: "auto",
+          namespace: "rm-vision-dev",
+        },
+        copyCode: {
+          buttonText: "复制",
+          errorText: "失败",
+          successText: "已复制",
+        },
+        pagination: {
+          previousText: "上一节",
+          nextText: "下一节",
+          crossChapter: true,
+          crossChapterText: true,
+        },
+        markdown: {
+          renderer: {
+            code: function (code, lang) {
+              if (lang === "mermaid") {
+                return '<div class="mermaid">' + code + "</div>";
+              }
+              return this.origin.code.apply(this, arguments);
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>
+      mermaid.initialize({ startOnLoad: false, theme: "default" });
+      window.$docsify.plugins = (window.$docsify.plugins || []).concat(
+        function (hook) {
+          hook.doneEach(function () {
+            mermaid.run({ querySelector: ".mermaid" });
+          });
+        },
+      );
+    </script>
+  </body>
+</html>
